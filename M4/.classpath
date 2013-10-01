@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" output="bin" path="src"/>
+	<classpathentry kind="var" path="JRE_LIB" sourcepath="JRE_SRC"/>
+	<classpathentry kind="con" path="C:/Users/Eileen Wang/Dropbox/College/2013-2014 (Sophomore)/CS 2340/lib/resources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Eileen Wang/Dropbox/College/2013-2014 (Sophomore)/CS 2340/M4/M4/lib/resources.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
