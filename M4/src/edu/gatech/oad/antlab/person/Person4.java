@@ -31,15 +31,15 @@ public class Person4 {
      */
     private String calc(String input) {
       //Person 4 put your implementation here
-	String output = "";
-		
-	if (input == null || input.length() == 0)
-		return "Input is null or an empty string.";
-	if (input.length() > 1)
-		output = input.substring(1, input.length());
-	output += input.charAt(0);
-		
-	return output;
+      String output = "";
+      
+      if (input == null || input.length() == 0)
+     	return "Input is null or an empty string.";
+      if (input.length() > 1)
+      	output = input.substring(1, input.length());
+      output += input.charAt(0);
+      
+      return output;
     }
     
     /**
