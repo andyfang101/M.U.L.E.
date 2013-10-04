@@ -45,7 +45,7 @@
 			<include name="**/*.class" />
 			<manifest>
 				<attribute name="Main-Class" value="edu.gatech.oad.antlab.pkg1.AntLabMain" />
-				<attribute name="Class-Path" value="${resources.dir}/resources.jar"/>		
+				<attribute name="Class-Path" value="lib/resources.jar"/>		
 			</manifest>
 		</jar>
 	</target>
