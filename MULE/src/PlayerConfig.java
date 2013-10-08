@@ -3,6 +3,11 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 
+/*
+* This is a Jframe class that allows you to configure the player settings.
+* @author Cassidy Bellmor
+* Version 1.0 10/7/2013
+*/
 
 public class PlayerConfig extends JFrame {
 	private static final int WIDTH = 300;
@@ -16,11 +21,18 @@ public class PlayerConfig extends JFrame {
 	private String[] races = {"Select race...", "Flapper","Human","Others"}; 
 	private String[] colors = {"Select color...", "Red", "Orange", "Yellow", "Green", "Blue", "Cyan"};
 	
+	/*
+	* The main method to run the frame.
+	*/
 	public static void main(String[]args) {
 		PlayerConfig newPlayer = new PlayerConfig();
 		newPlayer.setVisible(true);
 	}
 	
+	
+	/*
+	*This is the constructor class that creates the components necessary to configure player settings.
+	*/
 	public PlayerConfig() {
 		setTitle("M.U.L.E. - Player Configuration");
 		setSize(WIDTH, HEIGHT);
@@ -71,6 +83,10 @@ public class PlayerConfig extends JFrame {
 	        entire.add(cont);
 	}
 	
+	/*
+	* This method sets the color used to represent the player
+	*@ color - the color the player wishes to be represented by, several options
+	*/
 	public Color setColor(String color) {
 		if (color.equals("Red"))
  			playerColor = Color.RED;
@@ -92,11 +108,17 @@ public class PlayerConfig extends JFrame {
 		return playerColor;
 	}
 	
+	/*
+	* This method sets player name by setting name to what is in text box
+	*/	
 	public String setName() {
 		playerName = chooseName.getText();
 		return playerName;
 	}
 	
+	/*
+	* private Actionlistener class to implement selecting race option
+	*/
 	private class raceListener implements ActionListener {
        		public void actionPerformed (ActionEvent event) {
     	   		JComboBox r = (JComboBox)event.getSource();
@@ -105,7 +127,9 @@ public class PlayerConfig extends JFrame {
         	   		System.out.println("Must select race.");
     	}
     }
-	
+	/*
+	* private Actionlistener class to implement selecting color option
+	*/
 	private class colorListener implements ActionListener {
 	       public void actionPerformed (ActionEvent event) {
 	    	   JComboBox c = (JComboBox)event.getSource();
@@ -122,6 +146,9 @@ public class PlayerConfig extends JFrame {
 	}
 	*/
 	
+	/*
+	* private Actionlistener class to continue onto the next selection screen
+	*/
 	private class continueListener implements ActionListener {
        		public void actionPerformed (ActionEvent event) {
 		    	/**
