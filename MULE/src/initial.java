@@ -10,9 +10,9 @@ public class initial extends JFrame{
 
 	
 	
-    public static void main(String[] args) {
-    	initial f = new initial();
-    }
+//    public static void main(String[] args) {
+//    	initial f = new initial();
+//    }
     
     
     
