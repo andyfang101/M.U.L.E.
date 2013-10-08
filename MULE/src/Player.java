@@ -16,7 +16,7 @@ public class Player{
 
 		if(color<0 | color>9){//color values fall between 0 and 9 inclusive. otherwise, defaults to blue (color 0)
 			this.color = 0;
-			System.out.println("Invalid color, defaulted to blue.")
+			System.out.println("Invalid color, defaulted to blue.");
 		}else{
 			this.color = color;
 		}
