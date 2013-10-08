@@ -6,6 +6,13 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.GroupLayout.Alignment;
 
+/*
+* This is a initial class that lets the user select the options, difficulty, map size, and player nunmber.
+* This class is the screen that comes after the main screen.
+* @author Wei Jiang, Eileen Wang
+* @ Version 1.0 10/7/2013
+*/
+
 public class initial extends JFrame{
 
 	
@@ -17,10 +24,10 @@ public class initial extends JFrame{
     
     
 
-    JLabel label1;
-    JLabel label2;
-    JLabel label3;
-    JLabel label4;
+    JLabel label1; //Logo
+    JLabel label2; //Diffficulty
+    JLabel label3; // Type of Map
+    JLabel label4; //Number of Players
     
     JComboBox diff;
     JComboBox map;
@@ -39,7 +46,11 @@ public class initial extends JFrame{
 	String[] maptype = {"Standard","Random"}; 
 	String[] playernumber = {"1","2","3","4"}; 
 	
-	
+
+    /*
+    * This is the constructor for the initial frame, has options to select difficulty, player number, and map size.
+    *
+    */
     public initial() {
     	this.setTitle("M.U.L.E.");
     	this.getContentPane().setBackground(Color.white);
@@ -97,6 +108,10 @@ public class initial extends JFrame{
         layout.setVerticalGroup(vGroup);
     }
     
+    /*
+    * This is a private class that sets the selectedDifficultly to 
+    * to what is selected in the combo box with an action listener.
+    */
     private class diffListener implements ActionListener
     {
        public void actionPerformed (ActionEvent event)
@@ -106,6 +121,10 @@ public class initial extends JFrame{
     	}
     }
     
+    /*
+    * This is a private class that sets the map size to 
+    * to what is selected in the combo box with an ActionListener.
+    */
     private class mtListener implements ActionListener
     {
        public void actionPerformed (ActionEvent event)
@@ -115,6 +134,10 @@ public class initial extends JFrame{
     	}
     }
     
+    /*
+    * This is a private class that sets the player number to 
+    * to what is selected in the combo box.
+    */
     private class pnListener implements ActionListener
     {
        public void actionPerformed (ActionEvent event)
@@ -125,6 +148,9 @@ public class initial extends JFrame{
     	}
     }
     
+    /*
+    * This is a private class that will eventually be implemented to continue to the next screen.
+    */
     private class CListener implements ActionListener
     {
        public void actionPerformed (ActionEvent event)
