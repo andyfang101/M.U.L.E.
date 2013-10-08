@@ -42,22 +42,22 @@ public class PlayerConfig extends JFrame {
 		*/
 		
 		JLabel nameLabel = new JLabel("Player name: ");
-        JLabel raceLabel = new JLabel("Player race: ");
-        JLabel colorLabel = new JLabel("Player color: ");
+	 	JLabel raceLabel = new JLabel("Player race: ");
+        	JLabel colorLabel = new JLabel("Player color: ");
         
-        chooseRace = new JComboBox(races);
-        chooseRace.addActionListener(new raceListener());
-        
-        chooseColor = new JComboBox(colors);
-        chooseColor.addActionListener(new colorListener());
-        
-        chooseName = new JTextField();
-        /*
-        chooseName.addActionListener(new nameListener());
-        */
-        
-        panel.add(nameLabel);
-        panel.add(chooseName);
+	        chooseRace = new JComboBox(races);
+	        chooseRace.addActionListener(new raceListener());
+	        
+	        chooseColor = new JComboBox(colors);
+	        chooseColor.addActionListener(new colorListener());
+	        
+	        chooseName = new JTextField();
+	        /*
+	        chooseName.addActionListener(new nameListener());
+	        */
+	        
+	        panel.add(nameLabel);
+	        panel.add(chooseName);
 		panel.add(raceLabel);
 		panel.add(chooseRace);
 		panel.add(colorLabel);
@@ -66,28 +66,28 @@ public class PlayerConfig extends JFrame {
 		
 		setName();
         
-        JButton cont = new JButton("Continue");
-        cont.addActionListener(new continueListener());
-        entire.add(cont);
+	        JButton cont = new JButton("Continue");
+	        cont.addActionListener(new continueListener());
+	        entire.add(cont);
 	}
 	
 	public Color setColor(String color) {
 		if (color.equals("Red"))
- 		   playerColor = Color.RED;
- 	   else if (color.equals("Orange"))
- 		   playerColor = Color.ORANGE;
- 	   else if (color.equals("Yellow"))
- 		   playerColor = Color.YELLOW;
- 	   else if (color.equals("Green"))
- 		   playerColor = Color.GREEN;
- 	   else if (color.equals("Blue"))
- 		   playerColor = Color.BLUE;
- 	   else if (color.equals("Cyan"))
- 		   playerColor = Color.CYAN;
- 	  else if (color.equals("Select color..."))
- 		 System.out.println("Must select color.");	
- 	   else
- 		   System.out.println("Error with color selection.");	
+ 			playerColor = Color.RED;
+	 	else if (color.equals("Orange"))
+	 		playerColor = Color.ORANGE;
+	 	else if (color.equals("Yellow"))
+	 		playerColor = Color.YELLOW;
+	 	else if (color.equals("Green"))
+	 		playerColor = Color.GREEN;
+	 	else if (color.equals("Blue"))
+	 		playerColor = Color.BLUE;
+	 	else if (color.equals("Cyan"))
+	 		playerColor = Color.CYAN;
+	 	else if (color.equals("Select color..."))
+	 		System.out.println("Must select color.");	
+	 	else
+	 		System.out.println("Error with color selection.");	
 		
 		return playerColor;
 	}
@@ -98,11 +98,11 @@ public class PlayerConfig extends JFrame {
 	}
 	
 	private class raceListener implements ActionListener {
-       public void actionPerformed (ActionEvent event) {
-    	   JComboBox r = (JComboBox)event.getSource();
-           playerRace = (String)r.getSelectedItem();
-           if (playerRace.equals("Select race..."))
-        	   System.out.println("Must select race.");
+       		public void actionPerformed (ActionEvent event) {
+    	   		JComboBox r = (JComboBox)event.getSource();
+           		playerRace = (String)r.getSelectedItem();
+           		if (playerRace.equals("Select race..."))
+        	   		System.out.println("Must select race.");
     	}
     }
 	
@@ -123,14 +123,14 @@ public class PlayerConfig extends JFrame {
 	*/
 	
 	private class continueListener implements ActionListener {
-       public void actionPerformed (ActionEvent event) {
-    	   /**
-    	    * Temporary
-    	    */
-    	   System.out.println("Continue clicked.");
-    	   System.out.println("Player name: " + setName());
-    	   System.out.println("Player race: " + playerRace);
-    	   System.out.println("Player color: " + color);
+       		public void actionPerformed (ActionEvent event) {
+		    	/**
+		    	* Temporary
+		    	*/
+    	   		System.out.println("Continue clicked.");
+	    		System.out.println("Player name: " + setName());
+	    	   	System.out.println("Player race: " + playerRace);
+	    	   	System.out.println("Player color: " + color);
     	}
     }
 
