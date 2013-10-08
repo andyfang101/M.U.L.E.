@@ -1,6 +1,6 @@
 /*
 * This is a player class that holds the player information, such as race, color, money amount, and name.
-* @author Wei Jiang
+* @author Andy Fang
 * Version 1.0 10/7/2013
 */
 public class Player{
