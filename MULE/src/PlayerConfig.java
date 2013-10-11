@@ -9,7 +9,7 @@ import java.util.ArrayList;
 * Version 1.0 10/7/2013
 */
 
-public class PlayerConfig extends JFrame {
+public class PlayerConfig extends JPanel {
 	private static final int WIDTH = 300;
 	private static final int HEIGHT = 200;
 	
@@ -21,24 +21,18 @@ public class PlayerConfig extends JFrame {
 	private String[] races = {"Select race...", "Flapper","Human","Others"}; 
 	private String[] colors = {"Select color...", "Red", "Orange", "Yellow", "Green", "Blue", "Cyan"};
 	
-	/*
-	* The main method to run the frame.
-	*/
-	public static void main(String[]args) {
-		PlayerConfig newPlayer = new PlayerConfig();
-		newPlayer.setVisible(true);
-	}
+	private JFrame frame;
 	
 	
 	/*
 	*This is the constructor class that creates the components necessary to configure player settings.
 	*/
-	public PlayerConfig() {
-		setTitle("M.U.L.E. - Player Configuration");
+	public PlayerConfig(JFrame frame) {
+		this.frame = frame;
+		setVisible(true);
 		setSize(WIDTH, HEIGHT);
-		GroupLayout layout = new GroupLayout(this.getContentPane());
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+		GroupLayout layout = new GroupLayout(this);
+		frame.setTitle("M.U.L.E. - Player Configuration");
 		JPanel entire = new JPanel();
 		entire.setLayout(new GridLayout(3, 1));
 		add(entire);
@@ -79,8 +73,9 @@ public class PlayerConfig extends JFrame {
 		setName();
         
 	        JButton cont = new JButton("Continue");
-	        cont.addActionListener(new continueListener());
+	        cont.addActionListener(new continueListener(frame));
 	        entire.add(cont);
+    	   	frame.setContentPane(this);
 	}
 	
 	/*
@@ -150,6 +145,10 @@ public class PlayerConfig extends JFrame {
 	* private Actionlistener class to continue onto the next selection screen
 	*/
 	private class continueListener implements ActionListener {
+		JFrame frame;	
+		public continueListener(JFrame frame){
+				this.frame = frame;
+			}
        		public void actionPerformed (ActionEvent event) {
 		    	/**
 		    	* Temporary
@@ -158,7 +157,8 @@ public class PlayerConfig extends JFrame {
 	    		System.out.println("Player name: " + setName());
 	    	   	System.out.println("Player race: " + playerRace);
 	    	   	System.out.println("Player color: " + color);
-    	}
+	    	   	MainScreen mainScreen = new MainScreen(frame);
+       		}
     }
 
 }

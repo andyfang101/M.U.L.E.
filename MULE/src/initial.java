@@ -17,9 +17,9 @@ public class initial extends JFrame{
 
 	
 	
-//    public static void main(String[] args) {
-//    	initial f = new initial();
-//    }
+    public static void main(String[] args) {
+    	initial f = new initial();
+    }
     
     
     
@@ -74,7 +74,7 @@ public class initial extends JFrame{
         
 
         bt1 = new JButton("Continue");
-        bt1.addActionListener(new CListener());
+        bt1.addActionListener(new CListener(this));
 
         GroupLayout layout = new GroupLayout(this.getContentPane());
         this.getContentPane().setLayout(layout);
@@ -153,9 +153,13 @@ public class initial extends JFrame{
     */
     private class CListener implements ActionListener
     {
+    	private JFrame frame;
+    	public CListener(JFrame frame){
+    		this.frame = frame;
+    	}
        public void actionPerformed (ActionEvent event)
     	{
-    	   System.out.println("Continue");
+    	   PlayerConfig pConfig = new PlayerConfig(frame);
     	}
     }
 }

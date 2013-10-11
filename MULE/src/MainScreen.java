@@ -11,9 +11,8 @@ import java.awt.event.ActionListener;
 * @ Version 1.0 10/7/2013
 */
 
-public class MainScreen extends JFrame{
+public class MainScreen extends JPanel{
 	JLabel title;
-	JButton start;
 	ImageIcon logo = new ImageIcon("logo.png");
 	private static final int WIDTH = 580; //I used same dimensions as Wei for consistancy
 	private static final int HEIGHT = 600; 
@@ -21,33 +20,27 @@ public class MainScreen extends JFrame{
 	/*
 	* The constructor for this class that shows the logo and sets up basic settings.
 	*/
-	public MainScreen(){
+	public MainScreen(JFrame frame){
 		title = new JLabel(logo);
-		start = new JButton("Start Game");
-		start.addActionListener(new ButtonListener());
 		
-		setTitle("M.U.L.E.");
-    	getContentPane().setBackground(Color.white);
+    	setBackground(Color.white);
         setSize(WIDTH, HEIGHT);
         setVisible(true);
         
 
-        getContentPane().setLayout(new BorderLayout());
-        getContentPane().add(title, BorderLayout.NORTH);
-        getContentPane().add(start, BorderLayout.SOUTH);
+        setLayout(new BorderLayout());
+        add(title, BorderLayout.NORTH);
+        frame.setContentPane(this);
 
 	}
 	
-	/*
-	* A class that leads you to the initial settings screen when selected
-	*/
-	public class ButtonListener implements ActionListener{
-		public void actionPerformed(ActionEvent e){
-			initial settings = new initial();
-		}
-	}
+//	/*
+//	* A class that leads you to the initial settings screen when selected
+//	*/
+//	public class ButtonListener implements ActionListener{
+//		public void actionPerformed(ActionEvent e){
+//			initial settings = new initial();
+//		}
+//	}
 	
-	public static void main(String[] args){
-		MainScreen main = new MainScreen();
-	}
 }
