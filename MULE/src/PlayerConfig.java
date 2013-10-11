@@ -1,4 +1,5 @@
 import javax.swing.*;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
@@ -10,8 +11,8 @@ import java.util.ArrayList;
 */
 
 public class PlayerConfig extends JPanel {
-	private static final int WIDTH = 300;
-	private static final int HEIGHT = 200;
+	private static final int WIDTH = 580;
+	private static final int HEIGHT = 600;
 	
 	private JTextField chooseName;
 	private JComboBox chooseRace, chooseColor;
@@ -23,6 +24,7 @@ public class PlayerConfig extends JPanel {
 	
 	private JFrame frame;
 	
+
 	
 	/*
 	*This is the constructor class that creates the components necessary to configure player settings.
@@ -75,7 +77,9 @@ public class PlayerConfig extends JPanel {
 	        JButton cont = new JButton("Continue");
 	        cont.addActionListener(new continueListener(frame));
 	        entire.add(cont);
+
     	   	frame.setContentPane(this);
+
 	}
 	
 	/*
@@ -152,13 +156,13 @@ public class PlayerConfig extends JPanel {
        		public void actionPerformed (ActionEvent event) {
 		    	/**
 		    	* Temporary
-		    	*/
+		    	
     	   		System.out.println("Continue clicked.");
 	    		System.out.println("Player name: " + setName());
 	    	   	System.out.println("Player race: " + playerRace);
 	    	   	System.out.println("Player color: " + color);
+	    	   	*/
 	    	   	MainScreen mainScreen = new MainScreen(frame);
        		}
+    	}
     }
-
-}

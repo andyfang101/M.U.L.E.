@@ -144,14 +144,13 @@ public class initial extends JFrame{
     	{
     	   JComboBox cb = (JComboBox)event.getSource();
            selectedPN = (String)cb.getSelectedItem();
-           System.out.println(selectedPN);
     	}
     }
     
     /*
     * This is a private class that will eventually be implemented to continue to the next screen.
     */
-    private class CListener implements ActionListener
+    public class CListener implements ActionListener
     {
     	private JFrame frame;
     	public CListener(JFrame frame){
@@ -160,6 +159,7 @@ public class initial extends JFrame{
        public void actionPerformed (ActionEvent event)
     	{
     	   PlayerConfig pConfig = new PlayerConfig(frame);
+
     	}
     }
 }
