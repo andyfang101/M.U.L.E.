@@ -1,0 +1,71 @@
+<project name="CS 2340 - M4" default="all" basedir=".">
+	<!-- Andrew Fang's build file -->
+
+	<!--  Sets up properties. -->
+	<target name = "init">
+		<property name="resources.dir" location="lib"/>
+		<property name="src.dir" location="src" />
+		<property name="build.dir" location="bin" />
+		<property name="dist.dir" location="dist" />
+		<property name="docs.dir" location="apidoc" />
+	</target>
+
+	<!-- Create directories required for the build.-->
+	<target name="prepare" depends="init">
+		<mkdir dir= "${resources.dir}" />
+		<mkdir dir="${build.dir}" />
+		<mkdir dir="${docs.dir}" />
+		<mkdir dir="${dist.dir}" />
+		<mkdir dir="${src.dir}" />
+	</target>
+
+	<!-- Removes existing data from previous builds-->
+	<target name="clean" depends="init">
+		<delete dir="${build.dir}" />
+		<delete dir="${docs.dir}" />
+		<delete dir="${dist.dir}" />
+	</target>
+
+	<!-- Compiles java code in src. -->
+	<target name="compile" depends="prepare">
+		<javac includeantruntime="false"	
+		srcdir="${src.dir}" destdir="${build.dir}"
+		classpath="${resources.dir}/resources.jar"/>
+		
+	</target>
+
+
+	<!-- Creates javadocs -->
+	<target name="javadoc" depends="compile">
+		<javadoc packagenames="src" sourcepath="${src.dir}" destdir="${docs.dir}" classpath="${resources.dir}/resources.jar" >
+			<!-- Define which files / directory should get included, we include all -->
+			<fileset dir="${src.dir}">
+				<include name="**" />
+			</fileset>	
+		</javadoc>
+	</target>
+
+	<!-- Packages classes in jar file   -->
+	<target name="jar" depends="compile">
+		<jar destfile="AntLabRun.jar" basedir="${build.dir}">
+			<include name="**/*.class" />
+			<manifest>
+				<attribute name="Main-Class" value="edu.gatech.oad.antlab.pkg1.AntLabMain" />
+				<attribute name="Class-Path" value="${resources.dir}/resources.jar"/>		
+			</manifest>
+		</jar>
+	</target>
+
+	<!-- Starts program execution and run the jar file  -->
+	<target name="run" depends="jar">
+		<java jar= "AntLabRun.jar" fork="true"/>
+	</target>
+	
+	
+	<!-- Performs all of the above tasks -->
+	<target name="all" depends="clean, init, prepare, compile, javadoc, jar, run">
+	</target>
+
+	
+
+</project>
