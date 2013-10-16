@@ -22,6 +22,10 @@ public class PlayerConfig extends JPanel {
 	private String[] races = {"Select race...", "Flapper","Human","Others"}; 
 	private String[] colors = {"Select color...", "Red", "Orange", "Yellow", "Green", "Blue", "Cyan"};
 	
+	private boolean cont;
+	
+	private Player player;
+	
 	private JFrame frame;
 	
 
@@ -30,6 +34,7 @@ public class PlayerConfig extends JPanel {
 	*This is the constructor class that creates the components necessary to configure player settings.
 	*/
 	public PlayerConfig(JFrame frame) {
+		cont = false;
 		this.frame = frame;
 		setVisible(true);
 		setSize(WIDTH, HEIGHT);
@@ -71,9 +76,7 @@ public class PlayerConfig extends JPanel {
 		panel.add(colorLabel);
 		panel.add(chooseColor);
 		entire.add(panel);
-		
-		setName();
-        
+		        
 	        JButton cont = new JButton("Continue");
 	        cont.addActionListener(new continueListener(frame));
 	        entire.add(cont);
@@ -106,13 +109,14 @@ public class PlayerConfig extends JPanel {
 		
 		return playerColor;
 	}
+
 	
-	/*
-	* This method sets player name by setting name to what is in text box
-	*/	
-	public String setName() {
-		playerName = chooseName.getText();
-		return playerName;
+	public boolean getContinue(){
+    	return cont;
+    }
+	
+	public Player getPlayer(){
+		return player;
 	}
 	
 	/*
@@ -162,7 +166,8 @@ public class PlayerConfig extends JPanel {
 	    	   	System.out.println("Player race: " + playerRace);
 	    	   	System.out.println("Player color: " + color);
 	    	   	*/
-	    	   	MainScreen mainScreen = new MainScreen(frame);
+       			player = new Player(chooseName.getText(), playerRace, color);
+       			cont = true;
        		}
     	}
     }
