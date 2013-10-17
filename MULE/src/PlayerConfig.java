@@ -119,6 +119,14 @@ public class PlayerConfig extends JPanel {
 		return player;
 	}
 	
+	public String getName() {
+		return playerName;
+	}
+	
+	public Color getColor() {
+		return playerColor;
+	}
+	
 	/*
 	* private Actionlistener class to implement selecting race option
 	*/
