@@ -23,6 +23,7 @@ public class PlayerConfig extends JPanel {
 	private String[] colors = {"Select color...", "Red", "Orange", "Yellow", "Green", "Blue", "Cyan"};
 	
 	private boolean cont;
+	private boolean back;
 	
 	private Player player;
 	
@@ -35,6 +36,7 @@ public class PlayerConfig extends JPanel {
 	*/
 	public PlayerConfig(JFrame frame) {
 		cont = false;
+		back = false;
 		this.frame = frame;
 		setVisible(true);
 		setSize(WIDTH, HEIGHT);
@@ -77,8 +79,11 @@ public class PlayerConfig extends JPanel {
 		panel.add(chooseColor);
 		entire.add(panel);
 		        
+			JButton back = new JButton("Back");
+			back.addActionListener(new backListener());
 	        JButton cont = new JButton("Continue");
 	        cont.addActionListener(new continueListener(frame));
+	        entire.add(back);
 	        entire.add(cont);
 
     	   	frame.setContentPane(this);
@@ -114,6 +119,10 @@ public class PlayerConfig extends JPanel {
 	public boolean getContinue(){
     	return cont;
     }
+	
+	public boolean getBack(){
+		return back;
+	}
 	
 	public Player getPlayer(){
 		return player;
@@ -156,6 +165,15 @@ public class PlayerConfig extends JPanel {
 		}
 	}
 	*/
+	
+	/*
+	* private Actionlistener class to go back to previous screen
+	*/
+	private class backListener implements ActionListener {
+       		public void actionPerformed (ActionEvent event) {
+		    	back = true;
+       		}
+    	}
 	
 	/*
 	* private Actionlistener class to continue onto the next selection screen

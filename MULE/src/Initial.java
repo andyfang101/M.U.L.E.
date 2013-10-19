@@ -28,7 +28,7 @@ public class Initial extends JPanel{
     
     String selectedDifficulty;
     String selectedMap;
-    String selectedPN;
+    String selectedPN = "1";
     
 	private static final int WIDTH = 580;
 	private static final int HEIGHT = 600;
