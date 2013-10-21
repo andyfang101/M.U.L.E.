@@ -31,7 +31,6 @@ public class MainScreen extends JPanel{
         setLayout(new BorderLayout());
         add(title, BorderLayout.NORTH);
         frame.setContentPane(this);
-
 	}
 	
 //	/*

@@ -7,12 +7,14 @@ import javax.swing.JPanel;
 public class MapPanel extends JPanel{
 	private Map map=null;
 	private GridLayout grid=null;
-	private boolean random= false; //implement random maps later
+	private boolean random; //implement random maps later
 	private JFrame frame;
 	
-	public MapPanel(JFrame frame){
+	public MapPanel(boolean random, JFrame frame){
 		this.frame=frame;
-		map = new Map(random, frame);
+		this.random = random;
+		setVisible(true);
+		map = new Map(true, frame);
 		grid = new GridLayout(Map.NUM_ROW, Map.NUM_COL);
 		setLayout(grid);
 		JButton[][] buttons = map.getMap();
@@ -28,6 +30,6 @@ public class MapPanel extends JPanel{
        }
             
 	}
-
+	this.frame.setContentPane(this);
 }
 }

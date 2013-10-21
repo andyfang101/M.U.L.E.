@@ -15,27 +15,27 @@ import javax.swing.GroupLayout.Alignment;
 
 public class Initial extends JPanel{
 
-    JLabel label1; //Logo
-    JLabel label2; //Diffficulty
-    JLabel label3; // Type of Map
-    JLabel label4; //Number of Players
+    private JLabel label1; //Logo
+    private JLabel label2; //Diffficulty
+    private JLabel label3; // Type of Map
+    private JLabel label4; //Number of Players
     
-    JComboBox diff;
-    JComboBox map;
-    JComboBox playerno;
+    private JComboBox diff;
+    private JComboBox map;
+    private JComboBox playerno;
 
-    JButton bt1;
+    private JButton bt1;
     
-    String selectedDifficulty;
-    String selectedMap;
-    String selectedPN = "1";
+    private String selectedDifficulty;
+    private String selectedMap = "Standard";
+    private String selectedPN = "1";
     
 	private static final int WIDTH = 580;
 	private static final int HEIGHT = 600;
-	ImageIcon logo = new ImageIcon("logo.png");
-	String[] difficulty = {"Beginner","Standard","Tournament"}; 
-	String[] maptype = {"Standard","Random"}; 
-	String[] playernumber = {"1","2","3","4"}; 
+	private ImageIcon logo = new ImageIcon("logo.png");
+	private String[] difficulty = {"Beginner","Standard","Tournament"}; 
+	private String[] maptype = {"Standard","Random"}; 
+	private String[] playernumber = {"1","2","3","4"}; 
 	
 	private boolean cont;
 
@@ -109,6 +109,14 @@ public class Initial extends JPanel{
     public int getNumPlayers(){
     	Integer numPlayers = new Integer(selectedPN);
     	return numPlayers.intValue();
+    }
+    
+    public boolean isRandomMap(){
+    	if(selectedMap.equals(maptype[1])){ //maptype[1] is the choice for random
+    		return true;
+    	}
+    	else 
+    		return false;
     }
     
     /*

@@ -40,8 +40,11 @@ public class GameMain extends JFrame{
 			}
 		}
 		while(back);
+		MapPanel map = new MapPanel(initial.isRandomMap(), game); //CHANGE FALSE TO BOOL RANDOM
+		game.validate();
+		game.repaint();
 		
-		MainScreen mainScreen = new MainScreen(game);
+		//MainScreen mainScreen = new MainScreen(game);
 		for(Player p: players){
 			System.out.println(p.getName());
 		}
