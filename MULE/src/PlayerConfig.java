@@ -22,6 +22,11 @@ public class PlayerConfig extends JPanel {
 	private String[] races = {"Select race...", "Flapper","Human","Others"}; 
 	private String[] colors = {"Select color...", "Red", "Orange", "Yellow", "Green", "Blue", "Cyan"};
 	
+	private boolean cont;
+	private boolean back;
+	
+	private Player player;
+	
 	private JFrame frame;
 	
 
@@ -30,6 +35,8 @@ public class PlayerConfig extends JPanel {
 	*This is the constructor class that creates the components necessary to configure player settings.
 	*/
 	public PlayerConfig(JFrame frame) {
+		cont = false;
+		back = false;
 		this.frame = frame;
 		setVisible(true);
 		setSize(WIDTH, HEIGHT);
@@ -71,11 +78,12 @@ public class PlayerConfig extends JPanel {
 		panel.add(colorLabel);
 		panel.add(chooseColor);
 		entire.add(panel);
-		
-		setName();
-        
+		        
+			JButton back = new JButton("Back");
+			back.addActionListener(new backListener());
 	        JButton cont = new JButton("Continue");
 	        cont.addActionListener(new continueListener(frame));
+	        entire.add(back);
 	        entire.add(cont);
 
     	   	frame.setContentPane(this);
@@ -106,13 +114,26 @@ public class PlayerConfig extends JPanel {
 		
 		return playerColor;
 	}
+
 	
-	/*
-	* This method sets player name by setting name to what is in text box
-	*/	
-	public String setName() {
-		playerName = chooseName.getText();
+	public boolean getContinue(){
+    	return cont;
+    }
+	
+	public boolean getBack(){
+		return back;
+	}
+	
+	public Player getPlayer(){
+		return player;
+	}
+	
+	public String getName() {
 		return playerName;
+	}
+	
+	public Color getColor() {
+		return playerColor;
 	}
 	
 	/*
@@ -146,6 +167,15 @@ public class PlayerConfig extends JPanel {
 	*/
 	
 	/*
+	* private Actionlistener class to go back to previous screen
+	*/
+	private class backListener implements ActionListener {
+       		public void actionPerformed (ActionEvent event) {
+		    	back = true;
+       		}
+    	}
+	
+	/*
 	* private Actionlistener class to continue onto the next selection screen
 	*/
 	private class continueListener implements ActionListener {
@@ -162,7 +192,8 @@ public class PlayerConfig extends JPanel {
 	    	   	System.out.println("Player race: " + playerRace);
 	    	   	System.out.println("Player color: " + color);
 	    	   	*/
-	    	   	MainScreen mainScreen = new MainScreen(frame);
+       			player = new Player(chooseName.getText(), playerRace, color);
+       			cont = true;
        		}
     	}
     }

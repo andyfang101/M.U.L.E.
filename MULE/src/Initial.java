@@ -13,16 +13,7 @@ import javax.swing.GroupLayout.Alignment;
 * @ Version 1.0 10/7/2013
 */
 
-public class initial extends JFrame{
-
-	
-	
-    public static void main(String[] args) {
-    	initial f = new initial();
-    }
-    
-    
-    
+public class Initial extends JPanel{
 
     JLabel label1; //Logo
     JLabel label2; //Diffficulty
@@ -37,7 +28,7 @@ public class initial extends JFrame{
     
     String selectedDifficulty;
     String selectedMap;
-    String selectedPN;
+    String selectedPN = "1";
     
 	private static final int WIDTH = 580;
 	private static final int HEIGHT = 600;
@@ -46,16 +37,19 @@ public class initial extends JFrame{
 	String[] maptype = {"Standard","Random"}; 
 	String[] playernumber = {"1","2","3","4"}; 
 	
+	private boolean cont;
 
     /*
     * This is the constructor for the initial frame, has options to select difficulty, player number, and map size.
     *
     */
-    public initial() {
-    	this.setTitle("M.U.L.E.");
-    	this.getContentPane().setBackground(Color.white);
-        this.setSize(WIDTH, HEIGHT);
-        this.setVisible(true);
+    public Initial(JFrame frame) {
+    	cont = false;
+    	
+    	frame.setTitle("M.U.L.E.");
+    	frame.getContentPane().setBackground(Color.white);
+        frame.setSize(WIDTH, HEIGHT);
+        frame.setVisible(true);
         diff = new JComboBox(difficulty);
         diff.addActionListener(new diffListener());
         
@@ -74,10 +68,10 @@ public class initial extends JFrame{
         
 
         bt1 = new JButton("Continue");
-        bt1.addActionListener(new CListener(this));
+        bt1.addActionListener(new CListener(frame));
 
-        GroupLayout layout = new GroupLayout(this.getContentPane());
-        this.getContentPane().setLayout(layout);
+        GroupLayout layout = new GroupLayout(frame.getContentPane());
+        frame.getContentPane().setLayout(layout);
 
         GroupLayout.SequentialGroup hGroup = layout.createSequentialGroup();
         hGroup.addGap(5);
@@ -106,6 +100,15 @@ public class initial extends JFrame{
                 .addComponent(bt1));
         vGroup.addGap(10);
         layout.setVerticalGroup(vGroup);
+    }
+    
+    public boolean getContinue(){
+    	return cont;
+    }
+    
+    public int getNumPlayers(){
+    	Integer numPlayers = new Integer(selectedPN);
+    	return numPlayers.intValue();
     }
     
     /*
@@ -158,8 +161,7 @@ public class initial extends JFrame{
     	}
        public void actionPerformed (ActionEvent event)
     	{
-    	   PlayerConfig pConfig = new PlayerConfig(frame);
-
+    	   cont = true;
     	}
     }
 }
