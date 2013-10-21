@@ -1,15 +1,18 @@
 import java.awt.GridLayout;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class MapPanel extends JPanel{
 	private Map map=null;
 	private GridLayout grid=null;
 	private boolean random= false; //implement random maps later
+	private JFrame frame;
 	
-	public MapPanel(){
-		map = new Map(random);
+	public MapPanel(JFrame frame){
+		this.frame=frame;
+		map = new Map(random, frame);
 		grid = new GridLayout(Map.NUM_ROW, Map.NUM_COL);
 		setLayout(grid);
 		JButton[][] buttons = map.getMap();
@@ -23,7 +26,8 @@ public class MapPanel extends JPanel{
                }
            }
        }
-	}
+            
 	}
 
+}
 }

@@ -14,10 +14,14 @@ public class Map {
 	public final static int NUM_COL=9; //number of columns
 	private JButton map [][] = null;
 	private boolean random = false;
+	private JFrame frame;
+	
+	public Town town;
 
-	public Map(boolean random){
+	public Map(boolean random, JFrame frame){
 		this.map = createMap();
 		this.random=random;
+		this.frame=frame;
 	}
 
 	/*
@@ -78,7 +82,7 @@ public class Map {
 				break;
 				case 'r': map[r][c] = new River(new Point(r,c));
 				break;
-				case 't': map[r][c] = new TownTile(new Point(r,c));
+				case 't': map[r][c] = new TownTile(new Point(r,c), frame);
 				break;
 				default: map[r][c]= new Land(new Point(r,c));
 				}
