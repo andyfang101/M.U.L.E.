@@ -1,7 +1,7 @@
 import java.awt.Point;
 
 
-public class Store extends Town {
+public class Store extends TownTile {
 
 	public Store(Point p) {
 		super(p);

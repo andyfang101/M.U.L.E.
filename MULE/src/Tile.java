@@ -1,11 +1,13 @@
 import java.awt.Point;
+import java.awt.event.ActionEvent;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 
 /*
  * A class that represents a Tile on the map
  */
-public abstract	 class Tile {
+public abstract	class Tile extends JButton{
 	
 	protected ImageIcon img;
 	protected Point location; 
@@ -18,8 +20,8 @@ public abstract	 class Tile {
 	public Tile(){
 	}
 	
-	public ImageIcon getImage(){
-		return img;
+	public void actionPerformed(ActionEvent e){
+		//some action
 	}
 
 }

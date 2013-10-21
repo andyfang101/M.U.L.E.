@@ -10,23 +10,21 @@ import javax.swing.*;
  */
 public class Map {
 
-	private int numRow=5; //number of rows on map
-	private int numCol=9; //number of columns
+	public final static int NUM_ROW=5; //number of rows on map
+	public final static int NUM_COL=9; //number of columns
 	private JButton map [][] = null;
-	private Tile mapTiles[][]=null;
 	private boolean random = false;
 
 	public Map(boolean random){
-		map = new JButton[numRow][numCol];
+		this.map = createMap();
 		this.random=random;
-		mapTiles = new Tile[numRow][numCol];
 	}
 
 	/*
 	 * This method generates a character map, may be random or not random depending on what was specified.
 	 * @return char[][] - a character representation of the map type
 	 */
-	public char[][] genCharMap(){
+	private char[][] genCharMap(){
 		Random rand = new Random();
 		final char m= 'm'; //mountain
 		final char p= 'p'; //plain
@@ -35,9 +33,9 @@ public class Map {
 		final char rv = 'r'; //river
 
 		if(random){ //creates random map with random town location
-			char [][] mapRep= new char [numRow][numCol];
-			int townRow = rand.nextInt(numRow);
-			int townCol = rand.nextInt(numCol);
+			char [][] mapRep= new char [NUM_ROW][NUM_COL];
+			int townRow = rand.nextInt(NUM_ROW);
+			int townCol = rand.nextInt(NUM_COL);
 			mapRep[townRow][townCol] = t;
 			for(int r=0; r<mapRep.length; r++){
 				for(int c=0; c<mapRep[r].length; c++){
@@ -66,23 +64,32 @@ public class Map {
 		}
 	}
 	
-	public void createMap(char [][] mapRep){
+	private JButton[][] createMap(){
+		char [][] mapRep=genCharMap();
+		JButton map [][] = new JButton[NUM_ROW][NUM_COL];
 		for(int r=0; r<mapRep.length; r++){
 			for(int c=0; c<mapRep[r].length; c++){
 				switch(mapRep[r][c]){
-				case 'm': mapTiles[r][c] = new Mountain(new Point(r,c));
+				case 'm': map[r][c] = new Mountain(new Point(r,c));
 				break;
-				case 'g': mapTiles[r][c] = new Land(new Point(r,c));
+				case 'g': map[r][c] = new Land(new Point(r,c));
 				break;
-				case 'p': mapTiles[r][c] = new Plain(new Point(r,c));
+				case 'p': map[r][c] = new Plain(new Point(r,c));
 				break;
-				case 'r': mapTiles[r][c] = new Mountain(new Point(r,c));
+				case 'r': map[r][c] = new River(new Point(r,c));
 				break;
-				case 't': mapTiles[r]
-				default: mapRep[r][c]= new Land(new Point(r,c));
+				case 't': map[r][c] = new TownTile(new Point(r,c));
+				break;
+				default: map[r][c]= new Land(new Point(r,c));
 				}
 			}
 		}
+		
+		return map;
+	}
+	
+	public JButton[][] getMap(){
+		return this.map;
 	}
 
 
