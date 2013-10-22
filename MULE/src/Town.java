@@ -13,10 +13,12 @@ public class Town extends JPanel{
 	private static final int WIDTH = 580;
 	private static final int HEIGHT = 600;
 	private JFrame frame;
+	private JPanel oldpanel;
 
 	public Town(JFrame frame){
 		
 		this.frame = frame;
+		oldpanel = (JPanel) frame.getContentPane();
 		setVisible(true);
 		setSize(WIDTH, HEIGHT);
 		frame.setTitle("Town");
@@ -53,6 +55,7 @@ public class Town extends JPanel{
 		AssayOfficeButton.addActionListener(new AssayOfficeListener());
 		
 		JButton GoBack = new JButton("Back");
+		GoBack.addActionListener(new BackListener());
 		
 		subPanel.add(StoreButton);
 		subPanel.add(PubButton);
@@ -60,6 +63,7 @@ public class Town extends JPanel{
 		subPanel.add(AssayOfficeButton);
 		this.add(subPanel);
 		this.add(GoBack);
+		
 		frame.setContentPane(this);
 	}
 	
@@ -92,6 +96,14 @@ public class Town extends JPanel{
        public void actionPerformed (ActionEvent event)
     	{
     	   
+    	}
+    }
+	
+	private class BackListener implements ActionListener
+    {
+       public void actionPerformed (ActionEvent event)
+    	{
+    	   frame.setContentPane(oldpanel);
     	}
     }
 }
