@@ -18,7 +18,7 @@ public class Town extends JPanel{
 	public Town(JFrame frame){
 		
 		this.frame = frame;
-		//oldpanel = (JPanel) frame.getContentPane();
+		oldpanel = (JPanel) frame.getContentPane();
 		setVisible(true);
 		setSize(WIDTH, HEIGHT);
 		frame.setTitle("Town");

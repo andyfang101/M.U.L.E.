@@ -29,8 +29,6 @@ public class TownTile extends Tile{
 		public void actionPerformed(ActionEvent e) {
 			town = new Town(frame);
 			frame.setContentPane(town);
-			System.out.println("testing");
 		}
-		
 	}
 }

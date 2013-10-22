@@ -19,9 +19,9 @@ public class Map {
 	public Town town;
 
 	public Map(boolean random, JFrame frame){
-		this.map = createMap();
 		this.random=random;
 		this.frame=frame;
+		this.map = createMap();
 	}
 
 	/*

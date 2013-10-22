@@ -14,7 +14,7 @@ public class MapPanel extends JPanel{
 		this.frame=frame;
 		this.random = random;
 		setVisible(true);
-		map = new Map(true, frame);
+		map = new Map(random, frame);
 		grid = new GridLayout(Map.NUM_ROW, Map.NUM_COL);
 		setLayout(grid);
 		JButton[][] buttons = map.getMap();
