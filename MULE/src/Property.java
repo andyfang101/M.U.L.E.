@@ -9,7 +9,7 @@ public class Property extends JPanel{
 	private JComboBox purchaseProperty;
 	
 	private static final int WIDTH = 580;
-    	private static final int HEIGHT = 600;
+	private static final int HEIGHT = 600;
     
 	private boolean isPlayerTurn = true;
 	private boolean successful = false;
