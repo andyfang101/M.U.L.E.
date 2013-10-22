@@ -102,14 +102,14 @@ public class Property extends JPanel{
 	}
 	
 	private class continueListener implements ActionListener {
-        private JFrame frame;        
-        public continueListener(JFrame frame) {
-        	this.frame = frame;
-        }
-        public void actionPerformed (ActionEvent event) {
-        	cont = true;
-        }
-    }
+        	private JFrame frame;        
+		public continueListener(JFrame frame) {
+        		this.frame = frame;
+        	}
+		public void actionPerformed (ActionEvent event) {
+        		cont = true;
+        	}
+    	}
 	
 	private class propListener implements ActionListener {
         	public void actionPerformed (ActionEvent event) {
