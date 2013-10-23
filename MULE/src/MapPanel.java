@@ -7,10 +7,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 
-/*
-* This class is where the main part of the game takes place
-*/
-
 public class MapPanel extends JPanel{
 	private Map map=null;
 	private GridLayout grid=null;
@@ -59,7 +55,6 @@ public class MapPanel extends JPanel{
 	}
 	
 	public void setCurPlayer(Player p){
-		System.out.println("LOOP");
 		curPlayer = p;
 		curPlayerName.setText("Current Player: " + p.getName());
 	}
