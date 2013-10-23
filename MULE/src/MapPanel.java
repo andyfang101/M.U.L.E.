@@ -59,6 +59,7 @@ public class MapPanel extends JPanel{
 	}
 	
 	public void setCurPlayer(Player p){
+		System.out.println("LOOP");
 		curPlayer = p;
 		curPlayerName.setText("Current Player: " + p.getName());
 	}
