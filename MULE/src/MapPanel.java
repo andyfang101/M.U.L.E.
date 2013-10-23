@@ -77,6 +77,6 @@ public class MapPanel extends JPanel{
 
 class DListener implements ActionListener{
 	public void actionPerformed(ActionEvent event) {
-		MapPanel.setIsDone(true);
+		curPlayer.setDone(true);
 	}
 }
