@@ -60,7 +60,7 @@ public class MapPanel extends JPanel{
 	
 	public void setCurPlayer(Player p){
 		curPlayer = p;
-		curPlayerName.setText("Current Player: " + curPlayer.getName());
+		curPlayerName.setText("Current Player: " + p.getName());
 	}
 	
 	public void nextTurn(){
