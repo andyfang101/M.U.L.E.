@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 
 /*
-*This class is the map panel that contains the main playing area.
+* This class is where the main part of the game takes place
 */
 
 public class MapPanel extends JPanel{
