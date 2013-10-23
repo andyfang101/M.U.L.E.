@@ -1,8 +1,10 @@
 import javax.swing.*;
-
 import java.awt.*;
 import java.util.ArrayList;
 
+/*
+ * 
+ */
 public class GameMain extends JFrame{
 	
 	public static void main(String[] args){
@@ -10,6 +12,7 @@ public class GameMain extends JFrame{
 		JFrame game = new JFrame();
 		Initial initial;
 		boolean back;
+		
 		do{
 			back = false;
 			initial = new Initial(game);
@@ -40,9 +43,19 @@ public class GameMain extends JFrame{
 			}
 		}
 		while(back);
+		
 		MapPanel map = new MapPanel(initial.isRandomMap(), game); //CHANGE FALSE TO BOOL RANDOM
 		game.validate();
 		game.repaint();
+		
+		do{
+			for(Player p : players){
+				System.out.println("LOOP");
+				map.setCurPlayer(p);
+				p.takeTurn();
+			}
+			map.nextTurn();
+		}while(!map.gameOver());
 		
 		//MainScreen mainScreen = new MainScreen(game);
 		for(Player p: players){
