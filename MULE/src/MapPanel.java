@@ -46,7 +46,7 @@ public class MapPanel extends JPanel{
 		done = new JButton("Done");
 		add(done);
 		done.addActionListener((ActionListener) new DListener());
-		curTurn = 0;
+		curTurn = 1;
 		this.frame.setContentPane(this);
 	}
 	
