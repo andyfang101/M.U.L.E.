@@ -52,6 +52,7 @@ public class GameMain extends JFrame{
 			for(Player p : players){
 				System.out.println("LOOP");
 				map.setCurPlayer(p);
+				game.repaint();
 				p.takeTurn();
 			}
 			map.nextTurn();
