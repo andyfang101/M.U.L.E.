@@ -48,5 +48,13 @@ public class GameMain extends JFrame{
 		for(Player p: players){
 			System.out.println(p.getName());
 		}
+		
+		do{
+			for(Player p : players){
+				map.setCurPlayer(p);
+				p.takeTurn();
+			}
+			map.nextTurn();
+		}while(!map.gameOver());
 	}
 }
