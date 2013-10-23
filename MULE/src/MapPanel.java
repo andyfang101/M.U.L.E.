@@ -7,6 +7,10 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 
+/*
+*This class is the map panel that contains the main playing area.
+*/
+
 public class MapPanel extends JPanel{
 	private Map map=null;
 	private GridLayout grid=null;
@@ -37,11 +41,11 @@ public class MapPanel extends JPanel{
 				}
 			}
 		}
+		curPlayerName = new JLabel("Current Player: ");
 		add(curPlayerName);
 		done = new JButton("Done");
 		add(done);
 		done.addActionListener((ActionListener) new DListener());
-		curPlayerName.setText("Current Player: ");
 		curTurn = 0;
 		this.frame.setContentPane(this);
 	}
