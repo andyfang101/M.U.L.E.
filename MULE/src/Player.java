@@ -8,7 +8,7 @@ public class Player{
 	private String race;
 	private String color;
 	private int money;
-	
+	private boolean done;
 	
 	/*
 	* This is the constructor that instantiates the Player
@@ -30,6 +30,12 @@ public class Player{
 	}
 	
 	public void takeTurn(){
-		//turns happen in here
+		while(!done()){
+			//do things
+		}
+	}
+	
+	public void setDone(boolean done){
+		this.done = done;
 	}
 }
