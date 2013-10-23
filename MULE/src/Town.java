@@ -8,13 +8,21 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+/*
+ *@author Wei Jiang
+ *@Version 1.0 10/23/13
+ * This the town panel holds the town.
+ */
 
 public class Town extends JPanel{
 	private static final int WIDTH = 580;
 	private static final int HEIGHT = 600;
 	private JFrame frame;
-	private JPanel oldpanel;
+	private JPanel oldpanel;//The panel that holds old panel
 
+	/*
+	 * Town Constructor
+	 */
 	public Town(JFrame frame){
 		
 		this.frame = frame;
@@ -66,7 +74,9 @@ public class Town extends JPanel{
 		
 		frame.setContentPane(this);
 	}
-	
+	/*
+	 * StoreListener
+	 */
 	private class StoreListener implements ActionListener
     {
        public void actionPerformed (ActionEvent event)
@@ -74,7 +84,9 @@ public class Town extends JPanel{
     	   
     	}
     }
-	
+	/*
+	 * Pub action listener
+	 */
 	private class PubListener implements ActionListener
     {
        public void actionPerformed (ActionEvent event)
@@ -82,7 +94,9 @@ public class Town extends JPanel{
     	   
     	}
     }
-	
+	/*
+	 * Land office action listener
+	 */
 	private class LandOfficeListener implements ActionListener
     {
        public void actionPerformed (ActionEvent event)
@@ -90,7 +104,9 @@ public class Town extends JPanel{
     	   
     	}
     }
-	
+	/*
+	 * Assay office action Listener
+	 */
 	private class AssayOfficeListener implements ActionListener
     {
        public void actionPerformed (ActionEvent event)
@@ -98,7 +114,9 @@ public class Town extends JPanel{
     	   
     	}
     }
-	
+	/*
+	 * Go back button action listener.
+	 */
 	private class BackListener implements ActionListener
     {
        public void actionPerformed (ActionEvent event)
