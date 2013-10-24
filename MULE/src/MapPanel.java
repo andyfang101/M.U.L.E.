@@ -16,7 +16,7 @@ public class MapPanel extends JPanel{
 	private JButton done;
 	private static boolean isDone;
 	private int curTurn;
-	private Player curPlayer;
+	protected Player curPlayer;
 
 	public MapPanel(boolean random, JFrame frame){
 		this.frame=frame;
@@ -41,7 +41,7 @@ public class MapPanel extends JPanel{
 		add(curPlayerName);
 		done = new JButton("Done");
 		add(done);
-		done.addActionListener((ActionListener) new DListener());
+		done.addActionListener((ActionListener) new DListener(curPlayer));
 		curTurn = 1;
 		this.frame.setContentPane(this);
 	}
@@ -71,6 +71,10 @@ public class MapPanel extends JPanel{
 }
 
 class DListener implements ActionListener{
+	private Player curPlayer;
+	public DListener (Player p){
+		curPlayer=p;
+	}
 	public void actionPerformed(ActionEvent event) {
 		curPlayer.setDone(true);
 	}

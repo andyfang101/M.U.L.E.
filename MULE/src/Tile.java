@@ -11,6 +11,8 @@ public abstract	class Tile extends JButton{
 	
 	protected ImageIcon img;
 	protected Point location; 
+	protected boolean isOwned;
+	protected Player owner;
 	
 	public Tile(Point location){
 		this.location=location;
@@ -22,6 +24,15 @@ public abstract	class Tile extends JButton{
 	
 	public void actionPerformed(ActionEvent e){
 		//some action
+	}
+	
+	public void isBought(Player p){
+		owner = p;
+		isOwned=true;
+	}
+	
+	public boolean isOwned(){
+		return isOwned;
 	}
 
 }

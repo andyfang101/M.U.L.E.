@@ -18,6 +18,7 @@ public class PlayerConfig extends JPanel {
 	private JComboBox chooseRace, chooseColor;
 	private String playerName, playerRace, color;
 	private Color playerColor;
+	private ArrayList<Player> playerList;
 	
 	private String[] races = {"Select race...", "Flapper","Human","Others"}; 
 	private String[] colors = {"Select color...", "Red", "Orange", "Yellow", "Green", "Blue", "Cyan"};
@@ -35,6 +36,7 @@ public class PlayerConfig extends JPanel {
 	*This is the constructor class that creates the components necessary to configure player settings.
 	*/
 	public PlayerConfig(JFrame frame) {
+		playerList = new ArrayList<Player>();
 		cont = false;
 		back = false;
 		this.frame = frame;
@@ -193,6 +195,7 @@ public class PlayerConfig extends JPanel {
 	    	   	System.out.println("Player color: " + color);
 	    	   	*/
        			player = new Player(chooseName.getText(), playerRace, color);
+       			playerList.add(player);
        			cont = true;
        		}
     	}

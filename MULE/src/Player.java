@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /*
 * This is a player class that holds the player information, such as race, color, money amount, and name.
 * @author Andy Fang
@@ -9,6 +11,7 @@ public class Player{
 	private String color;
 	private int money;
 	private boolean done;
+	private ArrayList<Tile> propertyOwned;
 	
 	/*
 	* This is the constructor that instantiates the Player
@@ -23,6 +26,7 @@ public class Player{
 		this.name = name;
 		this.race = race;
 		this.color = color;
+		propertyOwned = new ArrayList<Tile>();
 	}
 	
 	public String getName(){
@@ -30,12 +34,25 @@ public class Player{
 	}
 	
 	public void takeTurn(){
-		while(!done()){
+		while(!done){
 			//do things
 		}
 	}
 	
 	public void setDone(boolean done){
 		this.done = done;
+	}
+	
+	public boolean buyProperty(int cost, Tile tile){
+		if(cost<money && !tile.isOwned()){
+			money-=cost;
+			propertyOwned.add(tile);
+			tile.isBought(this);
+			return true;
+		}
+		else{
+			return false;
+		}
+			
 	}
 }
