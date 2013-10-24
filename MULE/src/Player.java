@@ -23,6 +23,20 @@ public class Player{
 		this.name = name;
 		this.race = race;
 		this.color = color;
+		money = 1000;
+	}
+	
+	/*
+	 * This is the method that substract player's money
+	 */
+	public void useMoney(int amount){
+		money = money - amount;
+	}
+	/*
+	 * This returns player's current amount of money
+	 */
+	public int getMoney(){
+		return money;
 	}
 	
 	public String getName(){
