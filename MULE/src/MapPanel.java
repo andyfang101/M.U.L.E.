@@ -13,6 +13,7 @@ public class MapPanel extends JPanel{
 	private boolean random; //implement random maps later
 	private JFrame frame;
 	private JLabel curPlayerName;
+	private JLabel currTurnLabel;
 	private JButton done;
 	private static boolean isDone;
 	private int curTurn;
@@ -22,7 +23,7 @@ public class MapPanel extends JPanel{
 		this.frame=frame;
 		this.random = random;
 		setVisible(true);
-		map = new Map(random, frame);
+		map = new Map(random, frame, this);
 		grid = new GridLayout(Map.NUM_ROW, Map.NUM_COL);
 		setLayout(grid);
 		JButton[][] buttons = map.getMap();
@@ -38,10 +39,12 @@ public class MapPanel extends JPanel{
 			}
 		}
 		curPlayerName = new JLabel("Current Player: ");
+		currTurnLabel = new JLabel("Current Turn: " + curTurn);
 		add(curPlayerName);
+		add(currTurnLabel);
 		done = new JButton("Done");
 		add(done);
-		done.addActionListener((ActionListener) new DListener(curPlayer));
+		done.addActionListener((ActionListener) new DListener(curPlayer,this));
 		curTurn = 1;
 		this.frame.setContentPane(this);
 	}
@@ -59,6 +62,10 @@ public class MapPanel extends JPanel{
 		curPlayerName.setText("Current Player: " + p.getName());
 	}
 	
+	public Player getCurrPlayer(){
+		return curPlayer;
+	}
+	
 	public void nextTurn(){
 		curTurn++;
 	}
@@ -72,10 +79,13 @@ public class MapPanel extends JPanel{
 
 class DListener implements ActionListener{
 	private Player curPlayer;
-	public DListener (Player p){
+	private MapPanel panel;
+	public DListener (Player p, MapPanel panel){
 		curPlayer=p;
+		this.panel=panel;
 	}
 	public void actionPerformed(ActionEvent event) {
 		curPlayer.setDone(true);
+		panel.nextTurn();
 	}
 }

@@ -1,8 +1,10 @@
 import java.awt.Point;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 /*
  * A class that represents a Tile on the map
@@ -13,17 +15,17 @@ public abstract	class Tile extends JButton{
 	protected Point location; 
 	protected boolean isOwned;
 	protected Player owner;
+	protected int cost;
+	protected MapPanel panel;
+	protected ActionListener tileListener;
 	
-	public Tile(Point location){
+	public Tile(Point location, MapPanel panel){
 		this.location=location;
+		cost = 20;
+		this.panel=panel;
+		tileListener = new buyListener(this);
+		addActionListener(tileListener);
 		
-	}
-	
-	public Tile(){
-	}
-	
-	public void actionPerformed(ActionEvent e){
-		//some action
 	}
 	
 	public void isBought(Player p){
@@ -34,5 +36,42 @@ public abstract	class Tile extends JButton{
 	public boolean isOwned(){
 		return isOwned;
 	}
+	
+ class buyListener implements ActionListener{
+	 private Tile tile;
+	 private Player p;
+	 
+	 public buyListener(Tile tile){
+		 this.tile=tile;
+	 }
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		p=panel.getCurrPlayer();
+		if(!isOwned){
+			int askBuy = JOptionPane.showConfirmDialog(null,"Would you like to buy this property? It costs " + cost , "Buy this time?", JOptionPane.YES_NO_OPTION);
+			if(askBuy==JOptionPane.YES_OPTION){
+				if(p.buyProperty(cost, tile)){
+					JOptionPane.showMessageDialog(null,
+						    "Congratulations! You got it!");
+					tile.setBackground(p.getColor());
+				}
+				else{
+					JOptionPane.showMessageDialog(null,
+						    "You're too poor for this land.");
+				}
+				
+			}
+            if(askBuy==JOptionPane.NO_OPTION){
+            	
+            }
+		}
+		else{
+			JOptionPane.showMessageDialog(null,
+				    "This tile is already owned by or you are too poor to buy it. Better luck next time");
+		}
+		
+	}
+	 
+ }
 
 }

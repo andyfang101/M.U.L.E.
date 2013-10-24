@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.util.ArrayList;
 
 /*
@@ -8,7 +9,7 @@ import java.util.ArrayList;
 public class Player{
 	private String name;
 	private String race;
-	private String color;
+	private Color color;
 	private int money;
 	private boolean done;
 	private ArrayList<Tile> propertyOwned;
@@ -20,7 +21,7 @@ public class Player{
 	*@color - the color repesenting that player
 	*/
 
-	public Player(String name, String race, String color){
+	public Player(String name, String race, Color color){
 		int i = 0;
 		int money=0;
 		this.name = name;
@@ -43,6 +44,10 @@ public class Player{
 		this.done = done;
 	}
 	
+	public Color getColor(){
+		return color;
+	}
+	
 	public boolean buyProperty(int cost, Tile tile){
 		if(cost<money && !tile.isOwned()){
 			money-=cost;
@@ -54,5 +59,9 @@ public class Player{
 			return false;
 		}
 			
+	}
+	
+	public String toString(){
+		return "Player name: " + name  + " Player race: " + race + " Player color: " + color.toString();
 	}
 }

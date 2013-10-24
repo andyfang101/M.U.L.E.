@@ -10,12 +10,16 @@ public class TownTile extends Tile{
 	
 	private Town town;
 	private JFrame frame;
-	public TownTile(Point p, JFrame frame) {
-		super(p);
+	public TownTile(Point p, MapPanel panel, JFrame frame) {
+		super(p,panel);
 		this.frame = frame;
 		img = new ImageIcon("town.png");
 		setIcon(img);
-		this.addActionListener(new buttonListener());
+		for( ActionListener al : getActionListeners() ) {
+		        removeActionListener( al );
+		  } //clearing the buyListener from this tile since it doesn't apply
+		tileListener=new buttonListener();
+		addActionListener(tileListener);
 		// TODO Auto-generated constructor stub
 	}
 	

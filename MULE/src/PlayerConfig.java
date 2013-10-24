@@ -10,6 +10,7 @@ import java.util.ArrayList;
 * Version 1.0 10/7/2013
 */
 
+
 public class PlayerConfig extends JPanel {
 	private static final int WIDTH = 580;
 	private static final int HEIGHT = 600;
@@ -21,7 +22,7 @@ public class PlayerConfig extends JPanel {
 	private ArrayList<Player> playerList;
 	
 	private String[] races = {"Select race...", "Flapper","Human","Others"}; 
-	private String[] colors = {"Select color...", "Red", "Orange", "Yellow", "Green", "Blue", "Cyan"};
+	private String[] colors = {"Select color...", "Red", "Yellow", "Green", "Blue"};
 	
 	private boolean cont;
 	private boolean back;
@@ -30,12 +31,19 @@ public class PlayerConfig extends JPanel {
 	
 	private JFrame frame;
 	
+	//public final int RED = 1;
+	//public final int YELLOW=2;
+	//public final int GREEN = 3;
+	//public final int BLUE = 4;
+	
 
 	
 	/*
 	*This is the constructor class that creates the components necessary to configure player settings.
 	*/
 	public PlayerConfig(JFrame frame) {
+		playerName="";
+		playerRace="";
 		playerList = new ArrayList<Player>();
 		cont = false;
 		back = false;
@@ -99,16 +107,12 @@ public class PlayerConfig extends JPanel {
 	public Color setColor(String color) {
 		if (color.equals("Red"))
  			playerColor = Color.RED;
-	 	else if (color.equals("Orange"))
-	 		playerColor = Color.ORANGE;
 	 	else if (color.equals("Yellow"))
 	 		playerColor = Color.YELLOW;
 	 	else if (color.equals("Green"))
 	 		playerColor = Color.GREEN;
 	 	else if (color.equals("Blue"))
 	 		playerColor = Color.BLUE;
-	 	else if (color.equals("Cyan"))
-	 		playerColor = Color.CYAN;
 	 	else if (color.equals("Select color..."))
 	 		System.out.println("Must select color.");	
 	 	else
@@ -186,6 +190,14 @@ public class PlayerConfig extends JPanel {
 				this.frame = frame;
 			}
        		public void actionPerformed (ActionEvent event) {
+       			playerName=chooseName.getText();
+       			if(playerName.isEmpty())
+       				playerName="Leo";
+       			if(playerRace.isEmpty())
+       				playerRace="Human";
+       			if(playerColor==null)
+       				playerColor=Color.red;
+       				
 		    	/**
 		    	* Temporary
 		    	
@@ -194,9 +206,15 @@ public class PlayerConfig extends JPanel {
 	    	   	System.out.println("Player race: " + playerRace);
 	    	   	System.out.println("Player color: " + color);
 	    	   	*/
-       			player = new Player(chooseName.getText(), playerRace, color);
+       			player = new Player(chooseName.getText(), playerRace, playerColor);
+       			System.out.println(player.toString());
        			playerList.add(player);
        			cont = true;
        		}
     	}
+	
+	public ArrayList<Player> getPlayers(){
+		return playerList;
+	}
+	
     }

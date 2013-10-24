@@ -33,7 +33,7 @@ public class GameMain extends JFrame{
 					}
 				}
 				if(!pConfig.getBack())
-					players.add(pConfig.getPlayer());
+					players=pConfig.getPlayers();
 				else
 					i++;
 				if(back){
