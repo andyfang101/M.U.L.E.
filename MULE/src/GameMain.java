@@ -44,7 +44,7 @@ public class GameMain extends JFrame{
 		}
 		while(back);
 		
-		MapPanel map = new MapPanel(initial.isRandomMap(), game); //CHANGE FALSE TO BOOL RANDOM
+		MapPanel map = new MapPanel(false, game); //CHANGE FALSE TO BOOL RANDOM
 		game.validate();
 		game.repaint();
 		

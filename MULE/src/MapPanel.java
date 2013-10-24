@@ -23,6 +23,7 @@ public class MapPanel extends JPanel{
 		this.frame=frame;
 		this.random = random;
 		setVisible(true);
+		//System.out.println(this.toString());
 		map = new Map(random, frame, this);
 		grid = new GridLayout(Map.NUM_ROW, Map.NUM_COL);
 		setLayout(grid);
