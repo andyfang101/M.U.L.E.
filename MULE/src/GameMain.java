@@ -51,7 +51,11 @@ public class GameMain extends JFrame{
 		
 		do{
 			for(Player p : players){
+				map.setPlayerNumber(players.size());
 				map.setCurPlayer(p);
+				while(!map.getIsDone()){
+					game.repaint();
+				}
 				p.takeTurn();
 			}
 			map.nextTurn();
