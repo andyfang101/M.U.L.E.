@@ -72,7 +72,7 @@ public class MapPanel extends JPanel{
 		currTurn++;
 	}
 	
-	public boolean gameOver(){
+	public boolean gameOver(int currTurn){
 		if(currTurn<12)
 			return false;
 		return true;

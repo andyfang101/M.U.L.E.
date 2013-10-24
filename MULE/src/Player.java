@@ -27,6 +27,7 @@ public class Player{
 		this.name = name;
 		this.race = race;
 		this.color = color;
+		done=false;
 		propertyOwned = new ArrayList<Tile>();
 	}
 	
