@@ -10,8 +10,8 @@ public class TownTile extends Tile{
 	
 	private Town town;
 	private JFrame frame;
-	public TownTile(Point p, MapPanel panel, JFrame frame) {
-		super(p,panel);
+	public TownTile(Point p,  JFrame frame) {
+		super(p);
 		this.frame = frame;
 		img = new ImageIcon("town.png");
 		setIcon(img);
@@ -21,10 +21,6 @@ public class TownTile extends Tile{
 		tileListener=new buttonListener();
 		addActionListener(tileListener);
 		// TODO Auto-generated constructor stub
-	}
-	
-	private void actionListener(ActionEvent e){
-		System.out.println("TEST"); //TESTING PURPOUSES DELETE
 	}
 	
 	private class buttonListener implements ActionListener{

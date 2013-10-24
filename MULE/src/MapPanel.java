@@ -12,8 +12,8 @@ public class MapPanel extends JPanel{
 	private GridLayout grid=null;
 	private boolean random; //implement random maps later
 	private JFrame frame;
-	private JLabel curPlayerName;
-	private JLabel currTurnLabel;
+	private static JLabel curPlayerName;
+	private static JLabel currTurnLabel;
 	private JButton done;
 	private static boolean isDone;
 	private int currTurn;
@@ -23,8 +23,8 @@ public class MapPanel extends JPanel{
 		this.frame=frame;
 		this.random = random;
 		setVisible(true);
+		map= new Map(false, frame);
 		//System.out.println(this.toString());
-		map = new Map(random, frame, this);
 		grid = new GridLayout(Map.NUM_ROW, Map.NUM_COL);
 		setLayout(grid);
 		JButton[][] buttons = map.getMap();
@@ -45,7 +45,7 @@ public class MapPanel extends JPanel{
 		add(currTurnLabel);
 		done = new JButton("Done");
 		add(done);
-		done.addActionListener((ActionListener) new DListener(curPlayer,this));
+		done.addActionListener(new DListener());
 		currTurn = 1;
 		this.frame.setContentPane(this);
 	}
@@ -88,14 +88,8 @@ public class MapPanel extends JPanel{
 }
 
 class DListener implements ActionListener{
-	private Player curPlayer;
-	private MapPanel panel;
-	public DListener (Player p, MapPanel panel){
-		curPlayer=p;
-		this.panel=panel;
-	}
 	public void actionPerformed(ActionEvent event) {
-		curPlayer.setDone(true);
-		panel.nextTurn();
+		Player p = GameMain.getCurrPlayer();
+		p.setDone(true);
 	}
 }

@@ -5,8 +5,8 @@ import javax.swing.ImageIcon;
 
 public class Plain extends Tile {
 
-	public Plain(Point location, MapPanel panel) {
-		super(location, panel);
+	public Plain(Point location) {
+		super(location);
 		img = new ImageIcon("plain.png");
 		setIcon(img);
 		cost=40;

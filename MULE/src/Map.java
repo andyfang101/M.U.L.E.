@@ -15,15 +15,13 @@ public class Map {
 	private JButton map [][] = null;
 	private boolean random = false;
 	private JFrame frame;
-	private MapPanel panel;
 	
 	public Town town;
 
-	public Map(boolean random, JFrame frame, MapPanel panel){
+	public Map(boolean random, JFrame frame){
 		this.random=random;
 		this.frame=frame;
 		this.map = createMap();
-		this.panel=panel;
 	}
 
 	/*
@@ -76,17 +74,17 @@ public class Map {
 		for(int r=0; r<mapRep.length; r++){
 			for(int c=0; c<mapRep[r].length; c++){
 				switch(mapRep[r][c]){
-				case 'm': map[r][c] = new Mountain(new Point(r,c), panel);
+				case 'm': map[r][c] = new Mountain(new Point(r,c));
 				break;
-				case 'g': map[r][c] = new Land(new Point(r,c), panel);
+				case 'g': map[r][c] = new Land(new Point(r,c));
 				break;
-				case 'p': map[r][c] = new Plain(new Point(r,c), panel);
+				case 'p': map[r][c] = new Plain(new Point(r,c));
 				break;
-				case 'r': map[r][c] = new River(new Point(r,c), panel);
+				case 'r': map[r][c] = new River(new Point(r,c));
 				break;
-				case 't': map[r][c] = new TownTile(new Point(r,c), panel,frame);
+				case 't': map[r][c] = new TownTile(new Point(r,c),frame);
 				break;
-				default: map[r][c]= new Land(new Point(r,c), panel);
+				default: map[r][c]= new Land(new Point(r,c));
 				}
 			}
 		}
@@ -98,9 +96,5 @@ public class Map {
 		return this.map;
 	}
 	
-	public MapPanel getMapPanel(){
-		return panel;
-	}
-
 
 }

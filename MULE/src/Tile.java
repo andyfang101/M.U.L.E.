@@ -19,13 +19,12 @@ public abstract	class Tile extends JButton{
 	protected MapPanel panel;
 	protected ActionListener tileListener;
 	
-	public Tile(Point location, MapPanel panel){
+	public Tile(Point location){
 		this.location=location;
 		cost = 20;
-		this.panel=panel;
-		panel.toString();
 		tileListener = new buyListener(this);
 		addActionListener(tileListener);
+		isOwned=false;
 		
 	}
 	
@@ -48,24 +47,26 @@ public abstract	class Tile extends JButton{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
-		System.out.println(panel.toString());
-		p=panel.getCurrPlayer();
-		if(!isOwned){
+		p=GameMain.getCurrPlayer();
+		if(!isOwned){ //note to fix
 			int askBuy = JOptionPane.showConfirmDialog(null,"Would you like to buy this property? It costs " + cost , "Buy this time?", JOptionPane.YES_NO_OPTION);
 			if(askBuy==JOptionPane.YES_OPTION){
-				if(!isOwned){
-					if(panel.getCurrTurn()<=2){
+				System.out.println("Reach here");
+					if(GameMain.getCurrTurns()<=2){
+						System.out.println("Reach here meow");
 						if(p.buyProperty(0, tile)){
 							JOptionPane.showMessageDialog(null,
 								    "Congratulations! You got it!");
 							tile.setBackground(p.getColor());
+							isBought(p);
 						}
-					}
+					
 					else{
 						if(p.buyProperty(cost, tile)){
 							JOptionPane.showMessageDialog(null,
 								    "Congratulations! You got it!");
 							tile.setBackground(p.getColor());
+							isBought(p);
 						}
 					}
 				}

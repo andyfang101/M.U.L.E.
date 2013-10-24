@@ -48,8 +48,14 @@ public class Player{
 		return color;
 	}
 	
+	public boolean isDone(){
+		return done;
+	}
+	
 	public boolean buyProperty(int cost, Tile tile){
-		if(cost<money && !tile.isOwned()){
+		System.out.println("Is owned? " + tile.isOwned());
+		if(cost<=money && tile.isOwned()==false){
+			System.out.println("buy me dammit");
 			money-=cost;
 			propertyOwned.add(tile);
 			tile.isBought(this);
