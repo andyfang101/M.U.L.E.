@@ -4,13 +4,16 @@ import java.awt.*;
 import java.util.ArrayList;
 
 /*
- * 
+ * This is the main game class
  */
 public class GameMain extends JFrame{
 	private static Player currPlayer;
 	private static int currTurns;
 	private static JLabel currTurnLabel; //change
 	private static JLabel currPlayerLabel;
+	/*
+	 * This is the main method
+	 */
 	public static void main(String[] args){
 		ArrayList<Player> players = new ArrayList<Player>();
 		GameMain game = new GameMain();
