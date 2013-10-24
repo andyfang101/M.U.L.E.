@@ -42,4 +42,8 @@ public class GameConfig{
 			this.numPlayers = numPlayers;
 		}
 	}
+	
+	public int getNumPlayers(){
+		return numPlayers;
+	}
 }

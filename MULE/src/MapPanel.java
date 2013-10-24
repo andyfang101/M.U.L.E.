@@ -39,8 +39,8 @@ public class MapPanel extends JPanel{
 				}
 			}
 		}
-		curPlayerName = new JLabel("Current Player: ");
-		currTurnLabel = new JLabel("Current Turn: " + currTurn);
+		curPlayerName = new JLabel("Current Player: " );
+		currTurnLabel = new JLabel("Current Round: ");
 		add(curPlayerName);
 		add(currTurnLabel);
 		done = new JButton("Done");
@@ -60,8 +60,8 @@ public class MapPanel extends JPanel{
 	
 	public void setCurPlayer(Player p){
 		System.out.println("I am settings!!!");
-		curPlayer = p;
-		curPlayerName.setText("Current Player: " + p.getName());
+		curPlayer = GameMain.getCurrPlayer();
+		
 	}
 	
 	public Player getCurrPlayer(){
@@ -84,6 +84,14 @@ public class MapPanel extends JPanel{
 	
 	public int getCurrTurn(){
 		return currTurn;
+	}
+	
+	public void setCurrPlayerLabel(String name){
+		curPlayerName.setText("Current Player: " + name);
+	}
+	
+	public void setCurrTurn(int turn){
+		currTurnLabel.setText("Current Round: " + turn);
 	}
 }
 

@@ -35,11 +35,6 @@ public class Player{
 		return name;
 	}
 	
-	public void takeTurn(){
-		while(!done){
-			//do things
-		}
-	}
 	
 	public void setDone(boolean done){
 		this.done = done;

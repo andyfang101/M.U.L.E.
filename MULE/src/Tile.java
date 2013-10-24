@@ -51,9 +51,7 @@ public abstract	class Tile extends JButton{
 		if(!isOwned){ //note to fix
 			int askBuy = JOptionPane.showConfirmDialog(null,"Would you like to buy this property? It costs " + cost , "Buy this time?", JOptionPane.YES_NO_OPTION);
 			if(askBuy==JOptionPane.YES_OPTION){
-				System.out.println("Reach here");
 					if(GameMain.getCurrTurns()<=2){
-						System.out.println("Reach here meow");
 						if(p.buyProperty(0, tile)){
 							JOptionPane.showMessageDialog(null,
 								    "Congratulations! You got it!");

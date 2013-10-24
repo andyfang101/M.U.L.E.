@@ -13,7 +13,7 @@ public class GameMain extends JFrame{
 	private static JLabel currPlayerLabel;
 	public static void main(String[] args){
 		ArrayList<Player> players = new ArrayList<Player>();
-		JFrame game = new JFrame();
+		GameMain game = new GameMain();
 		Initial initial;
 		boolean back;
 		
@@ -54,16 +54,17 @@ public class GameMain extends JFrame{
 		game.repaint();
 		
 		do{
+
+			currTurns++;
 			for(Player p : players){
-				//while(!p.isDone()){
 				currPlayer = p;
-				currTurnLabel = new JLabel("Current Turn: " + currTurns);
-				currPlayerLabel = new JLabel("Current Player: " + currPlayer.getName());
+				map.setCurrTurn(currTurns);
+				map.setCurrPlayerLabel(currPlayer.getName());
+				
+				System.out.println("Current Player " + currPlayer.getName());
 				//Cycle through playerlist, while!done\
 				map.setCurPlayer(p);
-				System.out.println("curr turns: " + currTurns);
-				currTurns++;
-				System.out.println("curr turns: " + currTurns);
+				
 				game.repaint();
 				//p.takeTurn();
 
@@ -71,12 +72,13 @@ public class GameMain extends JFrame{
 				while(!p.isDone()){
 					game.repaint();
 				}
-				currTurnLabel.setText("Current Turn: " + currTurns);
-				currPlayerLabel.setText("Current Player: " + currPlayer.getName());
-				if(!map.gameOver(currTurns))
+				p.setDone(false);
+				game.repaint();
+				if(map.gameOver(currTurns))
 					break;
+				
 			}
-			
+
 			//map.nextTurn();
 		}while(!map.gameOver(currTurns ));
 		
@@ -89,4 +91,5 @@ public class GameMain extends JFrame{
 	public static int getCurrTurns(){
 		return currTurns;
 	}
+	
 }
