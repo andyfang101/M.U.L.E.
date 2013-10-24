@@ -68,6 +68,10 @@ public class Map {
 		}
 	}
 	
+	/*
+	*This method takes the character representation of the map andc creates the JButtons associated with the tile.
+	*@return JButton[][] - the 2d aray of JButtons of the map
+	*/
 	private JButton[][] createMap(){
 		char [][] mapRep=genCharMap();
 		JButton map [][] = new JButton[NUM_ROW][NUM_COL];
@@ -92,6 +96,10 @@ public class Map {
 		return map;
 	}
 	
+	/*
+	*A getter for the map of JButtons
+	*@return - Jbutton [][] - the 2-d array of JButtons of the map
+	*/
 	public JButton[][] getMap(){
 		return this.map;
 	}
