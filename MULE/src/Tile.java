@@ -23,6 +23,7 @@ public abstract	class Tile extends JButton{
 		this.location=location;
 		cost = 20;
 		this.panel=panel;
+		panel.toString();
 		tileListener = new buyListener(this);
 		addActionListener(tileListener);
 		
@@ -46,23 +47,37 @@ public abstract	class Tile extends JButton{
 	 }
 	@Override
 	public void actionPerformed(ActionEvent e) {
+
+		System.out.println(panel.toString());
 		p=panel.getCurrPlayer();
 		if(!isOwned){
 			int askBuy = JOptionPane.showConfirmDialog(null,"Would you like to buy this property? It costs " + cost , "Buy this time?", JOptionPane.YES_NO_OPTION);
 			if(askBuy==JOptionPane.YES_OPTION){
-				if(p.buyProperty(cost, tile)){
-					JOptionPane.showMessageDialog(null,
-						    "Congratulations! You got it!");
-					tile.setBackground(p.getColor());
+				if(!isOwned){
+					if(panel.getCurrTurn()<=2){
+						if(p.buyProperty(0, tile)){
+							JOptionPane.showMessageDialog(null,
+								    "Congratulations! You got it!");
+							tile.setBackground(p.getColor());
+						}
+					}
+					else{
+						if(p.buyProperty(cost, tile)){
+							JOptionPane.showMessageDialog(null,
+								    "Congratulations! You got it!");
+							tile.setBackground(p.getColor());
+						}
+					}
 				}
-				else{
+				else 
+				{
 					JOptionPane.showMessageDialog(null,
 						    "You're too poor for this land.");
 				}
 				
 			}
             if(askBuy==JOptionPane.NO_OPTION){
-            	
+            	//idk think of something to do
             }
 		}
 		else{

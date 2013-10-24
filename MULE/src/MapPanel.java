@@ -16,7 +16,7 @@ public class MapPanel extends JPanel{
 	private JLabel currTurnLabel;
 	private JButton done;
 	private static boolean isDone;
-	private int curTurn;
+	private int currTurn;
 	protected Player curPlayer;
 
 	public MapPanel(boolean random, JFrame frame){
@@ -39,13 +39,13 @@ public class MapPanel extends JPanel{
 			}
 		}
 		curPlayerName = new JLabel("Current Player: ");
-		currTurnLabel = new JLabel("Current Turn: " + curTurn);
+		currTurnLabel = new JLabel("Current Turn: " + currTurn);
 		add(curPlayerName);
 		add(currTurnLabel);
 		done = new JButton("Done");
 		add(done);
 		done.addActionListener((ActionListener) new DListener(curPlayer,this));
-		curTurn = 1;
+		currTurn = 1;
 		this.frame.setContentPane(this);
 	}
 	
@@ -58,6 +58,7 @@ public class MapPanel extends JPanel{
 	}
 	
 	public void setCurPlayer(Player p){
+		System.out.println("I am settings!!!");
 		curPlayer = p;
 		curPlayerName.setText("Current Player: " + p.getName());
 	}
@@ -67,13 +68,21 @@ public class MapPanel extends JPanel{
 	}
 	
 	public void nextTurn(){
-		curTurn++;
+		currTurn++;
 	}
 	
 	public boolean gameOver(){
-		if(curTurn<12)
+		if(currTurn<12)
 			return false;
 		return true;
+	}
+	
+	public String toString(){
+		return "I am a Map Panel";
+	}
+	
+	public int getCurrTurn(){
+		return currTurn;
 	}
 }
 
