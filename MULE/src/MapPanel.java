@@ -18,10 +18,15 @@ public class MapPanel extends JPanel{
 	private static boolean isDone;
 	private int currTurn;
 	protected Player curPlayer;
+	private JPanel entire,sub;
 
 	public MapPanel(boolean random, JFrame frame){
 		this.frame=frame;
 		this.random = random;
+		
+		entire = new JPanel();
+		sub = new JPanel();
+		
 		setVisible(true);
 		map= new Map(false, frame);
 		//System.out.println(this.toString());
@@ -41,13 +46,16 @@ public class MapPanel extends JPanel{
 		}
 		curPlayerName = new JLabel("Current Player: " );
 		currTurnLabel = new JLabel("Current Round: ");
-		add(curPlayerName);
-		add(currTurnLabel);
+		
+		sub.add(curPlayerName);
+		sub.add(currTurnLabel);
 		done = new JButton("Done");
-		add(done);
+		sub.add(done);
 		done.addActionListener(new DListener());
 		currTurn = 1;
-		this.frame.setContentPane(this);
+		entire.add(this);
+		entire.add(sub);
+		this.frame.setContentPane(entire);
 	}
 	
 	public static void setIsDone(boolean isDonex){
