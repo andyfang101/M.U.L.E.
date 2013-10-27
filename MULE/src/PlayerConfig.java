@@ -12,8 +12,8 @@ import java.util.ArrayList;
 
 
 public class PlayerConfig extends JPanel {
-	private static final int WIDTH = 580;
-	private static final int HEIGHT = 600;
+	private static final int WIDTH = 1220;
+	private static final int HEIGHT = 650;
 	
 	private JTextField chooseName;
 	private JComboBox chooseRace, chooseColor;
