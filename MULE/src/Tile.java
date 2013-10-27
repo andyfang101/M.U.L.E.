@@ -70,7 +70,14 @@ public abstract	class Tile extends JButton{
 				}
 				else 
 				{
-					JOptionPane.showMessageDialog(null,
+					if(p.buyProperty(cost, tile)){
+						JOptionPane.showMessageDialog(null,
+							    "Congratulations! You got it!");
+						tile.setBackground(p.getColor());
+						isBought(p);
+					}
+					else
+						JOptionPane.showMessageDialog(null,
 						    "You're too poor for this land.");
 				}
 				
