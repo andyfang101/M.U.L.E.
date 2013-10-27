@@ -23,17 +23,27 @@ public class Player{
 
 	public Player(String name, String race, Color color){
 		int i = 0;
-		int money=0;
+		
 		this.name = name;
 		this.race = race;
 		this.color = color;
 		done=false;
 		propertyOwned = new ArrayList<Tile>();
+		
+		if (race == "Flapper"){
+			money = 1600;
+		}
+		else if (race == "Human"){
+			money = 600;
+		}
+		else
+			money = 1000;
 	}
 	
 	public String getName(){
 		return name;
 	}
+	
 	
 	
 	public void setDone(boolean done){
