@@ -15,8 +15,8 @@ import javax.swing.JPanel;
  */
 
 public class Town extends JPanel{
-	private static final int WIDTH = 580;
-	private static final int HEIGHT = 600;
+	private static final int WIDTH = 1220;
+	private static final int HEIGHT = 650;
 	private JFrame frame;
 	private JPanel oldpanel;//The panel that holds old panel
 
