@@ -30,8 +30,8 @@ public class Initial extends JPanel{
     private String selectedMap = "Standard";
     private String selectedPN = "1";
     
-	private static final int WIDTH = 580;
-	private static final int HEIGHT = 600;
+	private static final int WIDTH = 1220;
+	private static final int HEIGHT = 650;
 	private ImageIcon logo = new ImageIcon("logo.png");
 	private String[] difficulty = {"Beginner","Standard","Tournament"}; 
 	private String[] maptype = {"Standard","Random"}; 
