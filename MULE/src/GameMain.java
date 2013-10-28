@@ -8,7 +8,7 @@ import java.util.ArrayList;
  */
 public class GameMain extends JFrame{
 	private static Player currPlayer;
-	private static int currTurns;
+	private static int currRounds;
 	private static JLabel currTurnLabel; //change
 	private static JLabel currPlayerLabel;
 	public static void main(String[] args){
@@ -55,10 +55,10 @@ public class GameMain extends JFrame{
 		
 		do{
 
-			currTurns++;
+			currRounds++;
 			for(Player p : players){
 				currPlayer = p;
-				map.setCurrTurn(currTurns);
+				map.setCurrRound(currRounds);
 				map.setCurrPlayerLabel(currPlayer.getName());
 				
 				System.out.println("Current Player " + currPlayer.getName());
@@ -74,13 +74,13 @@ public class GameMain extends JFrame{
 				}
 				p.setDone(false);
 				game.repaint();
-				if(map.gameOver(currTurns))
+				if(map.gameOver(currRounds))
 					break;
 				
 			}
 
 			//map.nextTurn();
-		}while(!map.gameOver(currTurns ));
+		}while(!map.gameOver(currRounds ));
 		
 	}
 	
@@ -89,7 +89,7 @@ public class GameMain extends JFrame{
 	}
 	
 	public static int getCurrTurns(){
-		return currTurns;
+		return currRounds;
 	}
 	
 }
