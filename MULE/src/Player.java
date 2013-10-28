@@ -10,7 +10,7 @@ public class Player{
 	private String name;
 	private String race;
 	private Color color;
-	private int money;
+	private int money,food,energy,ore;
 	private boolean done;
 	private ArrayList<Tile> propertyOwned;
 	
@@ -38,13 +38,29 @@ public class Player{
 		}
 		else
 			money = 1000;
+		
+		food = 8;
+		energy = 4;
+		ore = 0;
 	}
 	
 	public String getName(){
 		return name;
 	}
-	
-	
+	/*
+	 * This method is to calculate player's time of turn based on resource
+	 */
+	public int getTurnTime(int round){
+		int time = 50;
+		int foodRequire = (int)(Math.floor(round/4) +3);
+		if (food == 0){
+			time = 5;
+		}
+		else if (food < foodRequire){
+			time = 30;
+		}
+		return time;
+	}
 	
 	public void setDone(boolean done){
 		this.done = done;
