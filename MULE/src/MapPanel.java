@@ -13,10 +13,10 @@ public class MapPanel extends JPanel{
 	private boolean random; //implement random maps later
 	private JFrame frame;
 	private static JLabel curPlayerName;
-	private static JLabel currTurnLabel;
+	private static JLabel currRoundLabel;
 	private JButton done;
 	private static boolean isDone;
-	private int currTurn;
+	private int currRound;
 	protected Player curPlayer;
 	private JPanel entire,sub;
 
@@ -45,14 +45,14 @@ public class MapPanel extends JPanel{
 			}
 		}
 		curPlayerName = new JLabel("Current Player: " );
-		currTurnLabel = new JLabel("Current Round: ");
+		currRoundLabel = new JLabel("Current Round: ");
 		
 		sub.add(curPlayerName);
-		sub.add(currTurnLabel);
+		sub.add(currRoundLabel);
 		done = new JButton("Done");
 		sub.add(done);
 		done.addActionListener(new DListener());
-		currTurn = 1;
+		currRound = 1;
 		entire.add(this);
 		entire.add(sub);
 		this.frame.setContentPane(entire);
@@ -77,7 +77,7 @@ public class MapPanel extends JPanel{
 	}
 	
 	public void nextTurn(){
-		currTurn++;
+		currRound++;
 	}
 	
 	public boolean gameOver(int currTurn){
@@ -91,15 +91,15 @@ public class MapPanel extends JPanel{
 	}
 	
 	public int getCurrTurn(){
-		return currTurn;
+		return currRound;
 	}
 	
 	public void setCurrPlayerLabel(String name){
 		curPlayerName.setText("Current Player: " + name);
 	}
 	
-	public void setCurrTurn(int turn){
-		currTurnLabel.setText("Current Round: " + turn);
+	public void setCurrRound(int round){
+		currRoundLabel.setText("Current Round: " + round);
 	}
 }
 
