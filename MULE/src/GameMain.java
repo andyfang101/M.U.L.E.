@@ -92,12 +92,7 @@ public class GameMain extends JFrame{
 
 				//}
 				while(!p.isDone()){
-					//(new GameMain()).turnTimer();
-					int remainTime = p.getTurnTime(currRounds)-(new GameMain()).getTime();
-					if (remainTime < 0){
-						remainTime = p.getTurnTime(currRounds);
-					}
-					map.setRemainTime(remainTime);
+					map.setRemainTime((new GameMain()).getTime());
 					game.repaint();
 				}
 				p.setDone(false);
@@ -123,15 +118,20 @@ public class GameMain extends JFrame{
     	}
 	
 	public int getTime(){
-		int remainTime;
+		int pastTime,remainTime;
+		int totalTime  = currPlayer.getTurnTime(currRounds);
 		Calendar calendar = Calendar.getInstance();
 		currSeconds = calendar.get(Calendar.SECOND);
 
 		if (currSeconds > startSeconds){
-			remainTime = currSeconds-startSeconds;
+			pastTime = currSeconds-startSeconds;
 		}
 		else
-			remainTime = (60-startSeconds)+currSeconds;
+			pastTime = (60-startSeconds)+currSeconds;
+		remainTime = totalTime - pastTime;
+		if (remainTime < 0){
+			remainTime = currPlayer.getTurnTime(currRounds);
+		}
 		return remainTime;
 	}
 	
