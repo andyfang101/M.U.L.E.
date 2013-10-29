@@ -1,5 +1,6 @@
 import javax.swing.*;
-
+import java.util.Timer;
+import java.util.TimerTask;
 import java.awt.*;
 import java.util.ArrayList;
 
@@ -83,6 +84,16 @@ public class GameMain extends JFrame{
 		}while(!map.gameOver(currRounds ));
 		
 	}
+	
+	public void turnTimer() {
+    		int turnTime = currPlayer.getTurnTime(currRounds);
+    		Timer timer = new Timer();
+    		timer.schedule(new TimerTask() {
+    			public void run() {
+    				currPlayer.setDone(true);
+    			}
+    		}, turnTime);
+    	}
 	
 	public static Player getCurrPlayer(){
 		return currPlayer;
