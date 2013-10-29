@@ -14,6 +14,7 @@ public class MapPanel extends JPanel{
 	private JFrame frame;
 	private static JLabel curPlayerName;
 	private static JLabel currRoundLabel;
+	private static JLabel remainTime;
 	private JButton done;
 	private static boolean isDone;
 	private int currRound;
@@ -46,9 +47,10 @@ public class MapPanel extends JPanel{
 		}
 		curPlayerName = new JLabel("Current Player: " );
 		currRoundLabel = new JLabel("Current Round: ");
-		
+		remainTime = new JLabel("Remaining Time: ");
 		sub.add(curPlayerName);
 		sub.add(currRoundLabel);
+		sub.add(remainTime);
 		done = new JButton("Done");
 		sub.add(done);
 		done.addActionListener(new DListener());
@@ -100,6 +102,10 @@ public class MapPanel extends JPanel{
 	
 	public void setCurrRound(int round){
 		currRoundLabel.setText("Current Round: " + round);
+	}
+	
+	public void setRemainTime(int time){
+		remainTime.setText("Remaining Time: "+time);
 	}
 }
 
