@@ -54,8 +54,17 @@ public class GameMain extends JFrame{
 		game.repaint();
 		
 		do{
-
 			currRounds++;
+			
+			//This will reorder the players from lowest score to highest
+			for(int i=0; i<players.size(); i++){ 
+				for(int j=i-1; j>=0; j--){
+					if(players.get(i).getScore()>players.get(j).getScore()){
+						players.add(j+1, players.get(i));
+						players.remove(i);
+					}
+				}
+			}
 			for(Player p : players){
 				currPlayer = p;
 				map.setCurrRound(currRounds);

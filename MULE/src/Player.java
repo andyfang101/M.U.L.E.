@@ -10,7 +10,7 @@ public class Player{
 	private String name;
 	private String race;
 	private Color color;
-	private int money,food,energy,ore;
+	private int money,food,energy,ore,score;
 	private boolean done;
 	private ArrayList<Tile> propertyOwned;
 	
@@ -60,6 +60,10 @@ public class Player{
 			time = 30;
 		}
 		return time;
+	}
+	
+	public int getScore(){
+		return score;
 	}
 	
 	public void setDone(boolean done){
