@@ -71,6 +71,7 @@ public class GameMain extends JFrame{
 
 				//}
 				while(!p.isDone()){
+					(new GameMain()).turnTimer();
 					game.repaint();
 				}
 				p.setDone(false);
