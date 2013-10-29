@@ -72,6 +72,7 @@ public class GameMain extends JFrame{
 				currPlayer = p;
 				map.setCurrRound(currRounds);
 				map.setCurrPlayerLabel(currPlayer.getName());
+				(new GameMain()).turnTimer();
 				
 				System.out.println("Current Player " + currPlayer.getName());
 				//Cycle through playerlist, while!done\
@@ -104,7 +105,7 @@ public class GameMain extends JFrame{
     			public void run() {
     				currPlayer.setDone(true);
     			}
-    		}, turnTime);
+    		}, turnTime*1000);
     	}
 	
 	public static Player getCurrPlayer(){
