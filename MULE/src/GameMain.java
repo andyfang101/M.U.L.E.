@@ -60,10 +60,12 @@ public class GameMain extends JFrame{
 			//This will reorder the players from lowest score to highest
 			for(int i=0; i<players.size(); i++){ 
 				for(int j=i-1; j>=0; j--){
-					if(players.get(i).getScore()>players.get(j).getScore()){
-						players.add(j+1, players.get(i));
-						players.remove(i);
+					if(players.get(i).getScore()<players.get(j).getScore()){
+						players.add(j, players.get(i));
+						players.remove(i+1);
 					}
+					else
+						break;
 				}
 			}
 			for(Player p : players){
@@ -80,7 +82,7 @@ public class GameMain extends JFrame{
 
 				//}
 				while(!p.isDone()){
-					(new GameMain()).turnTimer();
+					//(new GameMain()).turnTimer();
 					game.repaint();
 				}
 				p.setDone(false);
@@ -90,7 +92,7 @@ public class GameMain extends JFrame{
 				
 			}
 
-			//map.nextTurn();
+			map.nextTurn();
 		}while(!map.gameOver(currRounds ));
 		
 	}
