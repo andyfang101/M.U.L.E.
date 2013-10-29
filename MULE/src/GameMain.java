@@ -1,4 +1,6 @@
 import javax.swing.*;
+
+import java.util.Calendar;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.awt.*;
@@ -12,6 +14,8 @@ public class GameMain extends JFrame{
 	private static int currRounds;
 	private static JLabel currTurnLabel; //change
 	private static JLabel currPlayerLabel;
+	private static int startSeconds,currSeconds;
+	
 	public static void main(String[] args){
 		ArrayList<Player> players = new ArrayList<Player>();
 		GameMain game = new GameMain();
@@ -72,8 +76,13 @@ public class GameMain extends JFrame{
 				currPlayer = p;
 				map.setCurrRound(currRounds);
 				map.setCurrPlayerLabel(currPlayer.getName());
+
+				Calendar calendar = Calendar.getInstance();
+				startSeconds = calendar.get(Calendar.SECOND);
+				//System.out.println("start time: " + startSeconds);
 				(new GameMain()).turnTimer();
 				
+
 				System.out.println("Current Player " + currPlayer.getName());
 				//Cycle through playerlist, while!done\
 				map.setCurPlayer(p);
@@ -84,6 +93,11 @@ public class GameMain extends JFrame{
 				//}
 				while(!p.isDone()){
 					//(new GameMain()).turnTimer();
+					int remainTime = p.getTurnTime(currRounds)-(new GameMain()).getTime();
+					if (remainTime < 0){
+						remainTime = p.getTurnTime(currRounds);
+					}
+					map.setRemainTime(remainTime);
 					game.repaint();
 				}
 				p.setDone(false);
@@ -107,6 +121,19 @@ public class GameMain extends JFrame{
     			}
     		}, turnTime*1000);
     	}
+	
+	public int getTime(){
+		int remainTime;
+		Calendar calendar = Calendar.getInstance();
+		currSeconds = calendar.get(Calendar.SECOND);
+
+		if (currSeconds > startSeconds){
+			remainTime = currSeconds-startSeconds;
+		}
+		else
+			remainTime = (60-startSeconds)+currSeconds;
+		return remainTime;
+	}
 	
 	public static Player getCurrPlayer(){
 		return currPlayer;
