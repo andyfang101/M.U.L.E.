@@ -1,5 +1,4 @@
 import javax.swing.*;
-
 import java.util.Calendar;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -16,6 +15,9 @@ public class GameMain extends JFrame{
 	//private static JLabel currPlayerLabel;
 	private static int startSeconds,currSeconds;
 	
+	/**
+	 * Main method
+	 */
 	public static void main(String[] args){
 		ArrayList<Player> players = new ArrayList<Player>();
 		GameMain game = new GameMain();
@@ -109,6 +111,9 @@ public class GameMain extends JFrame{
 		
 	}
 	
+	/**
+	 * Handles timer
+	 */
 	public void turnTimer() {
     		int turnTime = currPlayer.getTurnTime(currRounds);
     		Timer timer = new Timer();
@@ -140,10 +145,18 @@ public class GameMain extends JFrame{
 		return remainTime;
 	}
 	
+	/**
+	 * Getter for current player
+	 * @return Current player
+	 */
 	public static Player getCurrPlayer(){
 		return currPlayer;
 	}
 	
+	/**
+	 * Getter for current turns
+	 * @return Current turns
+	 */
 	public static int getCurrTurns(){
 		return currRounds;
 	}
