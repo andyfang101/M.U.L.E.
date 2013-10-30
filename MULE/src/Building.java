@@ -16,6 +16,12 @@ public abstract class Building extends JPanel {
 	protected JPanel oldpanel;//The panel that holds old panel
 	protected Player p;
 	
+	/**
+	* Handles different building in town
+	* @param frame Window frame
+	* @param p Player instance
+	* @param oldpanel Panel that holds old panel
+	*/
 	public Building(JFrame frame, Player p, JPanel oldPanel){
 		this.p = p;
 		this.frame=frame;
