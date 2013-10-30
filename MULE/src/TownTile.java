@@ -4,6 +4,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 
 public class TownTile extends Tile{
@@ -27,8 +28,15 @@ public class TownTile extends Tile{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			if(!GameMain.getCurrPlayer().hasVisited()){
 			town = new Town(frame);
 			frame.setContentPane(town);
+			GameMain.getCurrPlayer().setVisited(true);
+			}
+			else{
+				JOptionPane.showMessageDialog(null,
+					    "Sorry, you already went to town once :( No energy for another trip!");
+			}
 		}
 	}
 }

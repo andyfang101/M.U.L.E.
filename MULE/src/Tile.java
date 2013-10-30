@@ -49,7 +49,13 @@ public abstract	class Tile extends JButton{
 
 		p=GameMain.getCurrPlayer();
 		if(!isOwned){ //note to fix
-			int askBuy = JOptionPane.showConfirmDialog(null,"Would you like to buy this property? It costs " + cost , "Buy this time?", JOptionPane.YES_NO_OPTION);
+			int askBuy=0;
+			if(GameMain.getCurrTurns()<=2){
+				askBuy = JOptionPane.showConfirmDialog(null,"Would you like to buy this property?", "Buy this time?", JOptionPane.YES_NO_OPTION);
+			}
+			else{
+				askBuy= JOptionPane.showConfirmDialog(null,"Would you like to buy this property? It costs " + cost , "Buy this time?", JOptionPane.YES_NO_OPTION);
+			}
 			if(askBuy==JOptionPane.YES_OPTION){
 					if(GameMain.getCurrTurns()<=2){
 						if(p.buyProperty(0, tile)){
@@ -82,9 +88,6 @@ public abstract	class Tile extends JButton{
 				}
 				
 			}
-            if(askBuy==JOptionPane.NO_OPTION){
-            	//idk think of something to do
-            }
 		}
 		else{
 			JOptionPane.showMessageDialog(null,

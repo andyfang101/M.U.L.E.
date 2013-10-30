@@ -97,6 +97,7 @@ public class GameMain extends JFrame{
 					game.repaint();
 				}
 				p.setDone(false);
+				p.setVisited(false);
 				game.repaint();
 				if(map.gameOver(currRounds))
 					break;

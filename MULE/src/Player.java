@@ -13,6 +13,7 @@ public class Player{
 	private int money,food,energy,ore,score;
 	private boolean done;
 	private ArrayList<Tile> propertyOwned;
+	private boolean hasVisitedTown;
 	
 	/*
 	* This is the constructor that instantiates the Player
@@ -28,6 +29,7 @@ public class Player{
 		this.race = race;
 		this.color = color;
 		done=false;
+		hasVisitedTown=false;
 		propertyOwned = new ArrayList<Tile>();
 		
 		if (race == "Flapper"){
@@ -107,5 +109,13 @@ public class Player{
 	public void gamble(int gambleGame) {
 		money+=gambleGame;
 		
+	}
+	
+	public boolean hasVisited(){
+		return hasVisitedTown;
+	}
+	
+	public void setVisited(boolean visit){
+		hasVisitedTown=visit;
 	}
 }
