@@ -7,7 +7,7 @@ import java.awt.*;
 import java.util.ArrayList;
 
 /*
- * 
+ * This is the main class
  */
 public class GameMain extends JFrame{
 	private static Player currPlayer;
@@ -119,6 +119,9 @@ public class GameMain extends JFrame{
     		}, turnTime*1000);
     	}
 	
+	/*
+	 * This method is to get player's time left
+	 */
 	public int getTime(){
 		int pastTime,remainTime;
 		int totalTime  = currPlayer.getTurnTime(currRounds);
