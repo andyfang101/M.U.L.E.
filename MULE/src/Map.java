@@ -14,11 +14,11 @@ public class Map {
 	public final static int NUM_COL=9; //number of columns
 	private JButton map [][] = null;
 	private boolean random = false;
-	private JFrame frame;
+	private GameMain frame;
 	
 	public Town town;
 
-	public Map(boolean random, JFrame frame){
+	public Map(boolean random, GameMain frame){
 		this.random=random;
 		this.frame=frame;
 		this.map = createMap();

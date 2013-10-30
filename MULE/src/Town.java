@@ -17,16 +17,16 @@ import javax.swing.JPanel;
 public class Town extends JPanel{
 	private static final int WIDTH = 1220;
 	private static final int HEIGHT = 650;
-	private JFrame frame;
-	private JPanel oldpanel;//The panel that holds old panel
+	private GameMain frame;
+	private JPanel oldPanel;//The panel that holds old panel
 
 	/*
 	 * Town Constructor
 	 */
-	public Town(JFrame frame){
+	public Town(GameMain frame){
 		
 		this.frame = frame;
-		oldpanel = (JPanel) frame.getContentPane();
+		oldPanel = (JPanel) frame.getContentPane();
 		setVisible(true);
 		setSize(WIDTH, HEIGHT);
 		frame.setTitle("Town");
@@ -46,7 +46,7 @@ public class Town extends JPanel{
 		PubButton.setBorderPainted(false);  
 		PubButton.setFocusPainted(false);  
 		PubButton.setContentAreaFilled(false);
-		PubButton.addActionListener(new PubListener());
+		PubButton.addActionListener(new PubListener(oldPanel));
 		
 		JButton LandOfficeButton = new JButton();  
 		LandOfficeButton.setIcon(new ImageIcon("landoffice.png"));
@@ -89,9 +89,14 @@ public class Town extends JPanel{
 	 */
 	private class PubListener implements ActionListener
     {
+		JPanel oldPanel;
+		public PubListener(JPanel oldPanel){
+			this.oldPanel=oldPanel;
+		}
        public void actionPerformed (ActionEvent event)
     	{
-    	   
+    		Pub p = new Pub(frame, GameMain.getCurrPlayer(), oldPanel);
+			frame.setContentPane(p);
     	}
     }
 	/*
@@ -121,7 +126,7 @@ public class Town extends JPanel{
     {
        public void actionPerformed (ActionEvent event)
     	{
-    	   frame.setContentPane(oldpanel);
+    	   frame.setContentPane(oldPanel);
     	}
     }
 }

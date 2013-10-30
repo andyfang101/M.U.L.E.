@@ -85,7 +85,6 @@ public class Player{
 	public boolean buyProperty(int cost, Tile tile){
 		System.out.println("Is owned? " + tile.isOwned());
 		if(cost<=money && tile.isOwned()==false){
-			System.out.println("buy me dammit");
 			money-=cost;
 			propertyOwned.add(tile);
 			tile.isBought(this);
@@ -99,5 +98,14 @@ public class Player{
 	
 	public String toString(){
 		return "Player name: " + name  + " Player race: " + race + " Player color: " + color.toString();
+	}
+	
+	public int getMoney(){
+		return money;
+	}
+
+	public void gamble(int gambleGame) {
+		money+=gambleGame;
+		
 	}
 }

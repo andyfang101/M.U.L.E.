@@ -12,8 +12,8 @@ import java.util.ArrayList;
 public class GameMain extends JFrame{
 	private static Player currPlayer;
 	private static int currRounds;
-	private static JLabel currTurnLabel; //change
-	private static JLabel currPlayerLabel;
+	//private static JLabel currTurnLabel; //change
+	//private static JLabel currPlayerLabel;
 	private static int startSeconds,currSeconds;
 	
 	public static void main(String[] args){
@@ -76,6 +76,7 @@ public class GameMain extends JFrame{
 				currPlayer = p;
 				map.setCurrRound(currRounds);
 				map.setCurrPlayerLabel(currPlayer.getName());
+				map.setCurrMoney(currPlayer.getMoney());
 
 				Calendar calendar = Calendar.getInstance();
 				startSeconds = calendar.get(Calendar.SECOND);
@@ -142,5 +143,6 @@ public class GameMain extends JFrame{
 	public static int getCurrTurns(){
 		return currRounds;
 	}
+	
 	
 }

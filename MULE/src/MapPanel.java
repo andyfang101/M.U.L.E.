@@ -11,9 +11,8 @@ public class MapPanel extends JPanel{
 	private Map map=null;
 	private GridLayout grid=null;
 	private boolean random; //implement random maps later
-	private JFrame frame;
-	private static JLabel curPlayerName;
-	private static JLabel currRoundLabel;
+	private GameMain frame;
+	private static JLabel curPlayerName, currRoundLabel, currMoney;
 	private static JLabel remainTime;
 	private JButton done;
 	private static boolean isDone;
@@ -21,7 +20,7 @@ public class MapPanel extends JPanel{
 	protected Player curPlayer;
 	private JPanel entire,sub;
 
-	public MapPanel(boolean random, JFrame frame){
+	public MapPanel(boolean random, GameMain frame){
 		this.frame=frame;
 		this.random = random;
 		
@@ -48,9 +47,11 @@ public class MapPanel extends JPanel{
 		curPlayerName = new JLabel("Current Player: " );
 		currRoundLabel = new JLabel("Current Round: ");
 		remainTime = new JLabel("Remaining Time: ");
+		currMoney = new JLabel("Money amount: ");
 		sub.add(curPlayerName);
 		sub.add(currRoundLabel);
 		sub.add(remainTime);
+		sub.add(currMoney);
 		done = new JButton("Done");
 		sub.add(done);
 		done.addActionListener(new DListener());
@@ -106,6 +107,10 @@ public class MapPanel extends JPanel{
 	
 	public void setRemainTime(int time){
 		remainTime.setText("Remaining Time: "+time);
+	}
+	
+	public void setCurrMoney(int money){
+		currMoney.setText("Money Amount: " + money);
 	}
 }
 

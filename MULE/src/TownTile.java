@@ -9,8 +9,8 @@ import javax.swing.JFrame;
 public class TownTile extends Tile{
 	
 	private Town town;
-	private JFrame frame;
-	public TownTile(Point p,  JFrame frame) {
+	private GameMain frame;
+	public TownTile(Point p,  GameMain frame) {
 		super(p);
 		this.frame = frame;
 		img = new ImageIcon("town.png");
