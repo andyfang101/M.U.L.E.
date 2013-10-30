@@ -17,7 +17,7 @@ public class Plain extends Tile {
 		super(location);
 		img = new ImageIcon("plain.png");
 		setIcon(img);
-		cost=40;
+		cost=160;
 		// TODO Auto-generated constructor stub
 	}
 

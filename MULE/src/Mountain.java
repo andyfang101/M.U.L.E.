@@ -17,7 +17,7 @@ public class Mountain extends Tile {
 		super(p);
 		img = new ImageIcon("mountain.png");
 		setIcon(img);
-		cost=70;
+		cost=200;
 	}
 	
 	

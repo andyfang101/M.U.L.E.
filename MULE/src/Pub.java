@@ -9,7 +9,12 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-
+/*
+ * This is the pub class that represents the pub store in the town
+ * It allows you to gamble and earn money
+ * @author Eileen Wang
+ * @Version 1.0 10/26/13
+ */
 public class Pub extends Building{
 
 	public Pub(GameMain frame, Player p, JPanel oldPanel) {
@@ -24,13 +29,19 @@ public class Pub extends Building{
 }
 
 /*
- * This is the gamble listener that allows the player 
+ * This is the gamble listener that allows the player to get additional money
  */
 
 class GambleListener implements ActionListener{
 	Player p;
 	GameMain frame;
 	JPanel oldpanel;
+	/*
+	 *Constructor for the gambelistener
+	 *@param Player - the player currently going
+	 *@frame - the game frame the game is stored in 
+	 *@JPanel oldPanel - the previous panel (in this case the town)
+	 */
 	public GambleListener(Player p, GameMain frame, JPanel oldpanel){
 		this.p=p;
 		this.frame=frame;

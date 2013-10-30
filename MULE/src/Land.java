@@ -18,7 +18,7 @@ public class Land extends Tile {
 		super(p);
 		img = new ImageIcon("grass.png.png");
 		setIcon(img);
-		cost=30;
+		cost=120;
 	}
 
 }
