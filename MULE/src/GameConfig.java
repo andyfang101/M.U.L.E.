@@ -43,6 +43,10 @@ public class GameConfig{
 		}
 	}
 	
+	/*
+	* Getter for number of players
+	* @return Number of players in game
+	*/
 	public int getNumPlayers(){
 		return numPlayers;
 	}
