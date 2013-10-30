@@ -65,6 +65,7 @@ public class Player{
 	}
 	
 	public int getScore(){
+		score = money/200+food+energy+ore;
 		return score;
 	}
 	
