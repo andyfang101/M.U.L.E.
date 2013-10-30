@@ -97,6 +97,7 @@ public class GameMain extends JFrame{
 				while(!p.isDone()){
 					map.setRemainTime((new GameMain()).getTime());
 					game.repaint();
+					map.setCurrMoney(currPlayer.getMoney());
 				}
 				p.setDone(false);
 				p.setVisited(false);
