@@ -46,6 +46,10 @@ public class Player{
 		ore = 0;
 	}
 	
+	/*
+	* Getter for player name
+	* @return Player name
+	*/
 	public String getName(){
 		return name;
 	}
@@ -64,27 +68,50 @@ public class Player{
 		return time;
 	}
 	
+	/*
+	* Getter for player score
+	* @return Player score
+	*/
 	public int getScore(){
 		score = money/200+food+energy+ore;
 		return score;
 	}
 	
+	/*
+	* Setter for player score
+	*/
 	public void setScore(int score){
 		this.score = score;
 	}
 	
+	/*
+	* Setter for whether player's turn is done
+	*/
 	public void setDone(boolean done){
 		this.done = done;
 	}
 	
+	/*
+	* Getter for player color
+	* @return Player color
+	*/
 	public Color getColor(){
 		return color;
 	}
 	
+	/*
+	* Getter for whether player's turn is done
+	*/
 	public boolean isDone(){
 		return done;
 	}
 	
+	/*
+	* Handles the buying of property by each plater
+	* @param cost Cost of property
+	* @param tile Type of property
+	* @return A boolean value indicating whether property purchase was successful
+	*/
 	public boolean buyProperty(int cost, Tile tile){
 		System.out.println("Is owned? " + tile.isOwned());
 		if(cost<=money && tile.isOwned()==false){
@@ -99,23 +126,43 @@ public class Player{
 			
 	}
 	
+	/*
+	* toString() method to return player name, race, and color
+	* @return Player name
+	* @return Player race
+	* @return Player color
+	*/
 	public String toString(){
 		return "Player name: " + name  + " Player race: " + race + " Player color: " + color.toString();
 	}
 	
+	/*
+	* Getter for player money
+	* @return Player money
+	*/
 	public int getMoney(){
 		return money;
 	}
 
+	/*
+	* Adds money earned from gambling to player money
+	*/
 	public void gamble(int gambleGame) {
 		money+=gambleGame;
 		
 	}
 	
+	/*
+	* Whether player has visited town
+	* @return Boolean indicating whether player has visited town
+	*/ 
 	public boolean hasVisited(){
 		return hasVisitedTown;
 	}
 	
+	/*
+	* Setter for whether player has visited town
+	*/
 	public void setVisited(boolean visit){
 		hasVisitedTown=visit;
 	}
