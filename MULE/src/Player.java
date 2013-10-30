@@ -54,7 +54,7 @@ public class Player{
 	 */
 	public int getTurnTime(int round){
 		int time = 50;
-		int foodRequire = (int)(Math.floor(round/4) +3);
+		int foodRequire = (int)(Math.floor((round-1)/4) +3);
 		if (food == 0){
 			time = 5;
 		}
