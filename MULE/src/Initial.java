@@ -41,7 +41,6 @@ public class Initial extends JPanel{
 
     /*
     * This is the constructor for the initial frame, has options to select difficulty, player number, and map size.
-    *
     */
     public Initial(JFrame frame) {
     	cont = false;
@@ -102,15 +101,27 @@ public class Initial extends JPanel{
         layout.setVerticalGroup(vGroup);
     }
     
+    /*
+    * Getter for continue variable
+    * @return Continue boolean
+    */
     public boolean getContinue(){
     	return cont;
     }
     
+    /*
+    * Getter for the number of players
+    * @return Number of players
+    */
     public int getNumPlayers(){
     	Integer numPlayers = new Integer(selectedPN);
     	return numPlayers.intValue();
     }
     
+    /*
+    * Checks if map is random
+    * @return Boolean for whether map is random
+    */
     public boolean isRandomMap(){
     	if(selectedMap.equals(maptype[1])){ //maptype[1] is the choice for random
     		return true;
