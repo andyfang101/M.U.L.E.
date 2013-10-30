@@ -121,23 +121,42 @@ public class PlayerConfig extends JPanel {
 		return playerColor;
 	}
 
-	
+	/*
+	* Getter for continue variable
+	* @return Continue variable
+	*/
 	public boolean getContinue(){
-    	return cont;
-    }
+    		return cont;
+    	}
 	
+	/*
+	* Getter for back variable
+	* @return Back variable
+	*/
 	public boolean getBack(){
 		return back;
 	}
 	
+	/*
+	* Getter for current player
+	* @return Current player
+	*/
 	public Player getPlayer(){
 		return player;
 	}
 	
+	/*
+	* Getter for player name
+	* @return Player name
+	*/
 	public String getName() {
 		return playerName;
 	}
 	
+	/*
+	* Getter for player color
+	* @return Player color
+	*/
 	public Color getColor() {
 		return playerColor;
 	}
@@ -213,6 +232,10 @@ public class PlayerConfig extends JPanel {
        		}
     	}
 	
+	/*
+	* Getter for array of players
+	* @return Players
+	*/
 	public ArrayList<Player> getPlayers(){
 		return playerList;
 	}
