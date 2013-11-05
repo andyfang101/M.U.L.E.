@@ -10,7 +10,7 @@ public class Player{
 	private String name;
 	private String race;
 	private Color color;
-	private int money,food,energy,ore,score;
+	private int money,food,energy,smithore,crystite,score;
 	private boolean done;
 	private ArrayList<Tile> propertyOwned;
 	private boolean hasVisitedTown;
@@ -43,7 +43,8 @@ public class Player{
 		
 		food = 8;
 		energy = 4;
-		ore = 0;
+		smithore = 0;
+		crystite = 0;
 	}
 	
 	/*
@@ -73,7 +74,7 @@ public class Player{
 	* @return Player score
 	*/
 	public int getScore(){
-		score = money/200+food+energy+ore;
+		score = money;
 		return score;
 	}
 	
@@ -152,6 +153,13 @@ public class Player{
 		
 	}
 	
+	public void sell(int foodNumber,int energyNumber,int smithoreNumber, int crystiteNumber,int amount){
+		food = food - foodNumber;
+		energy = energy - energyNumber;
+		smithore = smithore - smithoreNumber;
+		crystite = crystite - crystiteNumber;
+		money = money + amount;
+	}
 	/*
 	* Whether player has visited town
 	* @return Boolean indicating whether player has visited town
