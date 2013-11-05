@@ -39,7 +39,7 @@ public class Town extends JPanel{
 		StoreButton.setBorderPainted(false);  
 		StoreButton.setFocusPainted(false);  
 		StoreButton.setContentAreaFilled(false);
-		StoreButton.addActionListener(new StoreListener());
+		StoreButton.addActionListener(new StoreListener(oldPanel));
 		
 		JButton PubButton = new JButton();  
 		PubButton.setIcon(new ImageIcon("pub.png"));
@@ -79,10 +79,16 @@ public class Town extends JPanel{
 	 */
 	private class StoreListener implements ActionListener
     {
+		JPanel oldPanel;
+		public StoreListener(JPanel oldPanel){
+			this.oldPanel=oldPanel;
+		}
        public void actionPerformed (ActionEvent event)
     	{
-    	   
+    		StorePanel p = new StorePanel(frame, GameMain.getCurrPlayer(), oldPanel);
+			frame.setContentPane(p);
     	}
+
     }
 	/*
 	 * Pub action listener
