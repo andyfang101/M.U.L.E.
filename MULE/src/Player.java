@@ -114,7 +114,6 @@ public class Player{
 	* @return A boolean value indicating whether property purchase was successful
 	*/
 	public boolean buyProperty(int cost, Tile tile){
-		System.out.println("Is owned? " + tile.isOwned());
 		if(cost<=money && tile.isOwned()==false){
 			money-=cost;
 			propertyOwned.add(tile);
@@ -173,5 +172,13 @@ public class Player{
 	*/
 	public void setVisited(boolean visit){
 		hasVisitedTown=visit;
+	}
+	
+	public void gainResources(int foodNum, int energyNum, int smithNum, int crysNum, int amt){
+		food+=foodNum;
+		energy+=energyNum;
+		smithore+=smithNum;
+		crystite+=crysNum;
+		money+=amt;
 	}
 }

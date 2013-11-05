@@ -70,7 +70,6 @@ public class MapPanel extends JPanel{
 	}
 	
 	public void setCurPlayer(Player p){
-		System.out.println("I am settings!!!");
 		curPlayer = GameMain.getCurrPlayer();
 		
 	}

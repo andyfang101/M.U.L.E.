@@ -86,7 +86,6 @@ public class GameMain extends JFrame{
 				(new GameMain()).turnTimer();
 				
 
-				System.out.println("Current Player " + currPlayer.getName());
 				//Cycle through playerlist, while!done\
 				map.setCurPlayer(p);
 				
