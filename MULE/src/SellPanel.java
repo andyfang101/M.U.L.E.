@@ -111,6 +111,8 @@ public class SellPanel extends Building{
 	    	   else{
 	    		   int amount = fd*FoodPrice + eg*EnergyPrice+ so*SmithorePrice+co*CrystitePrice;
 	    		   p.sell(fd, eg, so, co, amount);
+	    		   JOptionPane.showMessageDialog(null,
+						    "DONE!");
 	    	   }
 	    	   pFoodN.setText(" " + p.getFood());
 	    	   pEnergyN.setText(" " + p.getEnergy());
