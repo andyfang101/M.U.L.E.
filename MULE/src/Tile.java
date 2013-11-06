@@ -106,9 +106,9 @@ public abstract	class Tile extends JButton{
 			}
 			}
 			else{
-
+				p.lostMule();
 				JOptionPane.showMessageDialog(null,
-					    "You don't own this tile.. Can't put a mule on it");
+					    "You don't own this tile.. Can't put a mule on it, so you lost you mule");
 			}
 
 			p.setEmplace(false);
