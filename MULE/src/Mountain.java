@@ -21,6 +21,7 @@ public class Mountain extends Tile {
 		super(p);
 		Random rand = new Random();
 		img = new ImageIcon("mountain.png");
+		imgm = new ImageIcon("mountainm.png");
 		setIcon(img);
 		cost=200;
 		mntType=rand.nextInt(2);

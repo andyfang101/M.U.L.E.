@@ -16,11 +16,13 @@ public class Plain extends Tile {
 	public Plain(Point location) {
 		super(location);
 		img = new ImageIcon("plain.png");
+		imgm = new ImageIcon("plainm.png");
 		setIcon(img);
 		cost=160;
 		// TODO Auto-generated constructor stub
 	}
 	
+	@Override
 	public void produce(int type, Player p){
 		if(type==Item.FOOD)
 			p.gainResources(2,0,0,0,0);

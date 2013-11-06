@@ -49,8 +49,8 @@ public class Player{
 		energy = 4;
 		smithore = 0;
 		crystite = 0;
-		//preMule= new Mule();
-		//preMule.setOwner(this);
+		preMule= new Mule();
+		preMule.setOwner(this);
 	}
 	
 	/*
@@ -158,6 +158,14 @@ public class Player{
 		
 	}
 	
+	/**
+	 * Allows player to sell this amount of resources
+	 * @param foodNum - how much food
+	 * @param energyNum - how much energy
+	 * @param smithNum - how much smithore
+	 * @param crysNum - how much crystite
+	 * @param amt - how much money
+	 */
 	public void sell(int foodNumber,int energyNumber,int smithoreNumber, int crystiteNumber,int amount){
 		food = food - foodNumber;
 		energy = energy - energyNumber;
@@ -180,6 +188,14 @@ public class Player{
 		hasVisitedTown=visit;
 	}
 	
+	/*
+	 * Allows player to gain these resources
+	 * @param foodNum - how much food
+	 * @param energyNum - how much energy
+	 * @param smithNum - how much smithore
+	 * @param crysNum - how much crystite
+	 * @param amt - how much money
+	 */
 	public void gainResources(int foodNum, int energyNum, int smithNum, int crysNum, int amt){
 		food+=foodNum;
 		energy+=energyNum;
@@ -188,6 +204,10 @@ public class Player{
 		money+=amt;
 	}
 	
+	/**
+	 * Checking whether or not a player owns a mule to be emplaced
+	 * @return whether or not player owns a mule
+	 */
 	public boolean ownsMule(){
 		if(preMule!=null)
 			return true;
@@ -195,6 +215,12 @@ public class Player{
 			return false;
 	}
 	
+	/**
+	 * Placing a mule on a tile
+	 * @param tile - the tile the mule is to be placed on
+	 * @param type - the type of mule the player whats it to be
+	 * @return - whether or not the player was successful
+	 */
 	public boolean emplaceMule(Tile tile, int type){
 		if(preMule!=null){
 			preMule.emplace(tile);
@@ -208,6 +234,11 @@ public class Player{
 		}
 	}
 	
+	/**
+	 * Player buys a mule
+	 * @param amt how much the mule costs
+	 * @return if purchase was successful
+	 */
 	public boolean buyMule(int amt){
 		if(money>=amt){
 			money-=amt;
@@ -218,6 +249,10 @@ public class Player{
 		
 	}
 	
+	/**
+	 * setting the player as wanting to emplace a mule
+	 * @param emplace - whether or not player wnats to emplace a mule
+	 */
 	public void setEmplace(boolean emplace){
 	 this.emplace=emplace;
 	}
@@ -225,24 +260,43 @@ public class Player{
 		return emplace;
 	}
 	
-
+	/**
+	 * Getter for food
+	 * @int - how much food player has
+	 */
 	public int getFood(){
 		return food;
 	}
 	
+	/**
+	 * getter for energy
+	 * @int - energy amount
+	 */
 	public int getEnergy(){
 		return energy;
 	}
 	
+	/**
+	 * Getter for smithore
+	 * @return how much smithore
+	 */
 	public int getSmithore(){
 		return smithore;
 	}
 	
+	/**
+	 * Getter for crystite
+	 * @return how much crystite
+	 */
 	public int getCrystite(){
 		return crystite;
 	}
 	
-
+	/**
+	 * Checking if the player owns that tile
+	 * @param tile
+	 * @return - wehther or not if that player owns that tile
+	 */
 	public boolean ownsTile(Tile tile){
 		for(Tile t: propertyOwned){
 			if(tile.equals(t)){
@@ -252,6 +306,9 @@ public class Player{
 		return false;
 	}
 	
+	/**
+	 * Has all the mules produce that the player owns
+	 */
 	public void produceFromMules(){
 		for(Mule m: mulesOwned){
 			m.produce();

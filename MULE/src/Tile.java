@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
 public abstract	class Tile extends JButton{
 	
 	protected ImageIcon img;
+	protected ImageIcon imgm; //img with mule
 	protected Point location; 
 	protected boolean isOwned;
 	protected Player owner;
@@ -24,23 +25,33 @@ public abstract	class Tile extends JButton{
 		this.location=location;
 		cost = 20;
 		tileListener = new buyListener(this);
+		imgm = new ImageIcon("mountainm.png");
 		addActionListener(tileListener);
 		isOwned=false;
 		
 	}
 	
+	/*
+	 * Setting the tile to bought
+	 * @param p - setting the player as owner
+	 */
 	public void isBought(Player p){
 		owner = p;
 		isOwned=true;
 	}
 	
-	public void produce(int type){
-	}
-	
+	/*
+	 * getter for whether or not tile is owned
+	 * @boolean - whether or not tile is owned
+	 */
 	public boolean isOwned(){
 		return isOwned;
 	}
 	
+	/*
+	 * checking if two tiles ar equal to each other
+	 * @boolean - checking if the tile is the same as the one being checked with
+	 */
 	public boolean equals(Tile tile){
 	 if(tile.getLocation().equals(location))
 		 return true;
@@ -48,10 +59,26 @@ public abstract	class Tile extends JButton{
 		 return false;
 	}
 	
+	/*
+	 * (non-Javadoc)
+	 * @see java.awt.Component#getLocation()
+	 */
 	public Point getLocation(){
 		return location;
 	}
 	
+	/*
+	 * Changing the Image of the tile to one where the mule is placed on it
+	 */
+	public void changeImageMule(){
+		setIcon(imgm);
+	}
+
+	/*
+	 * The Actionlistener that either places a mule on the tile or
+	 * allows the player to buy the mule depending on what the
+	 * player intends to do
+	 */
  class buyListener implements ActionListener{
 	 private Tile tile;
 	 private Player p;
@@ -71,6 +98,8 @@ public abstract	class Tile extends JButton{
 				        null, muleTypes, muleTypes[0]);
 				System.out.println(action);
 				p.emplaceMule(tile, action);
+				tile.changeImageMule();
+				
 			}else{
 				JOptionPane.showMessageDialog(null,
 					    "Sorry...first you need a mule!");
@@ -137,7 +166,6 @@ public abstract	class Tile extends JButton{
  }
 
 public void produce(int type, Player p) {
-	// TODO Auto-generated method stub
 	
 }
 

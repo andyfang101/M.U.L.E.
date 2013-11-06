@@ -16,6 +16,7 @@ public class River extends Tile {
 	public River(Point location) {
 		super(location);
 		img = new ImageIcon("river.png");
+		imgm = new ImageIcon("riverm.png");
 		setIcon(img);
 		cost=500;
 		// TODO Auto-generated constructor stub
