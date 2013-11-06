@@ -38,6 +38,21 @@ public class StorePanel extends Building{
 			frame.setContentPane(p);
     	}
     }
+    
+    private class BuyListener implements ActionListener{
+        Player p;
+        GameMain frame;
+        JPanel oldPanel;
+        public BuyListener(Player p, GameMain frame, JPanel oldPanel){
+            this.p = p;
+            this.frame = frame;
+            this.oldPanel = oldPanel;
+        }
+        public void actionPerformed(ActionEvent event){
+            BuyPanel p = new BuyPanel(frame, GameMain.getCurrPlayer(), oldPanel);
+            frame.setContentPane(p);
+        }
+    }
 }
 
 
