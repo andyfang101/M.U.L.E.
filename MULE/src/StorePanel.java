@@ -17,6 +17,7 @@ public class StorePanel extends Building{
 		JButton Sell = new JButton("Sell");
 		JButton Back = new JButton("Back");
 		Sell.addActionListener(new SellListener(p, frame, oldPanel));
+		Buy.addActionListener(new BuyListener(p, frame, oldPanel));
 		add(Buy);
 		add(Sell);
 		add(Back);
