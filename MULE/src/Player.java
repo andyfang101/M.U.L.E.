@@ -241,6 +241,18 @@ public class Player{
 		if(preMule!=null){
 			preMule.emplace(tile);
 			preMule.setMuleType(type);
+			if (type == 0){
+				money = money -75;
+			}
+			if (type == 1){
+				money = money -25;
+			}
+			if (type == 2){
+				money = money -50;
+			}
+			if (type == 3){
+				money = money -100;
+			}
 			mulesOwned.add(preMule);
 			preMule=null;
 			return true;
