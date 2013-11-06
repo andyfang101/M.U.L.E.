@@ -148,21 +148,6 @@ public class Player{
 		return money;
 	}
 
-	public int getFood(){
-		return food;
-	}
-	
-	public int getEnergy(){
-		return energy;
-	}
-	
-	public int getSmithore(){
-		return smithore;
-	}
-	
-	public int getCrystite(){
-		return crystite;
-	}
 	/*
 	* Adds money earned from gambling to player money
 	*/
@@ -177,7 +162,6 @@ public class Player{
 		smithore = smithore - smithoreNumber;
 		crystite = crystite - crystiteNumber;
 		money = money + amount;
-		System.out.println("Food"+food);
 	}
 	/*
 	* Whether player has visited town
