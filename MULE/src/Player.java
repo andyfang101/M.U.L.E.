@@ -173,6 +173,23 @@ public class Player{
 		crystite = crystite - crystiteNumber;
 		money = money + amount;
 	}
+	
+	/**
+	 * Allows player to but this amount of resources
+	 * @param foodNum - how much food
+	 * @param energyNum - how much energy
+	 * @param smithNum - how much smithore
+	 * @param crysNum - how much crystite
+	 * @param amt - how much money
+	 */
+	public void buy(int foodNumber,int energyNumber,int smithoreNumber, int crystiteNumber,int amount){
+		food = food + foodNumber;
+		energy = energy + energyNumber;
+		smithore = smithore + smithoreNumber;
+		crystite = crystite + crystiteNumber;
+		money = money - amount;
+	}
+	
 	/*
 	* Whether player has visited town
 	* @return Boolean indicating whether player has visited town
