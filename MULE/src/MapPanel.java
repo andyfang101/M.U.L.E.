@@ -54,7 +54,7 @@ public class MapPanel extends JPanel{
 		sub.add(currMoney);
 		done = new JButton("Done");
 		sub.add(done);
-		done.addActionListener(new DListener());
+		done.addActionListener(new DListener(frame));
 		currRound = 1;
 		entire.add(this);
 		entire.add(sub);
@@ -114,8 +114,13 @@ public class MapPanel extends JPanel{
 }
 
 class DListener implements ActionListener{
+	GameMain frame;
+	public DListener(GameMain frame){
+		this.frame = frame;
+	}
 	public void actionPerformed(ActionEvent event) {
 		Player p = GameMain.getCurrPlayer();
 		p.setDone(true);
+		frame.cancelTimer();
 	}
 }

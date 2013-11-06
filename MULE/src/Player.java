@@ -213,4 +213,21 @@ public class Player{
 	public boolean getWantEmplace(){
 		return emplace;
 	}
+	
+
+	public int getFood(){
+		return food;
+	}
+	
+	public int getEnergy(){
+		return energy;
+	}
+	
+	public int getSmithore(){
+		return smithore;
+	}
+	
+	public int getCrystite(){
+		return crystite;
+	}
 }

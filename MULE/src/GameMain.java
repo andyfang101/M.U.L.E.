@@ -11,6 +11,7 @@ import java.util.ArrayList;
 public class GameMain extends JFrame{
 	private static Player currPlayer;
 	private static int currRounds;
+	static Timer timer;
 	//private static JLabel currTurnLabel; //change
 	//private static JLabel currPlayerLabel;
 	private static int startSeconds,currSeconds;
@@ -116,14 +117,19 @@ public class GameMain extends JFrame{
 	 */
 	public void turnTimer() {
     		int turnTime = currPlayer.getTurnTime(currRounds);
-    		Timer timer = new Timer();
-    		timer.schedule(new TimerTask() {
-    			public void run() {
-    				currPlayer.setDone(true);
-    			}
-    		}, turnTime*1000);
+    		timer = new Timer();
+    		timer.schedule(new RunTask(), turnTime*1000);
     	}
 	
+	public void cancelTimer(){
+		timer.cancel();
+	}
+	class RunTask extends TimerTask {
+        public void run() {
+        	currPlayer.setDone(true);
+            timer.cancel(); //Terminate the timer thread
+        }
+    }
 	/*
 	 * This method is to get player's time left
 	 */
