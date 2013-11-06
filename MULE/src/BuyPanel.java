@@ -12,7 +12,8 @@ public class BuyPanel extends Building{
 	private JLabel pFood,pEnergy,pSmithore,pCrystite;
 	private JLabel pFoodN,pEnergyN,pSmithoreN,pCrystiteN;
 	private JPanel top,left,right,bottom,entire;
-	public buyPanel(GameMain frame, Player p, JPanel oldPanel) {
+	
+	public BuyPanel(GameMain frame, Player p, JPanel oldPanel) {
 		super(frame, p, oldPanel);
 		
 		top = new JPanel();
