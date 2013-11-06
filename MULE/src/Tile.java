@@ -4,6 +4,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 
 /*
@@ -34,27 +35,54 @@ public abstract	class Tile extends JButton{
 	}
 	
 	public void produce(int type){
-		
 	}
 	
 	public boolean isOwned(){
 		return isOwned;
 	}
 	
+	public boolean equals(Tile tile){
+	 if(tile.getLocation().equals(location))
+		 return true;
+	 else
+		 return false;
+	}
+	
+	public Point getLocation(){
+		return location;
+	}
+	
  class buyListener implements ActionListener{
 	 private Tile tile;
 	 private Player p;
+	 private String [] muleTypes = {"Smithore", "Energy", "Food", "Crystite"};
 	 
 	 public buyListener(Tile tile){
 		 this.tile=tile;
 	 }
 	@Override
 	public void actionPerformed(ActionEvent e) {
-
 		p=GameMain.getCurrPlayer();
-		
 		if(p.getWantEmplace()){
-			
+			if(p.ownsTile(tile)){
+			if(p.ownsMule()){  
+				int action = JOptionPane.showOptionDialog(null, "What will you do?", "action",
+				        JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE,
+				        null, muleTypes, muleTypes[0]);
+				System.out.println(action);
+				p.emplaceMule(tile, action);
+			}else{
+				JOptionPane.showMessageDialog(null,
+					    "Sorry...first you need a mule!");
+			}
+			}
+			else{
+
+				JOptionPane.showMessageDialog(null,
+					    "You don't own this tile.. Can't put a mule on it");
+			}
+
+			p.setEmplace(false);
 		}
 		else{
 		if(!isOwned){ //note to fix

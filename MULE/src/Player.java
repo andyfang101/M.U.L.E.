@@ -49,6 +49,8 @@ public class Player{
 		energy = 4;
 		smithore = 0;
 		crystite = 0;
+		//preMule= new Mule();
+		//preMule.setOwner(this);
 	}
 	
 	/*
@@ -186,9 +188,17 @@ public class Player{
 		money+=amt;
 	}
 	
-	public boolean emplaceMule(Tile tile){
+	public boolean ownsMule(){
+		if(preMule!=null)
+			return true;
+		else
+			return false;
+	}
+	
+	public boolean emplaceMule(Tile tile, int type){
 		if(preMule!=null){
 			preMule.emplace(tile);
+			preMule.setMuleType(type);
 			mulesOwned.add(preMule);
 			preMule=null;
 			return true;
@@ -202,6 +212,7 @@ public class Player{
 		if(money>=amt){
 			money-=amt;
 			preMule=new Mule();
+			preMule.setOwner(this);
 		}
 			return false;
 		
@@ -229,5 +240,21 @@ public class Player{
 	
 	public int getCrystite(){
 		return crystite;
+	}
+	
+
+	public boolean ownsTile(Tile tile){
+		for(Tile t: propertyOwned){
+			if(tile.equals(t)){
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public void produceFromMules(){
+		for(Mule m: mulesOwned){
+			m.produce();
+		}
 	}
 }

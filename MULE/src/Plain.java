@@ -20,5 +20,19 @@ public class Plain extends Tile {
 		cost=160;
 		// TODO Auto-generated constructor stub
 	}
+	
+	public void produce(int type, Player p){
+		if(type==Item.FOOD)
+			p.gainResources(2,0,0,0,0);
+		else if(type==Item.ENERGY)
+			p.gainResources(0,3,0,0,0);
+		else if(type==Item.SMITHORE){
+			p.gainResources(0, 0, 1,0,0);
+		}
+		else if(type==Item.CRYSTITE){
+			int crystite= (GameMain.getCurrTurns()/ 3) +2;
+			p.gainResources(0, 0, 0, crystite, 0);
+		}
+	}
 
 }

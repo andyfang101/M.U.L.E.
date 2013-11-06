@@ -92,7 +92,7 @@ public class GameMain extends JFrame{
 				
 				game.repaint();
 				//p.takeTurn();
-
+				p.produceFromMules();
 				//}
 				while(!p.isDone()){
 					map.setRemainTime((new GameMain()).getTime());
@@ -100,6 +100,7 @@ public class GameMain extends JFrame{
 					map.setCurrMoney(currPlayer.getMoney());
 				}
 				p.setDone(false);
+				p.setEmplace(false);
 				p.setVisited(false);
 				game.repaint();
 				if(map.gameOver(currRounds))

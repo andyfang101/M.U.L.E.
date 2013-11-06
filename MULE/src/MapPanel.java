@@ -19,7 +19,7 @@ public class MapPanel extends JPanel{
 	private int currRound;
 	protected Player curPlayer;
 	private JPanel entire,sub;
-
+	private JButton emplaceMule;
 	public MapPanel(boolean random, GameMain frame){
 		this.frame=frame;
 		this.random = random;
@@ -32,6 +32,8 @@ public class MapPanel extends JPanel{
 		//System.out.println(this.toString());
 		grid = new GridLayout(Map.NUM_ROW, Map.NUM_COL);
 		setLayout(grid);
+		JButton emplaceMule = new JButton("Emplace a mule!");
+		emplaceMule.addActionListener(new emplaceListener());
 		JButton[][] buttons = map.getMap();
 
 		for(int r=0; r<buttons.length; r++){
@@ -54,6 +56,7 @@ public class MapPanel extends JPanel{
 		sub.add(currMoney);
 		done = new JButton("Done");
 		sub.add(done);
+		sub.add(emplaceMule);
 		done.addActionListener(new DListener(frame));
 		currRound = 1;
 		entire.add(this);
@@ -122,5 +125,14 @@ class DListener implements ActionListener{
 		Player p = GameMain.getCurrPlayer();
 		p.setDone(true);
 		frame.cancelTimer();
+	}
+}
+
+class emplaceListener implements ActionListener{
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		Player p = GameMain.getCurrPlayer();
+		p.setEmplace(true);
 	}
 }
