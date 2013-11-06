@@ -49,8 +49,7 @@ public class Player{
 		energy = 4;
 		smithore = 0;
 		crystite = 0;
-		preMule= new Mule();
-		preMule.setOwner(this);
+
 	}
 	
 	/*
@@ -277,6 +276,13 @@ public class Player{
 		return emplace;
 	}
 	
+	public void lostMule(){
+		preMule = null;
+	}
+	
+	public void setMuleType(int price){
+		money = money - price;
+	}
 	/**
 	 * Getter for food
 	 * @int - how much food player has
