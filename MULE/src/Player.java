@@ -14,6 +14,9 @@ public class Player{
 	private boolean done;
 	private ArrayList<Tile> propertyOwned;
 	private boolean hasVisitedTown;
+	private ArrayList<Mule> mulesOwned; //mules on property
+	private Mule preMule; //Mule that still has not be used
+	private boolean emplace;
 	
 	/*
 	* This is the constructor that instantiates the Player
@@ -30,6 +33,7 @@ public class Player{
 		this.color = color;
 		done=false;
 		hasVisitedTown=false;
+		mulesOwned = new ArrayList<Mule>();
 		propertyOwned = new ArrayList<Tile>();
 		
 		if (race == "Flapper"){
@@ -180,5 +184,33 @@ public class Player{
 		smithore+=smithNum;
 		crystite+=crysNum;
 		money+=amt;
+	}
+	
+	public boolean emplaceMule(Tile tile){
+		if(preMule!=null){
+			preMule.emplace(tile);
+			mulesOwned.add(preMule);
+			preMule=null;
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+	
+	public boolean buyMule(int amt){
+		if(money>=amt){
+			money-=amt;
+			preMule=new Mule();
+		}
+			return false;
+		
+	}
+	
+	public void setEmplace(boolean emplace){
+	 this.emplace=emplace;
+	}
+	public boolean getWantEmplace(){
+		return emplace;
 	}
 }

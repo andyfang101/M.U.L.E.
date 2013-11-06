@@ -6,7 +6,7 @@ public abstract class Item {
 	public final static int SMITHORE = 1;
 	public final static int ENERGY =2;
 	public final static int FOOD=3; 
-	public final static int SMITHITE=4;
+	public final static int CRYSTITE=4;
 	protected int type;
 	
 	public Item(){

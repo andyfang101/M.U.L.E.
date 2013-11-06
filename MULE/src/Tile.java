@@ -33,6 +33,10 @@ public abstract	class Tile extends JButton{
 		isOwned=true;
 	}
 	
+	public void produce(int type){
+		
+	}
+	
 	public boolean isOwned(){
 		return isOwned;
 	}
@@ -48,6 +52,11 @@ public abstract	class Tile extends JButton{
 	public void actionPerformed(ActionEvent e) {
 
 		p=GameMain.getCurrPlayer();
+		
+		if(p.getWantEmplace()){
+			
+		}
+		else{
 		if(!isOwned){ //note to fix
 			int askBuy=0;
 			if(GameMain.getCurrTurns()<=2){
@@ -95,7 +104,13 @@ public abstract	class Tile extends JButton{
 		}
 		
 	}
+	}
 	 
  }
+
+public void produce(int type, Player p) {
+	// TODO Auto-generated method stub
+	
+}
 
 }
