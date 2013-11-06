@@ -5,7 +5,9 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-
+/*
+ * This is the panel for selling to store
+ */
 public class SellPanel extends Building{
 	private int FoodPrice,EnergyPrice,SmithorePrice,CrystitePrice;
 	private JLabel Sell,Food,Energy,Smithore,Crystite;
@@ -87,6 +89,9 @@ public class SellPanel extends Building{
 		entire.add(bottom,BorderLayout.PAGE_END);
 		add(entire);
 	}
+	/*
+	 * This is the action listener for selling
+	 */
 	  private class SellListener implements ActionListener
 	    {
 	    	Player p;
@@ -121,7 +126,9 @@ public class SellPanel extends Building{
 
 	    	}
 	    }
-	  
+	  /*
+	   * This is the panel for back
+	   */
 		private class BackListener implements ActionListener
 	    {
 	    	Player p;
