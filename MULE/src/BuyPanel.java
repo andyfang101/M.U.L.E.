@@ -5,6 +5,9 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+/*
+ * This is the panel for buying resources
+ */
 public class BuyPanel extends Building{
 	private int FoodPrice,EnergyPrice,SmithorePrice,CrystitePrice;
 	private JLabel Buy,Food,Energy,Smithore,Crystite;
@@ -26,10 +29,10 @@ public class BuyPanel extends Building{
 		left.setLayout(new GridLayout(0,2));
 		right.setLayout(new GridLayout(0,2));
 		
-		FoodPrice = 20;
-		EnergyPrice = 15;
-		SmithorePrice = 30;
-		CrystitePrice = 50;
+		FoodPrice = 35;
+		EnergyPrice = 25;
+		SmithorePrice = 100;
+		CrystitePrice = 100;
 		
 		Buy = new JLabel("What amount would you like to buy?");
 		Food = new JLabel("Food:");
@@ -55,10 +58,12 @@ public class BuyPanel extends Building{
 		
 		JButton buy = new JButton("buy");
 		JButton back = new JButton("Back");
+		JButton buyMule = new JButton("Buy Mule");
 		buy.addActionListener(new buyListener(p, frame, oldPanel));
 		back.addActionListener(new BackListener(p, frame, oldPanel));
+		buyMule.addActionListener(new BuyMListener(p, frame, oldPanel));
 
-		top.add(buy);
+		top.add(Buy);
 		left.add(Food);
 		left.add(foodNumber);
 		left.add(Energy);
@@ -77,7 +82,7 @@ public class BuyPanel extends Building{
 		right.add(pCrystite);
 		right.add(pCrystiteN);
 
-
+		bottom.add(buyMule);
 		bottom.add(buy);
 		bottom.add(back);
 
@@ -87,6 +92,9 @@ public class BuyPanel extends Building{
 		entire.add(bottom,BorderLayout.PAGE_END);
 		add(entire);
 	}
+	/*
+	 * This is the action listener for buying
+	 */
 	  private class buyListener implements ActionListener
 	    {
 	    	Player p;
@@ -119,7 +127,9 @@ public class BuyPanel extends Building{
 
 	    	}
 	    }
-	  
+	  /*
+	   * This is the action listener for back
+	   */
 		private class BackListener implements ActionListener
 	    {
 	    	Player p;
@@ -133,6 +143,26 @@ public class BuyPanel extends Building{
 	       public void actionPerformed (ActionEvent event)
 	    	{
 	    	   frame.setContentPane(oldpanel);
+	    	}
+	    }
+		
+		/*
+		 * This is the action listener for buying mule
+		 */
+		private class BuyMListener implements ActionListener
+	    {
+	    	Player p;
+	    	GameMain frame;
+	    	JPanel oldpanel;
+			public BuyMListener(Player p, GameMain frame, JPanel oldpanel){
+	    		this.p=p;
+	    		this.frame=frame;
+	    		this.oldpanel=oldpanel;
+			}
+	       public void actionPerformed (ActionEvent event)
+	    	{
+	    	   p.buyMule(100);
+	    	   JOptionPane.showMessageDialog(null,"You got a mule!");
 	    	}
 	    }
 }
