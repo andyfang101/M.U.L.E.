@@ -225,8 +225,10 @@ public class Player{
 	 * @return whether or not player owns a mule
 	 */
 	public boolean ownsMule(){
-		if(preMule!=null)
+		if(preMule!=null){
+			System.out.println("This is owned");
 			return true;
+		}
 		else
 			return false;
 	}
@@ -271,6 +273,7 @@ public class Player{
 		if(money>=amt){
 			money-=amt;
 			preMule=new Mule();
+			System.out.println("here");
 			preMule.setOwner(this);
 		}
 			return false;
@@ -344,9 +347,16 @@ public class Player{
 	/**
 	 * Has all the mules produce that the player owns
 	 */
-	public void produceFromMules(){
+	public boolean produceFromMules(){
+		boolean hasEnergy=true;
+		boolean temp=true;
 		for(Mule m: mulesOwned){
-			m.produce();
+			hasEnergy=m.produce();
+			if(!hasEnergy)
+				temp=false;
+			
 		}
+		
+		return temp;
 	}
 }

@@ -96,7 +96,6 @@ public abstract	class Tile extends JButton{
 				int action = JOptionPane.showOptionDialog(null, "What will you do?", "action",
 				        JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE,
 				        null, muleTypes, muleTypes[0]);
-				System.out.println(action);
 				p.emplaceMule(tile, action);
 				tile.changeImageMule();
 				

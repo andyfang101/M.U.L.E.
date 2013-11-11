@@ -21,8 +21,13 @@ public class Mule extends Item{
 	/**
 	 * This produces resources based on the tile the Mule is located at.
 	 */
-	public void produce(){
+	public boolean produce(){
+		if(owner.getEnergy()>0){
 		tileType.produce(type, owner);
+		owner.sell(0, 1, 0, 0, 0);
+		return true;
+		}
+		return false;
 	}
 	
 	/**

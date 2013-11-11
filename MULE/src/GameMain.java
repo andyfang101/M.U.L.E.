@@ -1,4 +1,5 @@
 import javax.swing.*;
+
 import java.util.Calendar;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -92,7 +93,10 @@ public class GameMain extends JFrame{
 				
 				game.repaint();
 				//p.takeTurn();
-				p.produceFromMules();
+				boolean hasEnergy=p.produceFromMules();
+				if(!hasEnergy)
+					JOptionPane.showMessageDialog(null,
+						    "You ran out of energy at one point... so your mules stopped producing");
 				//}
 				while(!p.isDone()){
 					map.setRemainTime((new GameMain()).getTime());
