@@ -1,3 +1,5 @@
+import java.awt.Color;
+import java.awt.Insets;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -6,6 +8,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.swing.border.Border;
 
 /*
  * A class that represents a Tile on the map
@@ -28,6 +31,8 @@ public abstract	class Tile extends JButton{
 		imgm = new ImageIcon("mountainm.png");
 		addActionListener(tileListener);
 		isOwned=false;
+		setMargin(new Insets(1, 1, 1, 1));
+
 		
 	}
 	
