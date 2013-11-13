@@ -3,7 +3,7 @@ import java.sql.DriverManager;
 import java.sql.Statement;
 
 
-public abstract class DatabaseManager {
+public class DatabaseManager {
 	protected Connection conn;
 	protected Statement stat;
 	public DatabaseManager(){
