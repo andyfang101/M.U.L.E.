@@ -109,6 +109,7 @@ public class GameMain extends JFrame{
 					break;
 				default: m = 0;
 					break;
+			}
 			//This will reorder the players from lowest score to highest
 			for(int i=0; i<players.size(); i++){ 
 				for(int j=i-1; j>=0; j--){
