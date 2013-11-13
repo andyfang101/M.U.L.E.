@@ -21,10 +21,14 @@ public class GameMain extends JFrame{
 	 * Main method
 	 */
 	public static void main(String[] args){
+		DatabaseManager DbMan = new DatabaseManager();
+		
 		ArrayList<Player> players = new ArrayList<Player>();
 		GameMain game = new GameMain();
 		Initial initial;
 		boolean back;
+		boolean loadedGame = true;
+		int gameID = 1;
 		
 		do{
 			back = false;
@@ -32,33 +36,41 @@ public class GameMain extends JFrame{
 			while(!initial.getContinue()){
 				game.repaint();
 			}
-			for(int i = initial.getNumPlayers(); i>0; i--){
-				PlayerConfig pConfig = new PlayerConfig(game);
-				while(!pConfig.getContinue()){
-					game.repaint();
-					if(pConfig.getBack()){
+			if(loadedGame){
+				DbMan.load(gameID);
+				players = DbMan.getPlayers();
+			}
+			else{
+				for(int i = initial.getNumPlayers(); i>0; i--){
+					PlayerConfig pConfig = new PlayerConfig(game);
+					while(!pConfig.getContinue()){
+						game.repaint();
+						if(pConfig.getBack()){
+							i++;
+							if(i>initial.getNumPlayers())
+								back = true;
+							else
+								players.remove(initial.getNumPlayers() - i);
+							break;
+						}
+					}
+					if(!pConfig.getBack())
+						players.add(pConfig.getPlayer());
+					else
 						i++;
-						if(i>initial.getNumPlayers())
-							back = true;
-						else
-							players.remove(initial.getNumPlayers() - i);
+					if(back){
+						game.setContentPane(initial);
 						break;
 					}
-				}
-				if(!pConfig.getBack())
-					players.add(pConfig.getPlayer());
-				else
-					i++;
-				if(back){
-					game.setContentPane(initial);
-					break;
 				}
 			}
 		}
 		while(back);
-		
-		
-		MapPanel map = new MapPanel(false, game); //CHANGE FALSE TO BOOL RANDOM
+		MapPanel map;
+//		if(loadedGame)
+//			;
+//		else 
+			map = new MapPanel(initial.isRandomMap(), game); //CHANGE FALSE TO BOOL RANDOM
 		game.validate();
 		game.repaint();
 		

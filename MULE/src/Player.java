@@ -25,12 +25,22 @@ public class Player{
 	*@color - the color repesenting that player
 	*/
 
-	public Player(String name, String race, Color color){
+	public Player(String name, String race, String color){
 		int i = 0;
 		
 		this.name = name;
 		this.race = race;
-		this.color = color;
+		
+		if (color.equals("Red"))
+ 			this.color = Color.RED;
+	 	else if (color.equals("Yellow"))
+	 		this.color = Color.YELLOW;
+	 	else if (color.equals("Green"))
+	 		this.color = Color.GREEN;
+	 	else if (color.equals("Blue"))
+	 		this.color = Color.BLUE;
+	 	
+		
 		done=false;
 		hasVisitedTown=false;
 		mulesOwned = new ArrayList<Mule>();
@@ -95,6 +105,50 @@ public class Player{
 	*/
 	public void setDone(boolean done){
 		this.done = done;
+	}
+	
+	/*
+	 * Setter for the player's money
+	 */
+	public void setMoney(int money){
+		this.money = money;
+	}
+	
+	/*
+	 * Setter for the player's food
+	 */
+	public void setFood(int food){
+		this.food = food;
+	}
+	
+	/**
+	 * setter for the player's energy
+	 * 
+	 */
+	public void setEnergy(int energy){
+		this.energy = energy;
+	}
+	
+	/*
+	 * Setter for the player's Smithore
+	 */
+	public void setSmithore(int smithore){
+		this.smithore = smithore;
+	}
+	
+	/*
+	 * Setter for Crystite
+	 */
+	public void setCrystite(int crystite){
+		this.crystite = crystite;
+	}
+	
+	/*
+	 * setter for the player's mules
+	 */
+	public void setMule(int mule){
+		if(mule != 0)
+			this.preMule = new Mule();
 	}
 	
 	/*

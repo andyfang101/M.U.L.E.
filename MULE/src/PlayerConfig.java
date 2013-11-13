@@ -18,7 +18,7 @@ public class PlayerConfig extends JPanel {
 	private JTextField chooseName;
 	private JComboBox chooseRace, chooseColor;
 	private String playerName, playerRace, color;
-	private Color playerColor;
+	private String playerColor;
 	private ArrayList<Player> playerList;
 	
 	private String[] races = {"Select race...", "Flapper","Human","Others"}; 
@@ -104,20 +104,12 @@ public class PlayerConfig extends JPanel {
 	* This method sets the color used to represent the player
 	*@ color - the color the player wishes to be represented by, several options
 	*/
-	public Color setColor(String color) {
-		if (color.equals("Red"))
- 			playerColor = Color.RED;
-	 	else if (color.equals("Yellow"))
-	 		playerColor = Color.YELLOW;
-	 	else if (color.equals("Green"))
-	 		playerColor = Color.GREEN;
-	 	else if (color.equals("Blue"))
-	 		playerColor = Color.BLUE;
-	 	else if (color.equals("Select color..."))
+	public String setColor(String color) {	
+		playerColor = color;
+		if (color.equals("Select color..."))
 	 		System.out.println("Must select color.");	
 	 	else
-	 		System.out.println("Error with color selection.");	
-		
+	 		System.out.println("Error with color selection.");
 		return playerColor;
 	}
 
@@ -157,7 +149,7 @@ public class PlayerConfig extends JPanel {
 	* Getter for player color
 	* @return Player color
 	*/
-	public Color getColor() {
+	public String getColor() {
 		return playerColor;
 	}
 	
@@ -215,7 +207,7 @@ public class PlayerConfig extends JPanel {
        			if(playerRace.isEmpty())
        				playerRace="Human";
        			if(playerColor==null)
-       				playerColor=Color.red;
+       				playerColor="Red";
        				
 		    	/**
 		    	* Temporary

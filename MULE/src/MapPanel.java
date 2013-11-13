@@ -28,7 +28,7 @@ public class MapPanel extends JPanel{
 		sub = new JPanel();
 		
 		setVisible(true);
-		map= new Map(false, frame);
+		map= new Map(random, frame);
 		//System.out.println(this.toString());
 		grid = new GridLayout(Map.NUM_ROW, Map.NUM_COL);
 		setLayout(grid);

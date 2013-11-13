@@ -1,16 +1,24 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 
 public class DatabaseManager {
 	protected Connection conn;
 	protected Statement stat;
+	protected ArrayList<Player> players;
+	protected String currentPlayer;
+	protected int round;
+	protected int timeLeft;
+	
 	public DatabaseManager(){
+		players = new ArrayList<Player>();
 		try{
 			 Class.forName("org.sqlite.JDBC");
 			 conn = DriverManager
-				     .getConnection("jdbc:sqlite://MuleData/database.db");
+				     .getConnection("jdbc:sqlite://home/kushal/database.db");
 			 stat = conn.createStatement();
 			 try{
 				 stat.execute("SELECT Player_Name FROM Player;");
@@ -27,5 +35,33 @@ public class DatabaseManager {
 		}catch (Exception e) {
 			   e.printStackTrace();
 		  }
+	}
+	
+	public boolean load(int gameID){
+		try{
+			
+			ResultSet res = stat.executeQuery("SELECT * FROM Player WHERE Game_ID == " + gameID + ";");
+			int count = 0;
+			while(res.next()){
+				players.add(new Player(res.getString("Player_Name"), res.getString("Race"), res.getString("Color")));
+				players.get(count).setMoney(res.getInt("Money"));
+				players.get(count).setFood(res.getInt("Food"));
+				players.get(count).setEnergy(res.getInt("Energy"));
+				players.get(count).setSmithore(res.getInt("Smithore"));
+				players.get(count).setCrystite(res.getInt("Crystite"));
+				players.get(count).setMule(res.getInt("Mule"));
+				count++;
+			}
+			
+			return true;
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	public ArrayList<Player> getPlayers(){
+		return players;
 	}
 }
