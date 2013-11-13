@@ -93,7 +93,7 @@ public class Player{
 					case 5: returnMessage = "FLYING CAT-BUGS ATE THE ROOF OFF YOUR HOUSE. REPAIRS COST $4*m.";
 						money += 4*m;
 						break;
-					default: returnMessage = "ERROR";
+					default: returnMessage = "NO EVENT";
 						System.out.println("randomevent error (switch broke)");
 						break;
 				}
@@ -125,7 +125,7 @@ public class Player{
 						if(money < 0)
 							money = 0;
 						break;
-					default: returnMessage = "ERROR";
+					default: returnMessage = "NO EVENT";
 						System.out.println("randomevent error (switch broke)");
 						break;
 				}
