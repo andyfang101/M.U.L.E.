@@ -81,7 +81,34 @@ public class GameMain extends JFrame{
 		
 		do{
 			currRounds++;
-			
+			int m;//this variable is for the random events calculation
+			switch(currRounds){
+				case 1: m = 25;
+					break;
+				case 2: m = 25;
+					break;
+				case 3: m = 25;
+					break;
+				case 4: m = 50;
+					break;
+				case 5: m = 50;
+					break;
+				case 6: m = 50;
+					break;
+				case 7: m = 50;
+					break;
+				case 8: m = 75;
+					break;
+				case 9: m = 75;
+					break;
+				case 10: m = 75;
+					break;
+				case 11: m = 75;
+					break;
+				case 12: m = 100;
+					break;
+				default: m = 0;
+					break;
 			//This will reorder the players from lowest score to highest
 			for(int i=0; i<players.size(); i++){ 
 				for(int j=i-1; j>=0; j--){
