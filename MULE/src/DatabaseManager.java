@@ -53,6 +53,13 @@ public class DatabaseManager {
 				count++;
 			}
 			
+			res = stat.executeQuery("SELECT * FROM Game WHERE Game_ID == " + gameID + ";");
+			while(res.next()){
+				currentPlayer = res.getString("Current_Player");
+				round = res.getInt("Round");
+				timeLeft = res.getInt("Time_Left");
+				
+			}
 			return true;
 		}
 		catch(Exception e){
@@ -60,8 +67,32 @@ public class DatabaseManager {
 			return false;
 		}
 	}
-	
-	public ArrayList<Player> getPlayers(){
+
+	/**
+	 * @return the players
+	 */
+	public ArrayList<Player> getPlayers() {
 		return players;
+	}
+
+	/**
+	 * @return the currentPlayer
+	 */
+	public String getCurrentPlayer() {
+		return currentPlayer;
+	}
+
+	/**
+	 * @return the round
+	 */
+	public int getRound() {
+		return round;
+	}
+
+	/**
+	 * @return the timeLeft
+	 */
+	public int getTimeLeft() {
+		return timeLeft;
 	}
 }

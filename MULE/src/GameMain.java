@@ -25,9 +25,10 @@ public class GameMain extends JFrame{
 		
 		ArrayList<Player> players = new ArrayList<Player>();
 		GameMain game = new GameMain();
+		game.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		Initial initial;
 		boolean back;
-		boolean loadedGame = true;
+		boolean loadedGame = false;
 		int gameID = 1;
 		
 		do{
@@ -67,10 +68,12 @@ public class GameMain extends JFrame{
 		}
 		while(back);
 		MapPanel map;
-//		if(loadedGame)
-//			;
-//		else 
-			map = new MapPanel(initial.isRandomMap(), game); //CHANGE FALSE TO BOOL RANDOM
+		if(loadedGame){
+			currRounds = DbMan.getRound() - 1;
+			map = new MapPanel(initial.isRandomMap(), game);
+		}
+		else 
+			map = new MapPanel(initial.isRandomMap(), game); 
 		game.validate();
 		game.repaint();
 		
@@ -97,7 +100,7 @@ public class GameMain extends JFrame{
 				Calendar calendar = Calendar.getInstance();
 				startSeconds = calendar.get(Calendar.SECOND);
 				//System.out.println("start time: " + startSeconds);
-				(new GameMain()).turnTimer();
+				(new GameMain()).turnTimer(loadedGame, DbMan.timeLeft);
 				
 
 				//Cycle through playerlist, while!done\
@@ -121,7 +124,8 @@ public class GameMain extends JFrame{
 				game.repaint();
 				if(map.gameOver(currRounds))
 					break;
-				
+				if(loadedGame)
+					loadedGame = false;
 			}
 
 			map.nextTurn();
@@ -132,8 +136,15 @@ public class GameMain extends JFrame{
 	/**
 	 * Handles timer
 	 */
-	public void turnTimer() {
-    		int turnTime = currPlayer.getTurnTime(currRounds);
+	public void turnTimer(boolean loadedGame, int loadedTimeLeft) {
+			int turnTime;
+			System.out.println(loadedGame + " " + loadedTimeLeft);
+			if(loadedGame){
+				turnTime = loadedTimeLeft;
+				System.out.println(loadedGame + " " + turnTime);
+			}
+			else
+				turnTime = currPlayer.getTurnTime(currRounds);
     		timer = new Timer();
     		timer.schedule(new RunTask(), turnTime*1000);
     	}
