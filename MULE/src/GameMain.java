@@ -70,10 +70,10 @@ public class GameMain extends JFrame{
 		MapPanel map;
 		if(loadedGame){
 			currRounds = DbMan.getRound() - 1;
-			map = new MapPanel(initial.isRandomMap(), game);
+			map = new MapPanel(initial.isRandomMap(), game, DbMan);
 		}
 		else 
-			map = new MapPanel(initial.isRandomMap(), game); 
+			map = new MapPanel(initial.isRandomMap(), game, DbMan); 
 		game.validate();
 		game.repaint();
 		

@@ -38,71 +38,71 @@ public class DatabaseManager {
 		  }
 	}	
 	public void SaveData(ArrayList<Player> players, String currPlayer, GameMain main, Map map, int id){
-		String currName = currPlayer;
-		int round = main.getCurrTurns();
-		int time = main.getTime();
-
-		try{
-			stat.executeUpdate("DELETE FROM GAME WHERE Game_ID ="+id+";");
-			stat.executeUpdate("insert into Game values("+id+",'"+currName+"',"+round+","+time+");");
-			
-		}catch (Exception e) {
-				   e.printStackTrace();
-		  }
-		try{
-			stat.executeUpdate("DELETE FROM Property WHERE Game_ID ="+id+";");
-		}catch (Exception e) {
-			   e.printStackTrace();
-		  }
-		char [][] mapRep = map.getMapRep();
-		for (int i = 0; i <5;i++){
-			for (int j = 0; j<9;j++){
-				char type = mapRep[i][j];
-				int location = (i+1)*10+j+1;
-				try{
-					stat.executeUpdate("insert into Property values("+"'"+type+"',"+location+","+id+","+"'null'"+","+"'null'"+");");
-				}catch (Exception e) {
-					   e.printStackTrace();
-				  }
-			}
-		}
-		try{
-			stat.executeUpdate("DELETE FROM Player WHERE Game_ID ="+id+";");
-		}catch (Exception e) {
-			   e.printStackTrace();
-		  }
-		
-		for (Player p: players){
-			String name = p.getName();
-			String race = p.getRace();
-			Color color = p.getColor();
-			String colorName;
-			if (color.equals(Color.RED)){
-				colorName = "Red";
-			}
-			else if (color.equals(Color.YELLOW)){
-				colorName = "Yellow";
-			}
-			if (color.equals(Color.BLUE)){
-				colorName = "Blue";
-			}
-			else
-				colorName = "Green";
-			
-			int money = p.getMoney();
-			int food = p.getFood();
-			int energy = p.getEnergy();
-			int so = p.getSmithore();
-			int crystite = p.getCrystite();
-			int mule = 0;
-			if (p.ownsMule())
-				mule = 1;
-			try{
-				stat.executeUpdate("insert into Player values('"+colorName+"','"+name+"',"+id+",'"+race+"',"+money+","+food+","+energy+","+so+","+crystite+","+mule+");");
-			}catch (Exception e) {
-				   e.printStackTrace();
-			  }
-		}
+		     String currName = currPlayer;
+		     int round = main.getCurrTurns();
+		     int time = main.getTime();
+		 
+		     try{
+		       stat.executeUpdate("DELETE FROM GAME WHERE Game_ID ="+id+";");
+		       stat.executeUpdate("insert into Game values("+id+",'"+currName+"',"+round+","+time+");");
+		       
+		     }catch (Exception e) {
+		            e.printStackTrace();
+		       }
+		     try{
+		       stat.executeUpdate("DELETE FROM Property WHERE Game_ID ="+id+";");
+		     }catch (Exception e) {
+		          e.printStackTrace();
+		       }
+		     char [][] mapRep = map.getMapRep();
+		     for (int i = 0; i <5;i++){
+		       for (int j = 0; j<9;j++){
+		         char type = mapRep[i][j];
+		         int location = (i+1)*10+j+1;
+		         try{
+		           stat.executeUpdate("insert into Property values("+"'"+type+"',"+location+","+id+","+"'null'"+","+"'null'"+");");
+		         }catch (Exception e) {
+		              e.printStackTrace();
+		           }
+		       }
+		     }
+		     try{
+		       stat.executeUpdate("DELETE FROM Player WHERE Game_ID ="+id+";");
+		     }catch (Exception e) {
+		          e.printStackTrace();
+		       }
+		     
+		     for (Player p: players){
+		       String name = p.getName();
+		       String race = p.getRace();
+		       Color color = p.getColor();
+		       String colorName;
+		       if (color.equals(Color.RED)){
+		         colorName = "Red";
+		       }
+		       else if (color.equals(Color.YELLOW)){
+		         colorName = "Yellow";
+		       }
+		       if (color.equals(Color.BLUE)){
+		         colorName = "Blue";
+		       }
+		       else
+		         colorName = "Green";
+		       
+		       int money = p.getMoney();
+		       int food = p.getFood();
+		       int energy = p.getEnergy();
+		       int so = p.getSmithore();
+		       int crystite = p.getCrystite();
+		       int mule = 0;
+		       if (p.ownsMule())
+		         mule = 1;
+		       try{
+		         stat.executeUpdate("insert into Player values('"+colorName+"','"+name+"',"+id+",'"+race+"',"+money+","+food+","+energy+","+so+","+crystite+","+mule+");");
+		       }catch (Exception e) {
+		            e.printStackTrace();
+		         }
+		     }
 	}
 
 	public boolean load(int gameID){
@@ -162,14 +162,5 @@ public class DatabaseManager {
 	 */
 	public int getTimeLeft() {
 		return timeLeft;
-			int mule = 0;
-			if (p.ownsMule())
-				mule = 1;
-			try{
-				stat.executeUpdate("insert into Player values('"+colorName+"','"+name+"',"+id+",'"+race+"',"+money+","+food+","+energy+","+so+","+crystite+","+mule+");");
-			}catch (Exception e) {
-				   e.printStackTrace();
-			  }
-		}
-		
 	}
+}

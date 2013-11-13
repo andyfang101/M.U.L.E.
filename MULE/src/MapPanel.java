@@ -25,7 +25,7 @@ public class MapPanel extends JPanel{
 	private JButton emplaceMule;
 	private JButton Save;
 	SaveListener sl;
-	public MapPanel(boolean random, GameMain frame){
+	public MapPanel(boolean random, GameMain frame, DatabaseManager DbMan){
 		this.frame=frame;
 		this.random = random;
 		
@@ -69,7 +69,7 @@ public class MapPanel extends JPanel{
 		currRound = 1;
 		entire.add(this);
 		entire.add(sub);
-		sl = new SaveListener(frame,map,currPN);
+		sl = new SaveListener(frame,map,currPN, DbMan);
 		Save.addActionListener(sl);
 
 		this.frame.setContentPane(entire);
@@ -156,11 +156,13 @@ class SaveListener implements ActionListener{
 	GameMain frame;
 	ArrayList<Player> pl;
 	String currPlayer;
+	DatabaseManager DbMan;
 	Map map;
 	int id;
-	public SaveListener(GameMain frame,Map map,String PN){
+	public SaveListener(GameMain frame,Map map,String PN, DatabaseManager DbMan){
 		this.frame = frame;
 		this.map = map;
+		this.DbMan = DbMan;
 		currPlayer = PN;
 
 		pl = frame.getPlayerList();
@@ -173,8 +175,7 @@ class SaveListener implements ActionListener{
 		        JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE,
 		        null, slots,slots[0]);
 		id = action +1;
-		DatabaseManager dm = new DatabaseManager();
-		dm.SaveData(pl, currPlayer, frame, map,id);
+		DbMan.SaveData(pl, currPlayer, frame, map,id);
 	}
 	
 	public void setName(String PN){
