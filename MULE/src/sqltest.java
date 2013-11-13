@@ -1,13 +1,14 @@
 import java.io.File;
 import java.sql.*;
 public class sqltest {
+	/*
 	static Connection conn;
 	static Statement stat;
 	public static void main(String[] args) {
 		try{
 		 Class.forName("org.sqlite.JDBC");
 		 conn = DriverManager
-			     .getConnection("jdbc:sqlite://c:/MuleData/database.db");
+			     .getConnection("jdbc:sqlite://MuleData/database.db");
 		 stat = conn.createStatement();
 		 try{
 			 stat.execute("SELECT Player_Name FROM Player;");
@@ -23,7 +24,7 @@ public class sqltest {
 		 
 		 //stat.executeUpdate("insert into Player values('Player 2', 1,'Flapper',1600,10,5,0,0,0);");
 		 //stat.executeUpdate("insert into Game values(1,'Player 1',1,50);");
-		 /*
+		 
 		 stat.executeUpdate("insert into Property values('p',11,1,'null','null');");
 		 stat.executeUpdate("insert into Property values('p',12,1,'null','null');");
 		 stat.executeUpdate("insert into Property values('m1',13,1,'null','null');");
@@ -73,10 +74,11 @@ public class sqltest {
 		 stat.executeUpdate("insert into Property values('p',57,1,'null','null');");
 		 stat.executeUpdate("insert into Property values('p',58,1,'null','null');");
 		 stat.executeUpdate("insert into Property values('m2',59,1,'null','null');");
-		 */
+		 
 		}catch (Exception e) {
 			   e.printStackTrace();
 		  }
-		
-	}
+		  }
+		*/
+	
 }
