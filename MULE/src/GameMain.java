@@ -125,6 +125,11 @@ public class GameMain extends JFrame{
 					game.repaint();
 					if(map.gameOver(currRounds))
 						break;
+					isLast = true;
+
+					if(!(players.get(0).equals(p)))
+						isLast = false;
+					JOptionPane.showMessageDialog(null, p.startRandomEvent(isLast,m));
 					if(loadedGame)
 						loadedGame = false;
 				}
