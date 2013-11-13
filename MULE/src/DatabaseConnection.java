@@ -10,7 +10,7 @@ public abstract class DatabaseConnection {
 		try{
 			 Class.forName("org.sqlite.JDBC");
 			 conn = DriverManager
-				     .getConnection("jdbc:sqlite://c:/database/database.db");
+				     .getConnection("jdbc:sqlite://c:/MuleData/database.db");
 			 stat = conn.createStatement();
 			 try{
 				 stat.execute("SELECT Player_Name FROM Player;");
