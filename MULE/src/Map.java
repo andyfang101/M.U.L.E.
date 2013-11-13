@@ -12,7 +12,7 @@ public class Map {
 
 	public final static int NUM_ROW=5; //number of rows on map
 	public final static int NUM_COL=9; //number of columns
-	private JButton map [][] = null;
+	private static JButton[][] map = null;
 	private boolean random = false;
 	private GameMain frame;
 	static char [][] mapRep;
@@ -74,7 +74,7 @@ public class Map {
 	*/
 	private JButton[][] createMap(){
 		mapRep=genCharMap();
-		JButton map [][] = new JButton[NUM_ROW][NUM_COL];
+		map = new JButton[NUM_ROW][NUM_COL];
 		for(int r=0; r<mapRep.length; r++){
 			for(int c=0; c<mapRep[r].length; c++){
 				switch(mapRep[r][c]){
