@@ -79,6 +79,8 @@ public class GameMain extends JFrame{
 		game.validate();
 		game.repaint();
 		
+		boolean isLast;
+		
 		do{
 			currRounds++;
 			int m;//this variable is for the random events calculation
