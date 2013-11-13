@@ -63,6 +63,78 @@ public class Player{
 	}
 	
 	/*
+	* causes random events
+	* @param isLast whether or not this player is currently in last
+	* @param m is the value based on the round number
+	* @return the message to be displayed
+	*/
+	public String startRandomEvent(boolean isLast, int m){
+		int randomNum = (int)(Math.random()*100);
+		int eventNum;
+		String returnMessage = "NO EVENT!";
+		if(randomNum <=27){
+			if(isLast){
+				//if the player in question is in last place, no bad things will happen
+				eventNum = (int)(Math.random()*5);
+				switch(eventNum){
+					case 1: returnMessage = "YOU JUST RECEIVED A PACKAGE FROM THE GT ALUMNI CONTAINING 3 FOOD AND 2 ENERGY UNITS.";
+						food += 3;
+						energy += 2;
+						break;
+					case 2: returnMessage = "A WANDERING TECH STUDENT REPAID YOUR HOSPITALITY BY LEAVING TWO BARS OF ORE.";
+						smithore +=2;
+						break;
+					case 3: returnMessage = "THE MUSEUM BOUGHT YOUR ANTIQUE PERSONAL COMPUTER FOR $ 8*m.";
+						money += 8*m;
+						break;
+					case 4: returnMessage = "YOU FOUND A DEAD MOOSE RAT AND SOLD THE HIDE FOR $2*m.";
+						money += 2*m;
+						break;
+					case 5: returnMessage = "FLYING CAT-BUGS ATE THE ROOF OFF YOUR HOUSE. REPAIRS COST $4*m.";
+						money += 4*m;
+						break;
+					default: returnMessage = "ERROR";
+						System.out.println("randomevent error (switch broke)");
+						break;
+				}
+			}else{
+				//if the player isn't in last place, bad things can happen
+				eventNum = (int)(Math.random()*7);
+				switch(eventNum){
+					case 1: returnMessage = "YOU JUST RECEIVED A PACKAGE FROM THE GT ALUMNI CONTAINING 3 FOOD AND 2 ENERGY UNITS.";
+						food += 3;
+						energy += 2;
+						break;
+					case 2: returnMessage = "A WANDERING TECH STUDENT REPAID YOUR HOSPITALITY BY LEAVING TWO BARS OF ORE.";
+						smithore += 2;
+						break;
+					case 3: returnMessage = "THE MUSEUM BOUGHT YOUR ANTIQUE PERSONAL COMPUTER FOR $ 8*m.";
+						money += 8*m;
+						break;
+					case 4: returnMessage = "YOU FOUND A DEAD MOOSE RAT AND SOLD THE HIDE FOR $2*m.";
+						money += 2*m;
+						break;
+					case 5: returnMessage = "FLYING CAT-BUGS ATE THE ROOF OFF YOUR HOUSE. REPAIRS COST $4*m.";
+						money += 4*m;
+						break;
+					case 6: returnMessage = "MISCHIEVOUS UGA STUDENTS BROKE INTO YOUR STORAGE SHED AND STOLE HALF YOUR FOOD.";
+						food = (int)(food/2);
+						break;
+					case 7: returnMessage = "YOUR SPACE GYPSY INLAWS MADE A MESS OF THE TOWN. IT COST YOU $6*m TO CLEAN IT UP.";
+						money -= 6*m;
+						if(money < 0)
+							money = 0;
+						break;
+					default: returnMessage = "ERROR";
+						System.out.println("randomevent error (switch broke)");
+						break;
+				}
+			}
+		}
+		return returnMessage;
+	}
+	
+	/*
 	* Getter for player name
 	* @return Player name
 	*/
