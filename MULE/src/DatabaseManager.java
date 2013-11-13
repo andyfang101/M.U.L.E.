@@ -7,7 +7,11 @@ import java.util.ArrayList;
 
 import javax.swing.JButton;
 
-
+/**
+ * Database manager is use to communicate with database.
+ * @author Wei Jiang, Kushal Nigam
+ *
+ */
 public class DatabaseManager {
 	protected Connection conn;
 	protected Statement stat;
@@ -39,6 +43,14 @@ public class DatabaseManager {
 			   e.printStackTrace();
 		  }
 	}	
+	/**
+	 * Method use to save game data;
+	 * @param players
+	 * @param currPlayer
+	 * @param main
+	 * @param map
+	 * @param id
+	 */
 	public void SaveData(ArrayList<Player> players, String currPlayer, GameMain main, Map map, int id){
 		     String currName = currPlayer;
 		     int round = main.getCurrTurns();
