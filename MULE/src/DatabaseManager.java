@@ -5,6 +5,8 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import javax.swing.JButton;
+
 
 public class DatabaseManager {
 	protected Connection conn;
@@ -19,7 +21,7 @@ public class DatabaseManager {
 		try{
 			 Class.forName("org.sqlite.JDBC");
 			 conn = DriverManager
-				     .getConnection("jdbc:sqlite://home/kushal/database.db");
+				     .getConnection("jdbc:sqlite://muledata/database.db");
 			 stat = conn.createStatement();
 			 try{
 				 stat.execute("SELECT Player_Name FROM Player;");
@@ -66,6 +68,26 @@ public class DatabaseManager {
 		           }
 		       }
 		     }
+		     
+		     JButton[][] maps = map.getMap();
+		     for (Player p:players){
+		    	 for (int i = 0; i <5;i++){
+		    		 for (int j = 0; j<9;j++){
+		    			 char type = mapRep[i][j];
+		    			 int location = (i+1)*10+j+1;
+		    			 if (p.ownsTile((Tile) maps[i][j])){
+		    				 System.out.println("@@@@@@@@@@@@@@@@@SUCCESS@@@@@@@@@@@@@@@@@");
+		    				 try{
+		    					 stat.executeUpdate("UPDATE Property SET Owner = '"+p.getName()+"' WHERE Game_ID = "+id+" AND Location = " + location+";");
+		    				 }catch (Exception e) {
+		    					 e.printStackTrace();
+		    				 }
+		    			 }
+		    		 }
+			     }
+		     }
+		     
+		     
 		     try{
 		       stat.executeUpdate("DELETE FROM Player WHERE Game_ID ="+id+";");
 		     }catch (Exception e) {
