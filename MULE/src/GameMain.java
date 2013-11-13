@@ -10,6 +10,8 @@ import java.util.ArrayList;
  * This is the main class
  */
 public class GameMain extends JFrame{
+	public static boolean loadedGame = true;
+	public static int loadedTimeLeft = 0;
 	private static Player currPlayer;
 	private static int currRounds;
 	static Timer timer;
@@ -28,7 +30,6 @@ public class GameMain extends JFrame{
 		game.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		Initial initial;
 		boolean back;
-		boolean loadedGame = false;
 		int gameID = 1;
 		
 		do{
@@ -39,6 +40,7 @@ public class GameMain extends JFrame{
 			}
 			if(loadedGame){
 				DbMan.load(gameID);
+				loadedTimeLeft = DbMan.getTimeLeft();
 				players = DbMan.getPlayers();
 			}
 			else{
@@ -92,39 +94,41 @@ public class GameMain extends JFrame{
 				}
 			}
 			for(Player p : players){
-				currPlayer = p;
-				map.setCurrRound(currRounds);
-				map.setCurrPlayerLabel(currPlayer.getName());
-				map.setCurrMoney(currPlayer.getMoney());
-
-				Calendar calendar = Calendar.getInstance();
-				startSeconds = calendar.get(Calendar.SECOND);
-				//System.out.println("start time: " + startSeconds);
-				(new GameMain()).turnTimer(loadedGame, DbMan.timeLeft);
-				
-
-				//Cycle through playerlist, while!done\
-				map.setCurPlayer(p);
-				
-				game.repaint();
-				//p.takeTurn();
-				p.produceFromMules();
-				//}
-				while(!p.isDone()){
-					map.setRemainTime((new GameMain()).getTime());
-					game.repaint();
+				if(loadedGame == true && !p.getName().equals(DbMan.getCurrentPlayer()));
+				else{
+					currPlayer = p;
+					map.setCurrRound(currRounds);
+					map.setCurrPlayerLabel(currPlayer.getName());
 					map.setCurrMoney(currPlayer.getMoney());
+	
+					Calendar calendar = Calendar.getInstance();
+					startSeconds = calendar.get(Calendar.SECOND);
+					//System.out.println("start time: " + startSeconds);
+					(new GameMain()).turnTimer();
+					
+	
+					//Cycle through playerlist, while!done\
+					map.setCurPlayer(p);
+					
+					game.repaint();
+					//p.takeTurn();
+					p.produceFromMules();
+					//}
+					while(!p.isDone()){
+						map.setRemainTime((new GameMain()).getTime());
+						game.repaint();
+						map.setCurrMoney(currPlayer.getMoney());
+					}
+					p.setDone(false);
+					p.setEmplace(false);
+					p.setVisited(false);
+					game.repaint();
+					if(map.gameOver(currRounds))
+						break;
+					if(loadedGame)
+						loadedGame = false;
 				}
-				p.setDone(false);
-				p.setEmplace(false);
-				p.setVisited(false);
-				game.repaint();
-				if(map.gameOver(currRounds))
-					break;
-				if(loadedGame)
-					loadedGame = false;
 			}
-
 			map.nextTurn();
 		}while(!map.gameOver(currRounds ));
 		
@@ -133,13 +137,11 @@ public class GameMain extends JFrame{
 	/**
 	 * Handles timer
 	 */
-	public void turnTimer(boolean loadedGame, int loadedTimeLeft) {
+	public void turnTimer() {
 			int turnTime;
 			System.out.println(loadedGame + " " + loadedTimeLeft);
-			if(loadedGame){
+			if(loadedGame)
 				turnTime = loadedTimeLeft;
-				System.out.println(loadedGame + " " + turnTime);
-			}
 			else
 				turnTime = currPlayer.getTurnTime(currRounds);
     		timer = new Timer();
@@ -160,7 +162,11 @@ public class GameMain extends JFrame{
 	 */
 	public int getTime(){
 		int pastTime,remainTime;
-		int totalTime  = currPlayer.getTurnTime(currRounds);
+		int totalTime;
+		if(loadedGame)
+			totalTime= loadedTimeLeft;
+		else
+			totalTime  = currPlayer.getTurnTime(currRounds);
 		Calendar calendar = Calendar.getInstance();
 		currSeconds = calendar.get(Calendar.SECOND);
 
@@ -194,6 +200,4 @@ public class GameMain extends JFrame{
 	public static int getCurrTurns(){
 		return currRounds;
 	}
-	
-	
 }
