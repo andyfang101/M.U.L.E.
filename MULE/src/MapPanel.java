@@ -113,7 +113,7 @@ public class MapPanel extends JPanel{
 	}
 	
 	public void setCurrPlayerLabel(String name){
-		
+		sl.setName(name);
 		curPlayerName.setText("Current Player: " + name);
 	}
 	
