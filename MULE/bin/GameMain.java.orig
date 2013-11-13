@@ -21,9 +21,13 @@ public class GameMain extends JFrame{
 	 * Main method
 	 */
 	public static void main(String[] args){
-		players = new ArrayList<Player>();
+<<<<<<< HEAD
 		DatabaseManager DbMan = new DatabaseManager();
 		
+		ArrayList<Player> players = new ArrayList<Player>();
+=======
+		players = new ArrayList<Player>();
+>>>>>>> 5b42fb264a216f3599710ca423706c66ec6aa204
 		GameMain game = new GameMain();
 		game.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		Initial initial;

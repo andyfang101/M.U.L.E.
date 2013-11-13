@@ -24,10 +24,14 @@ public class River extends Tile {
 	
 	public void produce(int type, Player p){
 		if(type!=Item.SMITHORE && type!=Item.CRYSTITE){
-		if(type==Item.FOOD)
+		if(type==Item.FOOD){
 			p.gainResources(4,0,0,0,0);
-		else if(type==Item.ENERGY)
+
+		}
+		else if(type==Item.ENERGY){
 			p.gainResources(0,2,0,0,0);
+
+		}
 		}
 	}
 

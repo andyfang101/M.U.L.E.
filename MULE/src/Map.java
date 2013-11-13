@@ -15,7 +15,7 @@ public class Map {
 	private JButton map [][] = null;
 	private boolean random = false;
 	private GameMain frame;
-	
+	static char [][] mapRep;
 	public Town town;
 
 	public Map(boolean random, GameMain frame){
@@ -73,7 +73,7 @@ public class Map {
 	*@return JButton[][] - the 2d aray of JButtons of the map
 	*/
 	private JButton[][] createMap(){
-		char [][] mapRep=genCharMap();
+		mapRep=genCharMap();
 		JButton map [][] = new JButton[NUM_ROW][NUM_COL];
 		for(int r=0; r<mapRep.length; r++){
 			for(int c=0; c<mapRep[r].length; c++){
@@ -100,6 +100,10 @@ public class Map {
 	*A getter for the map of JButtons
 	*@return - Jbutton [][] - the 2-d array of JButtons of the map
 	*/
+	public char[][] getMapRep(){
+		return mapRep;
+	}
+	
 	public JButton[][] getMap(){
 		return this.map;
 	}

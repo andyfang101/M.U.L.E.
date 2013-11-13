@@ -1,9 +1,11 @@
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 
@@ -12,6 +14,7 @@ public class MapPanel extends JPanel{
 	private GridLayout grid=null;
 	private boolean random; //implement random maps later
 	private GameMain frame;
+	private static String currPN;
 	private static JLabel curPlayerName, currRoundLabel, currMoney;
 	private static JLabel remainTime;
 	private JButton done;
@@ -20,6 +23,8 @@ public class MapPanel extends JPanel{
 	protected Player curPlayer;
 	private JPanel entire,sub;
 	private JButton emplaceMule;
+	private JButton Save;
+	SaveListener sl;
 	public MapPanel(boolean random, GameMain frame){
 		this.frame=frame;
 		this.random = random;
@@ -55,12 +60,18 @@ public class MapPanel extends JPanel{
 		sub.add(remainTime);
 		sub.add(currMoney);
 		done = new JButton("Done");
+		Save = new JButton("Save Game");
+
 		sub.add(done);
 		sub.add(emplaceMule);
+		sub.add(Save);
 		done.addActionListener(new DListener(frame));
 		currRound = 1;
 		entire.add(this);
 		entire.add(sub);
+		sl = new SaveListener(frame,map,currPN);
+		Save.addActionListener(sl);
+
 		this.frame.setContentPane(entire);
 	}
 	
@@ -73,6 +84,8 @@ public class MapPanel extends JPanel{
 	}
 	
 	public void setCurPlayer(Player p){
+		currPN = p.getName();
+		sl.setName(currPN);
 		curPlayer = GameMain.getCurrPlayer();
 		
 	}
@@ -100,6 +113,7 @@ public class MapPanel extends JPanel{
 	}
 	
 	public void setCurrPlayerLabel(String name){
+		
 		curPlayerName.setText("Current Player: " + name);
 	}
 	
@@ -134,5 +148,36 @@ class emplaceListener implements ActionListener{
 	public void actionPerformed(ActionEvent arg0) {
 		Player p = GameMain.getCurrPlayer();
 		p.setEmplace(true);
+	}
+}
+
+class SaveListener implements ActionListener{
+
+	GameMain frame;
+	ArrayList<Player> pl;
+	String currPlayer;
+	Map map;
+	int id;
+	public SaveListener(GameMain frame,Map map,String PN){
+		this.frame = frame;
+		this.map = map;
+		currPlayer = PN;
+
+		pl = frame.getPlayerList();
+		String[] slots= {"Slot 1","Slot 2","Slot 3"};
+
+	}
+	public void actionPerformed(ActionEvent arg0) {
+		String[] slots= {"Slot 1","Slot 2","Slot 3"};
+		int action = JOptionPane.showOptionDialog(null, "Which Slots?", "Slot Selection",
+		        JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE,
+		        null, slots,slots[0]);
+		id = action +1;
+		DatabaseManager dm = new DatabaseManager();
+		dm.SaveData(pl, currPlayer, frame, map,id);
+	}
+	
+	public void setName(String PN){
+		currPlayer = PN;
 	}
 }

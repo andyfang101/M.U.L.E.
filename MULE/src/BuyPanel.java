@@ -161,8 +161,12 @@ public class BuyPanel extends Building{
 			}
 	       public void actionPerformed (ActionEvent event)
 	    	{
-	    	   p.buyMule(100);
-	    	   JOptionPane.showMessageDialog(null,"You got a mule!");
+	    	   if (p.getMoney() > 100){
+	    		   p.buyMule(100);
+	    	   		JOptionPane.showMessageDialog(null,"You got a mule!");
+	    	   }
+	    	   else
+	    		   JOptionPane.showMessageDialog(null,"YOU DONT HAVE ENOUGH MONEY!");
 	    	}
 	    }
 }

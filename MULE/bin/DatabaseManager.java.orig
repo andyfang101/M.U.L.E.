@@ -19,7 +19,11 @@ public class DatabaseManager {
 		try{
 			 Class.forName("org.sqlite.JDBC");
 			 conn = DriverManager
+<<<<<<< HEAD
 				     .getConnection("jdbc:sqlite://home/kushal/database.db");
+=======
+				     .getConnection("jdbc:sqlite://muledata/database.db");
+>>>>>>> 5b42fb264a216f3599710ca423706c66ec6aa204
 			 stat = conn.createStatement();
 			 try{
 				 stat.execute("SELECT Player_Name FROM Player;");
@@ -36,7 +40,67 @@ public class DatabaseManager {
 		}catch (Exception e) {
 			   e.printStackTrace();
 		  }
-	}	
+	}
+	
+<<<<<<< HEAD
+	public boolean load(int gameID){
+		try{
+			
+			ResultSet res = stat.executeQuery("SELECT * FROM Player WHERE Game_ID == " + gameID + ";");
+			int count = 0;
+			while(res.next()){
+				players.add(new Player(res.getString("Player_Name"), res.getString("Race"), res.getString("Color")));
+				players.get(count).setMoney(res.getInt("Money"));
+				players.get(count).setFood(res.getInt("Food"));
+				players.get(count).setEnergy(res.getInt("Energy"));
+				players.get(count).setSmithore(res.getInt("Smithore"));
+				players.get(count).setCrystite(res.getInt("Crystite"));
+				players.get(count).setMule(res.getInt("Mule"));
+				count++;
+			}
+			
+			res = stat.executeQuery("SELECT * FROM Game WHERE Game_ID == " + gameID + ";");
+			while(res.next()){
+				currentPlayer = res.getString("Current_Player");
+				round = res.getInt("Round");
+				timeLeft = res.getInt("Time_Left");
+				
+			}
+			return true;
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	/**
+	 * @return the players
+	 */
+	public ArrayList<Player> getPlayers() {
+		return players;
+	}
+
+	/**
+	 * @return the currentPlayer
+	 */
+	public String getCurrentPlayer() {
+		return currentPlayer;
+	}
+
+	/**
+	 * @return the round
+	 */
+	public int getRound() {
+		return round;
+	}
+
+	/**
+	 * @return the timeLeft
+	 */
+	public int getTimeLeft() {
+		return timeLeft;
+=======
 	public void SaveData(ArrayList<Player> players, String currPlayer, GameMain main, Map map, int id){
 		String currName = currPlayer;
 		int round = main.getCurrTurns();
@@ -103,73 +167,7 @@ public class DatabaseManager {
 				   e.printStackTrace();
 			  }
 		}
-	}
-
-	public boolean load(int gameID){
-		try{
-			
-			ResultSet res = stat.executeQuery("SELECT * FROM Player WHERE Game_ID == " + gameID + ";");
-			int count = 0;
-			while(res.next()){
-				players.add(new Player(res.getString("Player_Name"), res.getString("Race"), res.getString("Color")));
-				players.get(count).setMoney(res.getInt("Money"));
-				players.get(count).setFood(res.getInt("Food"));
-				players.get(count).setEnergy(res.getInt("Energy"));
-				players.get(count).setSmithore(res.getInt("Smithore"));
-				players.get(count).setCrystite(res.getInt("Crystite"));
-				players.get(count).setMule(res.getInt("Mule"));
-				count++;
-			}
-			
-			res = stat.executeQuery("SELECT * FROM Game WHERE Game_ID == " + gameID + ";");
-			while(res.next()){
-				currentPlayer = res.getString("Current_Player");
-				round = res.getInt("Round");
-				timeLeft = res.getInt("Time_Left");
-				
-			}
-			return true;
-		}
-		catch(Exception e){
-			e.printStackTrace();
-			return false;
-		}
-	}
-
-	/**
-	 * @return the players
-	 */
-	public ArrayList<Player> getPlayers() {
-		return players;
-	}
-
-	/**
-	 * @return the currentPlayer
-	 */
-	public String getCurrentPlayer() {
-		return currentPlayer;
-	}
-
-	/**
-	 * @return the round
-	 */
-	public int getRound() {
-		return round;
-	}
-
-	/**
-	 * @return the timeLeft
-	 */
-	public int getTimeLeft() {
-		return timeLeft;
-			int mule = 0;
-			if (p.ownsMule())
-				mule = 1;
-			try{
-				stat.executeUpdate("insert into Player values('"+colorName+"','"+name+"',"+id+",'"+race+"',"+money+","+food+","+energy+","+so+","+crystite+","+mule+");");
-			}catch (Exception e) {
-				   e.printStackTrace();
-			  }
-		}
 		
+>>>>>>> 5b42fb264a216f3599710ca423706c66ec6aa204
 	}
+}
