@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * This is the main class
  */
 public class GameMain extends JFrame{
-	public static boolean loadedGame = true;
+	public static boolean loadedGame = false;
 	public static int loadedTimeLeft = 0;
 	private static Player currPlayer;
 	private static int currRounds;
@@ -38,12 +38,15 @@ public class GameMain extends JFrame{
 			while(!initial.getContinue()){
 				game.repaint();
 			}
-			if(loadedGame){
+			gameID = initial.getLoadGameID();
+			if(gameID != 0) 
+				loadedGame = true;
+			if(loadedGame){ //if the game is loaded, load the appropriate data
 				DbMan.load(gameID);
 				loadedTimeLeft = DbMan.getTimeLeft();
 				players = DbMan.getPlayers();
 			}
-			else{
+			else{ //if game is not loaded, switch to the player config options
 				for(int i = initial.getNumPlayers(); i>0; i--){
 					PlayerConfig pConfig = new PlayerConfig(game);
 					while(!pConfig.getContinue()){
@@ -72,7 +75,7 @@ public class GameMain extends JFrame{
 		MapPanel map;
 		if(loadedGame){
 			currRounds = DbMan.getRound() - 1;
-			map = new MapPanel(initial.isRandomMap(), game, DbMan);
+			map = new MapPanel(DbMan.getmapRep(), game, DbMan);  // loads the saved map into a new map panel
 		}
 		else 
 			map = new MapPanel(initial.isRandomMap(), game, DbMan); 

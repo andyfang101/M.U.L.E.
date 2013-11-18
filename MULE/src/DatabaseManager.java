@@ -19,13 +19,15 @@ public class DatabaseManager {
 	protected String currentPlayer;
 	protected int round;
 	protected int timeLeft;
+	protected char [][] mapRep;
+	protected String[][] propOwners;
 	
 	public DatabaseManager(){
 		players = new ArrayList<Player>();
 		try{
 			 Class.forName("org.sqlite.JDBC");
 			 conn = DriverManager
-				     .getConnection("jdbc:sqlite://muledata/database.db");
+				     .getConnection("jdbc:sqlite://home/kushal/muledata.db");
 			 stat = conn.createStatement();
 			 try{
 				 stat.execute("SELECT Player_Name FROM Player;");
@@ -74,7 +76,7 @@ public class DatabaseManager {
 		         char type = mapRep[i][j];
 		         int location = (i+1)*10+j+1;
 		         try{
-		           stat.executeUpdate("insert into Property values("+"'"+type+"',"+location+","+id+","+"'null'"+","+"'null'"+");");
+		           stat.executeUpdate("insert into Property values(" + "'" +type + "'," + location + "," + id + "," + "'null'" + "," + "'null'" +");");
 		         }catch (Exception e) {
 		              e.printStackTrace();
 		           }
@@ -141,7 +143,7 @@ public class DatabaseManager {
 
 	public boolean load(int gameID){
 		try{
-			
+			//Loads saved player data
 			ResultSet res = stat.executeQuery("SELECT * FROM Player WHERE Game_ID == " + gameID + ";");
 			int count = 0;
 			while(res.next()){
@@ -155,13 +157,28 @@ public class DatabaseManager {
 				count++;
 			}
 			
+			//Loads saved game data
 			res = stat.executeQuery("SELECT * FROM Game WHERE Game_ID == " + gameID + ";");
 			while(res.next()){
 				currentPlayer = res.getString("Current_Player");
 				round = res.getInt("Round");
 				timeLeft = res.getInt("Time_Left");
-				
 			}
+			
+			//Loads saved map data
+			mapRep = new char[5][9];
+			propOwners = new String[mapRep.length][mapRep[0].length];
+		     for (int i = 0; i <mapRep.length;i++){
+		       for (int j = 0; j<mapRep[i].length;j++){
+		         int location = (i+1)*10+j+1;
+		         res = stat.executeQuery("SELECT * FROM Property WHERE Game_ID == " + gameID + " AND Location == " + location + ";");
+		         String type = res.getString("Type");
+		         propOwners[i][j] = res.getString("Owner");
+		         if(type != null && !type.isEmpty())
+		        	 mapRep[i][j] =  type.charAt(0);
+		          
+		       }
+		     }
 			return true;
 		}
 		catch(Exception e){
@@ -176,7 +193,21 @@ public class DatabaseManager {
 	public ArrayList<Player> getPlayers() {
 		return players;
 	}
-
+	
+	/**
+	 * @return mapRep
+	 */
+	public char[][] getmapRep(){
+		return mapRep;
+	}
+	
+	/**
+	 * @return propOwners
+	 */
+	public String[][] getPropOwners(){
+		return propOwners;
+	}
+	
 	/**
 	 * @return the currentPlayer
 	 */

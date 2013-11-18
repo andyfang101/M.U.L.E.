@@ -41,6 +41,7 @@ public class Initial extends JPanel{
 	private String[] load = {"New Game","Slot 1","Slot 2","Slot 3"}; 
 	
 	private boolean cont;
+	private int loadGameID = 0;
 
     /*
     * This is the constructor for the initial frame, has options to select difficulty, player number, and map size.
@@ -129,6 +130,14 @@ public class Initial extends JPanel{
     }
     
     /*
+     * getter for the loadGameID
+     * @return ID of loaded game
+     */
+    public int getLoadGameID(){
+    	return loadGameID;
+    }
+    
+    /*
     * Checks if map is random
     * @return Boolean for whether map is random
     */
@@ -194,12 +203,23 @@ public class Initial extends JPanel{
     	}
     }
     
+    /*
+     * This will set the game id according to the selection in the jcombobox
+     */
     public class LoadListener implements ActionListener
     {
 
        public void actionPerformed (ActionEvent event)
     	{
-
+    	   JComboBox cb = (JComboBox)event.getSource();
+           if(((String)cb.getSelectedItem()).equals(load[0]))
+        	   loadGameID = 0;
+           else if(((String)cb.getSelectedItem()).equals(load[1]))
+        	   loadGameID = 1;
+           else if(((String)cb.getSelectedItem()).equals(load[2]))
+        	   loadGameID = 2;
+           else if(((String)cb.getSelectedItem()).equals(load[3]))
+        	   loadGameID = 3;
     	}
     }
 }
