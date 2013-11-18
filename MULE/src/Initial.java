@@ -19,10 +19,12 @@ public class Initial extends JPanel{
     private JLabel label2; //Diffficulty
     private JLabel label3; // Type of Map
     private JLabel label4; //Number of Players
+    private JLabel label5;
     
     private JComboBox diff;
     private JComboBox map;
     private JComboBox playerno;
+    private JComboBox loading;
 
     private JButton bt1;
     
@@ -36,6 +38,7 @@ public class Initial extends JPanel{
 	private String[] difficulty = {"Beginner","Standard","Tournament"}; 
 	private String[] maptype = {"Standard","Random"}; 
 	private String[] playernumber = {"1","2","3","4"}; 
+	private String[] load = {"New Game","Slot 1","Slot 2","Slot 3"}; 
 	
 	private boolean cont;
 
@@ -58,13 +61,17 @@ public class Initial extends JPanel{
         playerno = new JComboBox(playernumber);
         playerno.addActionListener(new pnListener());
         
+        loading = new JComboBox(load);
+        loading.addActionListener(new LoadListener());
+        
         diff.setPreferredSize(new Dimension(50,25));
 
         label1 = new JLabel(logo);
         label2 = new JLabel("Difficulty: ");
         label3 = new JLabel("Type of Map: ");
         label4 = new JLabel("Number of Players: ");
-        
+        label5 = new JLabel("Game Loading: ");
+
 
         bt1 = new JButton("Continue");
         bt1.addActionListener(new CListener(frame));
@@ -75,10 +82,10 @@ public class Initial extends JPanel{
         GroupLayout.SequentialGroup hGroup = layout.createSequentialGroup();
         hGroup.addGap(5);
         hGroup.addGroup(layout.createParallelGroup().addComponent(label2)
-                .addComponent(label3).addComponent(label4));
+                .addComponent(label3).addComponent(label4).addComponent(label5));
         hGroup.addGap(5);
         hGroup.addGroup(layout.createParallelGroup().addComponent(label1)
-                .addComponent(map).addComponent(diff).addComponent(playerno).addComponent(bt1));
+                .addComponent(map).addComponent(diff).addComponent(playerno).addComponent(loading).addComponent(bt1));
         hGroup.addGap(5);
         layout.setHorizontalGroup(hGroup);
 
@@ -94,6 +101,9 @@ public class Initial extends JPanel{
         vGroup.addGap(30);
         vGroup.addGroup(layout.createParallelGroup().addComponent(label4)
                 .addComponent(playerno));
+        vGroup.addGap(30);
+        vGroup.addGroup(layout.createParallelGroup().addComponent(label5)
+                .addComponent(loading));
         vGroup.addGap(30);
         vGroup.addGroup(layout.createParallelGroup(Alignment.TRAILING)
                 .addComponent(bt1));
@@ -181,6 +191,15 @@ public class Initial extends JPanel{
        public void actionPerformed (ActionEvent event)
     	{
     	   cont = true;
+    	}
+    }
+    
+    public class LoadListener implements ActionListener
+    {
+
+       public void actionPerformed (ActionEvent event)
+    	{
+
     	}
     }
 }
