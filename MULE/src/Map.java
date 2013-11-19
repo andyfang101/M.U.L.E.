@@ -47,10 +47,10 @@ public class Map {
 			char [][] mapRep= new char [NUM_ROW][NUM_COL];
 			int townRow = rand.nextInt(NUM_ROW);
 			int townCol = rand.nextInt(NUM_COL);
-			mapRep[townRow][townCol] = t;
+			
+
 			for(int r=0; r<mapRep.length; r++){
 				for(int c=0; c<mapRep[r].length; c++){
-					if(r!=townRow && c!=townCol){
 						int tileType = rand.nextInt(4);
 						switch(tileType){
 						case 0: mapRep[r][c] = m;
@@ -63,7 +63,8 @@ public class Map {
 						break;
 						default: mapRep[r][c]=g;
 						}
-					}
+						mapRep[townRow][townCol] = t;
+
 				}
 			}
 			return mapRep;
