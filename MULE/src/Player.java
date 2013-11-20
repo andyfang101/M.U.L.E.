@@ -327,11 +327,11 @@ public class Player{
         		if (amount > money)
         			JOptionPane.showMessageDialog(null, "You don't have sufficient funds to purchase these goods.");
         		else {
-        			this.setFood(food += foodNumber);
-	                energy += energyNumber;
-	                smithore += smithoreNumber;
-	                crystite += crystiteNumber;
-	                this.setMoney(money -= amount);
+        			food += foodNumber;
+	                	energy += energyNumber;
+	                	smithore += smithoreNumber;
+	                	crystite += crystiteNumber;
+		                money -= amount;
         		}
         }
         
