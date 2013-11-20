@@ -139,4 +139,45 @@ public class M10Testing {
 		}
 		Assert.assertTrue(hasOneTown && mapsMatch);
 	}
+	
+	/****************************************************/
+        /**	     JUnits for buying resources	   **/
+        /**		   @author Cassidy 		   **/
+        /****************************************************/
+        Player p2 = new Player("Fitzgerald", "Human", "Green");
+        int foodPrice = 10;
+        int energyPrice = 15;
+        int smithorePrice = 20;
+        int crystitePrice = 25;
+        
+        @Test
+        public void buyResource() {
+        	p.setMoney(200);
+        	int prevCash = p.getMoney();
+        	int prevEnergy = p.getEnergy();
+        	int prevFood = p.getFood();
+        	int prevSmithore = p.getSmithore();
+        	int prevCrystite = p.getCrystite();
+        	
+        	int foodAmount = 4;
+        	int energyAmount = 3;
+        	int smithoreAmount = 2;
+        	int crystiteAmount = 1;
+        	
+	        int sumOfPrices = (foodPrice * foodAmount) +
+	            		(energyPrice * energyAmount) +
+	            		(smithorePrice * smithoreAmount) +
+	            		(crystitePrice * crystiteAmount);
+        	if (sumOfPrices <= p.getMoney()) {
+        		p.buy(foodAmount, energyAmount, smithoreAmount, crystiteAmount, sumOfPrices);
+        		assertEquals(prevCash - sumOfPrices, p.getMoney());
+        		assertEquals(prevFood + foodAmount, p.getFood());
+        		assertEquals(prevEnergy + energyAmount, p.getEnergy());
+        		assertEquals(prevSmithore + smithoreAmount, p.getSmithore());
+        		assertEquals(prevCrystite + crystiteAmount, p.getCrystite());
+        	}
+        	else {
+        		JOptionPane.showMessageDialog(null, "You don't have sufficient funds to purchase these goods.");
+        	}
+        }
 }
