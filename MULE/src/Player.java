@@ -18,16 +18,14 @@ public class Player{
 	private Mule preMule; //Mule that still has not be used
 	private boolean emplace;
 	
-	/*
+	/**
 	* This is the constructor that instantiates the Player
 	*@name - the name of the player
 	*@race - the race of the player
 	*@color - the color repesenting that player
 	*/
 
-	public Player(String name, String race, String color){
-		int i = 0;
-		
+	public Player(String name, String race, String color){	
 		this.name = name;
 		this.race = race;
 		
@@ -62,7 +60,7 @@ public class Player{
 
 	}
 	
-	/*
+	/**
 	* causes random events
 	* @param isLast whether or not this player is currently in last
 	* @param m is the value based on the round number
@@ -134,14 +132,14 @@ public class Player{
 		return returnMessage;
 	}
 	
-	/*
+	/**
 	* Getter for player name
 	* @return Player name
 	*/
 	public String getName(){
 		return name;
 	}
-	/*
+	/**
 	 * This method is to calculate player's time of turn based on resource
 	 */
 	public int getTurnTime(int round){
@@ -156,7 +154,7 @@ public class Player{
 		return time;
 	}
 	
-	/*
+	/**
 	* Getter for player score
 	* @return Player score
 	*/
@@ -165,28 +163,28 @@ public class Player{
 		return score;
 	}
 	
-	/*
+	/**
 	* Setter for player score
 	*/
 	public void setScore(int score){
 		this.score = score;
 	}
 	
-	/*
+	/**
 	* Setter for whether player's turn is done
 	*/
 	public void setDone(boolean done){
 		this.done = done;
 	}
 	
-	/*
+	/**
 	 * Setter for the player's money
 	 */
 	public void setMoney(int money){
 		this.money = money;
 	}
 	
-	/*
+	/**
 	 * Setter for the player's food
 	 */
 	public void setFood(int food){
@@ -201,21 +199,21 @@ public class Player{
 		this.energy = energy;
 	}
 	
-	/*
+	/**
 	 * Setter for the player's Smithore
 	 */
 	public void setSmithore(int smithore){
 		this.smithore = smithore;
 	}
 	
-	/*
+	/**
 	 * Setter for Crystite
 	 */
 	public void setCrystite(int crystite){
 		this.crystite = crystite;
 	}
 	
-	/*
+	/**
 	 * setter for the player's mules
 	 */
 	public void setMule(int mule){
@@ -223,7 +221,7 @@ public class Player{
 			this.preMule = new Mule();
 	}
 	
-	/*
+	/**
 	* Getter for player color
 	* @return Player color
 	*/
@@ -231,14 +229,14 @@ public class Player{
 		return color;
 	}
 	
-	/*
+	/**
 	* Getter for whether player's turn is done
 	*/
 	public boolean isDone(){
 		return done;
 	}
 	
-	/*
+	/**
 	* Handles the buying of property by each plater
 	* @param cost Cost of property
 	* @param tile Type of property
@@ -257,7 +255,7 @@ public class Player{
 			
 	}
 	
-	/*
+	/**
 	 * Assigns a property to this player
 	 * Only use for loading map from database
 	 * @param tile which property to add
@@ -273,7 +271,7 @@ public class Player{
 			return false;
 	}
 	
-	/*
+	/**
 	* toString() method to return player name, race, and color
 	* @return Player name
 	* @return Player race
@@ -283,7 +281,7 @@ public class Player{
 		return "Player name: " + name  + " Player race: " + race + " Player color: " + color.toString();
 	}
 	
-	/*
+	/**
 	* Getter for player money
 	* @return Player money
 	*/
@@ -291,7 +289,7 @@ public class Player{
 		return money;
 	}
 
-	/*
+	/**
 	* Adds money earned from gambling to player money
 	*/
 	public void gamble(int gambleGame) {
@@ -331,7 +329,7 @@ public class Player{
 		money = money - amount;
 	}
 	
-	/*
+	/**
 	* Whether player has visited town
 	* @return Boolean indicating whether player has visited town
 	*/ 
@@ -339,14 +337,14 @@ public class Player{
 		return hasVisitedTown;
 	}
 	
-	/*
+	/**
 	* Setter for whether player has visited town
 	*/
 	public void setVisited(boolean visit){
 		hasVisitedTown=visit;
 	}
 	
-	/*
+	/**
 	 * Allows player to gain these resources
 	 * @param foodNum - how much food
 	 * @param energyNum - how much energy

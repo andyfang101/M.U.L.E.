@@ -165,16 +165,29 @@ public abstract	class Tile extends JButton{
 	 
  }
  
+ /**
+  * Getter for the cost to buy tile
+  * @return int - the amount the tile costs
+  */
  public int getCost(){
 	 return cost;
  }
  
+ /**
+  * A getter for owner of the tile
+  * @return owner -the owner of the tile
+  */
  public Player getOwner(){
 	 return owner;
  }
  
+ /**
+  * Method that must be inherited by the classes under it
+  * @param type - the type of the mule
+  * @param Player - the player who's turn it is to produce
+  */
  public void produce(int type, Player p){
-	 
+	 //overridden in subclasses
  }
 
 }

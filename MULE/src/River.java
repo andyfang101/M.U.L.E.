@@ -22,6 +22,7 @@ public class River extends Tile {
 		// TODO Auto-generated constructor stub
 	}
 	
+	
 	public void produce(int type, Player p){
 		if(type!=Item.SMITHORE && type!=Item.CRYSTITE){
 		if(type==Item.FOOD){

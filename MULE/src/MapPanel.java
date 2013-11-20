@@ -81,14 +81,26 @@ public class MapPanel extends JPanel{
 		this.frame.setContentPane(entire);
 	}
 	
+	/**
+	 * Sets that the player's turn is done
+	 * @param isDonex - whether or not player is done or not
+	 */
 	public static void setIsDone(boolean isDonex){
 		isDone = isDonex;
 	}
 	
+	/**
+	 * Getter for whether the player's turn is not done or not
+	 * @return isDone - whether or not player is done
+	 */
 	public boolean getIsDone(){
 		return isDone;
 	}
 	
+	/**
+	 * Setting current player of game, updates label name
+	 * @param p - current Player
+	 */
 	public void setCurPlayer(Player p){
 		currPN = p.getName();
 		sl.setName(currPN);
@@ -96,14 +108,27 @@ public class MapPanel extends JPanel{
 		
 	}
 	
+	/**
+	 * Getting current player
+	 * @return curPlayer
+	 */
 	public Player getCurrPlayer(){
 		return curPlayer;
 	}
 	
+	/**
+	 * Increasing the turn 
+	 * 
+	 */
 	public void nextTurn(){
 		currRound++;
 	}
 	
+	/**
+	 * Checking to see if the game is over not
+	 * @param currTurn - how many rounds the game has
+	 * @return boolean - whether or not game is over yet
+	 */
 	public boolean gameOver(int currTurn){
 		if(currTurn<12)
 			return false;
@@ -113,29 +138,53 @@ public class MapPanel extends JPanel{
 	public String toString(){
 		return "I am a Map Panel";
 	}
-	
+	/**
+	 * Getter for current turn
+	 * @return turn - current turn
+	 */
 	public int getCurrTurn(){
 		return currRound;
 	}
 	
+	/**
+	 * Setting the current player label
+	 * @param name - the name to set it to
+	 */
 	public void setCurrPlayerLabel(String name){
 		sl.setName(name);
 		curPlayerName.setText("Current Player: " + name);
 	}
 	
+	/**
+	 * Changing the label of the current round
+	 * @param - current Round
+	 */
 	public void setCurrRound(int round){
 		currRoundLabel.setText("Current Round: " + round);
 	}
 	
+	/**
+	 * Setting remaining time
+	 * @param time how many seconds are left
+	 */
 	public void setRemainTime(int time){
 		remainTime.setText("Remaining Time: "+time);
 	}
 	
+	/**
+	 * Setting current player's current money
+	 * @int money  - how much money player has
+	 */
 	public void setCurrMoney(int money){
 		currMoney.setText("Money Amount: " + money);
 	}
 }
 
+/**
+ * A listener that checks if player is done or not to end the player's turn
+ * @author Eileen Wang
+ *
+ */
 class DListener implements ActionListener{
 	GameMain frame;
 	public DListener(GameMain frame){
@@ -148,6 +197,11 @@ class DListener implements ActionListener{
 	}
 }
 
+/**
+ * The emplace listener to see if player want's to place the mule on a tile or not
+ * @author Eileen Wang
+ *
+ */
 class emplaceListener implements ActionListener{
 
 	@Override
@@ -157,6 +211,11 @@ class emplaceListener implements ActionListener{
 	}
 }
 
+/**
+ * Save button that interacts with database to save game
+ * @author Eileen Wang
+ *
+ */
 class SaveListener implements ActionListener{
 
 	GameMain frame;

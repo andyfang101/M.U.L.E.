@@ -6,7 +6,11 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-
+/**
+ *  The town class that represents a tile ont he map that when clicked on user can go into town
+ * @author Eileen Wang
+ *@version 2.0
+ */
 public class TownTile extends Tile{
 	
 	private Town town;
@@ -21,9 +25,11 @@ public class TownTile extends Tile{
 		  } //clearing the buyListener from this tile since it doesn't apply
 		tileListener=new buttonListener();
 		addActionListener(tileListener);
-		// TODO Auto-generated constructor stub
 	}
 	
+	/*
+	 * This is the button listener class for the town, allows user to enter town
+	 */
 	private class buttonListener implements ActionListener{
 
 		@Override
