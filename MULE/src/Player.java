@@ -174,12 +174,12 @@ public class M10Testing {
             		(smithorePrice * smithoreAmount) +
             		(crystitePrice * crystiteAmount);
 
-    		p2.buy(foodAmount, energyAmount, smithoreAmount, crystiteAmount, sumOfPrices);
-    		assertEquals(prevCash - sumOfPrices, p2.getMoney());
-    		assertEquals(prevFood + foodAmount, p2.getFood());
-    		assertEquals(prevEnergy + energyAmount, p2.getEnergy());
-    		assertEquals(prevSmithore + smithoreAmount, p2.getSmithore());
-    		assertEquals(prevCrystite + crystiteAmount, p2.getCrystite());
+    	        p2.buy(foodAmount, energyAmount, smithoreAmount, crystiteAmount, sumOfPrices);
+    	        assertEquals(prevCash - sumOfPrices, p2.getMoney());
+    	        assertEquals(prevFood + foodAmount, p2.getFood());
+    	        assertEquals(prevEnergy + energyAmount, p2.getEnergy());
+    	        assertEquals(prevSmithore + smithoreAmount, p2.getSmithore());
+    	        assertEquals(prevCrystite + crystiteAmount, p2.getCrystite());
         }
         
         @Test
