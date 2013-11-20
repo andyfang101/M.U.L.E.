@@ -54,7 +54,7 @@ class GambleListener implements ActionListener{
 			int bonus=gambleGame(frame.getTime());
 			p.gamble(gambleGame(bonus));
 			JOptionPane.showMessageDialog(null,
-				    "Not bad, you earned " + bonus);
+				    "Not bad, you earned $" + bonus);
 			
 		}
 		if(askGamble==JOptionPane.NO_OPTION){

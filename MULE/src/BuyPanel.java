@@ -56,7 +56,7 @@ public class BuyPanel extends Building{
 		smithoreNumber = new JTextField("0");
 		crystiteNumber = new JTextField("0");
 		
-		JButton buy = new JButton("buy");
+		JButton buy = new JButton("Buy");
 		JButton back = new JButton("Back");
 		JButton buyMule = new JButton("Buy Mule");
 		buy.addActionListener(new buyListener(p, frame, oldPanel));

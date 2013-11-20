@@ -236,7 +236,7 @@ class SaveListener implements ActionListener{
 	}
 	public void actionPerformed(ActionEvent arg0) {
 		String[] slots= {"Slot 1","Slot 2","Slot 3"};
-		int action = JOptionPane.showOptionDialog(null, "Which Slots?", "Slot Selection",
+		int action = JOptionPane.showOptionDialog(null, "Which Slot?", "Slot Selection",
 		        JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE,
 		        null, slots,slots[0]);
 		id = action +1;

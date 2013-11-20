@@ -108,7 +108,7 @@ public abstract	class Tile extends JButton{
 			else{
 				p.lostMule();
 				JOptionPane.showMessageDialog(null,
-					    "You don't own this tile.. Can't put a mule on it, so you lost you mule");
+					    "You don't own this tile... Can't put a mule on it, so you lost your mule");
 			}
 
 			p.setEmplace(false);
@@ -117,10 +117,10 @@ public abstract	class Tile extends JButton{
 		if(!isOwned){ //note to fix
 			int askBuy=0;
 			if(GameMain.getCurrTurns()<=2){
-				askBuy = JOptionPane.showConfirmDialog(null,"Would you like to buy this property?", "Buy this time?", JOptionPane.YES_NO_OPTION);
+				askBuy = JOptionPane.showConfirmDialog(null,"Would you like to buy this property?", "Buy property?", JOptionPane.YES_NO_OPTION);
 			}
 			else{
-				askBuy= JOptionPane.showConfirmDialog(null,"Would you like to buy this property? It costs " + cost , "Buy this time?", JOptionPane.YES_NO_OPTION);
+				askBuy= JOptionPane.showConfirmDialog(null,"Would you like to buy this property? It costs " + cost , "Buy property?", JOptionPane.YES_NO_OPTION);
 			}
 			if(askBuy==JOptionPane.YES_OPTION){
 					if(GameMain.getCurrTurns()<=2){
@@ -157,7 +157,7 @@ public abstract	class Tile extends JButton{
 		}
 		else{
 			JOptionPane.showMessageDialog(null,
-				    "This tile is already owned by or you are too poor to buy it. Better luck next time");
+				    "This tile is already owned by a player or you are too poor to buy it. Better luck next time");
 		}
 		
 	}

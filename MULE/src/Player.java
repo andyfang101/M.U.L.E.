@@ -419,7 +419,7 @@ public class Player{
 	
 	/**
 	 * setting the player as wanting to emplace a mule
-	 * @param emplace - whether or not player wnats to emplace a mule
+	 * @param emplace - whether or not player wants to emplace a mule
 	 */
 	public void setEmplace(boolean emplace){
 	 this.emplace=emplace;
