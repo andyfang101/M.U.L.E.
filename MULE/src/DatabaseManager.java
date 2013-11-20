@@ -29,7 +29,7 @@ public class DatabaseManager {
 		try{
 			 Class.forName("org.sqlite.JDBC");
 			 conn = DriverManager
-				     .getConnection("jdbc:sqlite://home/kushal/muledata.db");
+				     .getConnection("jdbc:sqlite://"+ this.getClass().getClassLoader().getResource("").getPath() + "muledata.db"); //sets path of db to bin folder in project
 			 stat = conn.createStatement();
 			 try{
 				 stat.execute("SELECT Player_Name FROM Player;");
