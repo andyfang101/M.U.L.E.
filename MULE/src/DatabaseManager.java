@@ -115,8 +115,8 @@ public class DatabaseManager {
 		       String race = p.getRace();
 		       Color color = p.getColor();
 		       String colorName;
-		       if (color.equals(Color.RED)){
-		         colorName = "Red";
+		       if (color.equals(Color.GREEN)){
+		         colorName = "Green";
 		       }
 		       else if (color.equals(Color.YELLOW)){
 		         colorName = "Yellow";
@@ -125,7 +125,7 @@ public class DatabaseManager {
 		         colorName = "Blue";
 		       }
 		       else
-		         colorName = "Green";
+		         colorName = "Red";
 		       
 		       int money = p.getMoney();
 		       int food = p.getFood();
@@ -169,7 +169,7 @@ public class DatabaseManager {
 			}
 			
 			//Loads saved map data
-			mapRep = new char[5][9];
+			mapRep = new char[Map.NUM_ROW][Map.NUM_COL];
 			propOwners = new String[mapRep.length][mapRep[0].length];
 		     for (int i = 0; i <mapRep.length;i++){
 		       for (int j = 0; j<mapRep[i].length;j++){
