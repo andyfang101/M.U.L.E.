@@ -12,7 +12,7 @@ public class Map {
 
 	public final static int NUM_ROW=5; //number of rows on map
 	public final static int NUM_COL=9; //number of columns
-	private static JButton[][] map = null;
+	private static Tile[][] map = null;
 	private boolean random = false;
 	private GameMain frame;
 	static char [][] mapRep = null;
@@ -80,10 +80,10 @@ public class Map {
 	*This method takes the character representation of the map andc creates the JButtons associated with the tile.
 	*@return JButton[][] - the 2d aray of JButtons of the map
 	*/
-	private JButton[][] createMap(){
+	private Tile[][] createMap(){
 		if(mapRep == null)
 			mapRep=genCharMap();
-		map = new JButton[NUM_ROW][NUM_COL];
+		map = new Tile[NUM_ROW][NUM_COL];
 		for(int r=0; r<mapRep.length; r++){
 			for(int c=0; c<mapRep[r].length; c++){
 				switch(mapRep[r][c]){

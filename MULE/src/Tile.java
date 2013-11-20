@@ -164,9 +164,13 @@ public abstract	class Tile extends JButton{
 	}
 	 
  }
-
-public void produce(int type, Player p) {
-	
-}
+ 
+ public int getCost(){
+	 return cost;
+ }
+ 
+ public void produce(int type, Player p){
+	 
+ }
 
 }

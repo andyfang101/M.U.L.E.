@@ -78,7 +78,7 @@ class GambleListener implements ActionListener{
 		int time=(int)timeleft;
 		int rBonus=0; //round Bound
 		int tBonus=0; //time bonus
-		Random rand = new Random();
+		Random rand = new Random();http://markbittman.com/cold-noodles-with-peanut-or-sesame-sauce/
 		
 		//Round bonus
 		if(round<=3){
