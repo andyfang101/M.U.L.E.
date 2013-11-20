@@ -140,10 +140,10 @@ public class M10Testing {
 		Assert.assertTrue(hasOneTown && mapsMatch);
 	}
 	
-	/****************************************************/
-        /**	     JUnits for buying resources	   **/
-        /**		   @author Cassidy 		   **/
-        /****************************************************/
+	/*****************************************/
+        /**	JUnits for buying resources	**/
+        /**		@author Cassidy	   	**/
+        /*****************************************/
         Player p2 = new Player("Fitzgerald", "Human", "Green");
         int foodPrice = 10;
         int energyPrice = 15;
