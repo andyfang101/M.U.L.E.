@@ -73,6 +73,41 @@ public class M10Testing {
 		Assert.assertFalse(p.buyProperty(t.getCost(), t));
 	}
 	
+	/**
+	 * Tests whether or not random events work
+	 */
+	@test
+	public void testRandom(){
+		for(int x=0; x<40; x++){
+			p.startRandomEvent(true, 1);
+		}
+		Assert.assertTrue(p.getMoney()>1000);
+	}
+	
+	@test
+	public void testRandom1(){
+		for(int x=0; x<40; x++){
+			p.startRandomEvent(true, 1);
+		}
+		Assert.assertTrue(p.getMoney()>1000);
+	}
+
+	@test
+	public void testRandom2(){
+		for(int x=0; x<40; x++){
+			p.startRandomEvent(false, 1);
+		}
+		Assert.assertTrue(p.getMoney()>1000);
+	}
+
+	@test
+	public void testRandom3(){
+		for(int x=0; x<40; x++){
+			p.startRandomEvent(false, 1);
+		}
+		Assert.assertTrue(p.getMoney()>1000);
+	}
+	
 	
 	//Tests for genCharMap in Map class
 	/**
