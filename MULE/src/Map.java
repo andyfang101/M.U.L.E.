@@ -25,10 +25,25 @@ public class Map {
 	}
 	
 	//this constructor is used for loading a map
-	public Map(char[][] mapRep, GameMain frame){
+	public Map(DatabaseManager DbMan, GameMain frame){
 		this.frame = frame;
-		this.mapRep = mapRep;
+		this.mapRep = DbMan.getmapRep();
 		this.map = createMap();
+		
+		//assign properties to their respective owners
+		for (int i = 0; i <map.length;i++){
+		    for (int j = 0; j<map[i].length;j++){
+		    	for(Player p : DbMan.getPlayers()){
+		    		if(p.getName().equals(DbMan.getPropOwners()[i][j])){
+		    			if(p.assignProperty(map[i][j]))
+		    				map[i][j].setBackground(p.getColor());
+		    			else
+		    				System.out.println("Property load FAILED at location (" + i + "," + j + ")!");
+		    				
+		    		}
+		    	}
+		    }
+	    }
 	}
 
 	/*

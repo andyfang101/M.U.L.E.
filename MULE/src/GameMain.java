@@ -73,12 +73,9 @@ public class GameMain extends JFrame{
 		}
 		while(back);
 		MapPanel map;
-		if(loadedGame){
+		if(loadedGame)
 			currRounds = DbMan.getRound() - 1;
-			map = new MapPanel(DbMan.getmapRep(), game, DbMan);  // loads the saved map into a new map panel
-		}
-		else 
-			map = new MapPanel(initial.isRandomMap(), game, DbMan); 
+		map = new MapPanel(initial.isRandomMap(), game, DbMan); 
 		game.validate();
 		game.repaint();
 		

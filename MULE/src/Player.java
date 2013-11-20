@@ -258,6 +258,22 @@ public class Player{
 	}
 	
 	/*
+	 * Assigns a property to this player
+	 * Only use for loading map from database
+	 * @param tile which property to add
+	 * @return a boolean indicating if the property was successfully assigned
+	 */
+	public boolean assignProperty(Tile tile){
+		if(!tile.isOwned){
+			propertyOwned.add(tile);
+			tile.isBought(this);
+			return true;
+		}
+		else
+			return false;
+	}
+	
+	/*
 	* toString() method to return player name, race, and color
 	* @return Player name
 	* @return Player race

@@ -21,8 +21,10 @@ public class DatabaseManager {
 	protected int timeLeft;
 	protected char [][] mapRep;
 	protected String[][] propOwners;
+	protected int gameID;
 	
 	public DatabaseManager(){
+		gameID = 0;
 		players = new ArrayList<Player>();
 		try{
 			 Class.forName("org.sqlite.JDBC");
@@ -143,6 +145,7 @@ public class DatabaseManager {
 
 	public boolean load(int gameID){
 		try{
+			this.gameID = gameID;
 			//Loads saved player data
 			ResultSet res = stat.executeQuery("SELECT * FROM Player WHERE Game_ID == " + gameID + ";");
 			int count = 0;
@@ -220,6 +223,13 @@ public class DatabaseManager {
 	 */
 	public int getRound() {
 		return round;
+	}
+	
+	/**
+	 * @return gameID
+	 */
+	public int getGameID(){
+		return gameID;
 	}
 
 	/**

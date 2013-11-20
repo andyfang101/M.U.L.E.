@@ -33,57 +33,13 @@ public class MapPanel extends JPanel{
 		sub = new JPanel();
 		
 		setVisible(true);
-		map= new Map(random, frame);
-		//System.out.println(this.toString());
-		grid = new GridLayout(Map.NUM_ROW, Map.NUM_COL);
-		setLayout(grid);
-		JButton emplaceMule = new JButton("Emplace a mule!");
-		emplaceMule.addActionListener(new emplaceListener());
-		JButton[][] buttons = map.getMap();
-
-		for(int r=0; r<buttons.length; r++){
-			if(buttons[r]!=null){
-				for(int c=0; c<buttons[r].length; c++){
-					if(buttons[r][c]!=null){
-						System.out.println(buttons[r][c].toString());
-						add(buttons[r][c]);
-					}
-				}
-			}
-		}
-		curPlayerName = new JLabel("Current Player: " );
-		currRoundLabel = new JLabel("Current Round: ");
-		remainTime = new JLabel("Remaining Time: ");
-		currMoney = new JLabel("Money amount: ");
-		sub.add(curPlayerName);
-		sub.add(currRoundLabel);
-		sub.add(remainTime);
-		sub.add(currMoney);
-		done = new JButton("Done");
-		Save = new JButton("Save Game");
-
-		sub.add(done);
-		sub.add(emplaceMule);
-		sub.add(Save);
-		done.addActionListener(new DListener(frame));
-		currRound = 1;
-		entire.add(this);
-		entire.add(sub);
-		sl = new SaveListener(frame,map,currPN, DbMan);
-		Save.addActionListener(sl);
-
-		this.frame.setContentPane(entire);
-	}
-	
-	//This constructor is used for loading a map
-	public MapPanel(char[][] mapRep, GameMain frame, DatabaseManager DbMan){
-		this.frame=frame;
 		
-		entire = new JPanel();
-		sub = new JPanel();
-		
-		setVisible(true);
-		this.map = new Map(mapRep, frame);
+		//This decides whether to load a map or create a new one
+		if(DbMan.getGameID() == 0)  
+			map= new Map(random, frame);
+		else
+			map = new Map(DbMan, frame);
+			
 		//System.out.println(this.toString());
 		grid = new GridLayout(Map.NUM_ROW, Map.NUM_COL);
 		setLayout(grid);
