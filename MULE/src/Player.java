@@ -153,12 +153,12 @@ public class M10Testing {
         	Player p2 = new Player("Fitzgerald", "Human", "Green");
         	p2.setMoney(200);
         	
-            int foodPrice = 10;
-            int energyPrice = 15;
-            int smithorePrice = 20;
-            int crystitePrice = 25;
+                int foodPrice = 10;
+                int energyPrice = 15;
+                int smithorePrice = 20;
+                int crystitePrice = 25;
             
-            int prevCash = p2.getMoney();
+                int prevCash = p2.getMoney();
         	int prevEnergy = p2.getEnergy();
         	int prevFood = p2.getFood();
         	int prevSmithore = p2.getSmithore();
@@ -169,7 +169,7 @@ public class M10Testing {
         	int smithoreAmount = 2;
         	int crystiteAmount = 1;
         	
-            int sumOfPrices = (foodPrice * foodAmount) +
+                int sumOfPrices = (foodPrice * foodAmount) +
             		(energyPrice * energyAmount) +
             		(smithorePrice * smithoreAmount) +
             		(crystitePrice * crystiteAmount);
@@ -188,12 +188,12 @@ public class M10Testing {
         	Player p2 = new Player("Fitzgerald", "Human", "Green");
         	p2.setMoney(100);
         	
-            int foodPrice = 10;
-            int energyPrice = 15;
-            int smithorePrice = 20;
-            int crystitePrice = 25;
+                int foodPrice = 10;
+                int energyPrice = 15;
+                int smithorePrice = 20;
+                int crystitePrice = 25;
             
-            int prevCash = p2.getMoney();
+                int prevCash = p2.getMoney();
         	int prevEnergy = p2.getEnergy();
         	int prevFood = p2.getFood();
         	int prevSmithore = p2.getSmithore();
@@ -204,12 +204,12 @@ public class M10Testing {
         	int smithoreAmount = 2;
         	int crystiteAmount = 1;
         	
-            int sumOfPrices = (foodPrice * foodAmount) +
+                int sumOfPrices = (foodPrice * foodAmount) +
             		(energyPrice * energyAmount) +
             		(smithorePrice * smithoreAmount) +
             		(crystitePrice * crystiteAmount);
 
-            System.out.println("A popup should appear.");
+                System.out.println("A popup should appear.");
     		p2.buy(foodAmount, energyAmount, smithoreAmount, crystiteAmount, sumOfPrices);
     		assertEquals(prevCash, p2.getMoney());
     		assertEquals(prevFood, p2.getFood());
