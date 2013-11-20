@@ -490,9 +490,16 @@ public class Player{
 	/**
 	 * Has all the mules produce that the player owns
 	 */
-	public void produceFromMules(){
+	public boolean produceFromMules(){
+
+		boolean hasEnergy=true;
+		boolean temp=true;
 		for(Mule m: mulesOwned){
-			m.produce();
+			hasEnergy=m.produce();
+			if(!hasEnergy)
+				temp=false;
 		}
+		
+		return temp;
 	}
 }
