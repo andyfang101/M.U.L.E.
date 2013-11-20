@@ -175,44 +175,79 @@ public class M10Testing {
 		Assert.assertTrue(hasOneTown && mapsMatch);
 	}
 	
-	/*****************************************/
-        /**	JUnits for buying resources	**/
-        /**		@author Cassidy	   	**/
-        /*****************************************/
-        Player p2 = new Player("Fitzgerald", "Human", "Green");
-        int foodPrice = 10;
-        int energyPrice = 15;
-        int smithorePrice = 20;
-        int crystitePrice = 25;
+	/****************************************************/
+        /** 		   JUnits for buying resources 	   **/
+        /** 		         @author Cassidy 	   **/
+        /****************************************************/
         
         @Test
-        public void buyResource() {
-        	p.setMoney(200);
-        	int prevCash = p.getMoney();
-        	int prevEnergy = p.getEnergy();
-        	int prevFood = p.getFood();
-        	int prevSmithore = p.getSmithore();
-        	int prevCrystite = p.getCrystite();
+        /** Has enough money **/
+        public void buyResourceWithEnough() {
+        	Player p2 = new Player("Fitzgerald", "Human", "Green");
+        	p2.setMoney(200);
+        	
+                int foodPrice = 10;
+                int energyPrice = 15;
+                int smithorePrice = 20;
+                int crystitePrice = 25;
+            
+                int prevCash = p2.getMoney();
+        	int prevEnergy = p2.getEnergy();
+        	int prevFood = p2.getFood();
+        	int prevSmithore = p2.getSmithore();
+        	int prevCrystite = p2.getCrystite();
         	
         	int foodAmount = 4;
         	int energyAmount = 3;
         	int smithoreAmount = 2;
         	int crystiteAmount = 1;
         	
-	        int sumOfPrices = (foodPrice * foodAmount) +
-	            		(energyPrice * energyAmount) +
-	            		(smithorePrice * smithoreAmount) +
-	            		(crystitePrice * crystiteAmount);
-        	if (sumOfPrices <= p.getMoney()) {
-        		p.buy(foodAmount, energyAmount, smithoreAmount, crystiteAmount, sumOfPrices);
-        		assertEquals(prevCash - sumOfPrices, p.getMoney());
-        		assertEquals(prevFood + foodAmount, p.getFood());
-        		assertEquals(prevEnergy + energyAmount, p.getEnergy());
-        		assertEquals(prevSmithore + smithoreAmount, p.getSmithore());
-        		assertEquals(prevCrystite + crystiteAmount, p.getCrystite());
-        	}
-        	else {
-        		JOptionPane.showMessageDialog(null, "You don't have sufficient funds to purchase these goods.");
-        	}
+                int sumOfPrices = (foodPrice * foodAmount) +
+            		(energyPrice * energyAmount) +
+            		(smithorePrice * smithoreAmount) +
+            		(crystitePrice * crystiteAmount);
+
+    		p2.buy(foodAmount, energyAmount, smithoreAmount, crystiteAmount, sumOfPrices);
+    		assertEquals(prevCash - sumOfPrices, p2.getMoney());
+    		assertEquals(prevFood + foodAmount, p2.getFood());
+   		assertEquals(prevEnergy + energyAmount, p2.getEnergy());
+    		assertEquals(prevSmithore + smithoreAmount, p2.getSmithore());
+    		assertEquals(prevCrystite + crystiteAmount, p2.getCrystite());
+        }
+        
+        @Test
+        /** Doesn't have enough money **/
+        public void buyResourceWithoutEnough() {
+        	Player p2 = new Player("Fitzgerald", "Human", "Green");
+        	p2.setMoney(100);
+        	
+                int foodPrice = 10;
+                int energyPrice = 15;
+                int smithorePrice = 20;
+                int crystitePrice = 25;
+            
+                int prevCash = p2.getMoney();
+        	int prevEnergy = p2.getEnergy();
+        	int prevFood = p2.getFood();
+        	int prevSmithore = p2.getSmithore();
+        	int prevCrystite = p2.getCrystite();
+        	
+        	int foodAmount = 4;
+        	int energyAmount = 3;
+        	int smithoreAmount = 2;
+        	int crystiteAmount = 1;
+        	
+                int sumOfPrices = (foodPrice * foodAmount) +
+            		(energyPrice * energyAmount) +
+            		(smithorePrice * smithoreAmount) +
+            		(crystitePrice * crystiteAmount);
+
+                System.out.println("A popup should appear.");
+    		p2.buy(foodAmount, energyAmount, smithoreAmount, crystiteAmount, sumOfPrices);
+    		assertEquals(prevCash, p2.getMoney());
+    		assertEquals(prevFood, p2.getFood());
+    		assertEquals(prevEnergy, p2.getEnergy());
+    		assertEquals(prevSmithore, p2.getSmithore());
+    		assertEquals(prevCrystite, p2.getCrystite());
         }
 }
