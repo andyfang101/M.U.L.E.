@@ -169,6 +169,10 @@ public abstract	class Tile extends JButton{
 	 return cost;
  }
  
+ public Player getOwner(){
+	 return owner;
+ }
+ 
  public void produce(int type, Player p){
 	 
  }

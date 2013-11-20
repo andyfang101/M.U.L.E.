@@ -113,7 +113,7 @@ public class Map {
 		return mapRep;
 	}
 	
-	public JButton[][] getMap(){
+	public Tile[][] getMap(){
 		return this.map;
 	}
 	
