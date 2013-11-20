@@ -175,13 +175,13 @@ public class M10Testing {
 		Assert.assertTrue(hasOneTown && mapsMatch);
 	}
 	
-	/****************************************************/
-        /** 		   JUnits for buying resources 	   **/
-        /** 		         @author Cassidy 	   **/
-        /****************************************************/
+	/**
+	 * JUnit testing for buy resources method in Player
+	 * @author Cassidy
+	 * /
         
         @Test
-        /** Has enough money **/
+        /** Player has enough money **/
         public void buyResourceWithEnough() {
         	Player p2 = new Player("Fitzgerald", "Human", "Green");
         	p2.setMoney(200);
@@ -216,7 +216,7 @@ public class M10Testing {
         }
         
         @Test
-        /** Doesn't have enough money **/
+        /** Player doesn't have enough money **/
         public void buyResourceWithoutEnough() {
         	Player p2 = new Player("Fitzgerald", "Human", "Green");
         	p2.setMoney(100);
@@ -242,9 +242,9 @@ public class M10Testing {
             		(smithorePrice * smithoreAmount) +
             		(crystitePrice * crystiteAmount);
 
-                System.out.println("A popup should appear.");
-    		p2.buy(foodAmount, energyAmount, smithoreAmount, crystiteAmount, sumOfPrices);
-    		assertEquals(prevCash, p2.getMoney());
+		System.out.println("A popup should appear.");
+		p2.buy(foodAmount, energyAmount, smithoreAmount, crystiteAmount, sumOfPrices);
+		assertEquals(prevCash, p2.getMoney());
     		assertEquals(prevFood, p2.getFood());
     		assertEquals(prevEnergy, p2.getEnergy());
     		assertEquals(prevSmithore, p2.getSmithore());
