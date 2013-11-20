@@ -4,7 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 /**
- *
+ *JUnit test cases for M10
  * @author Eileen Wang
  * @version 1.0
  *
@@ -17,6 +17,9 @@ public class M10Testing {
 	Map m = new Map(false, frame);
 	Random rand = new Random();
 	
+	/**
+	 * Buys Random property from the map and assures that the Player is the owner
+	 */
 	@Test
 	public void boughtProp1 () {
 		int row = rand.nextInt(Map.NUM_ROW);
@@ -44,7 +47,9 @@ public class M10Testing {
 		Assert.assertEquals(p,t.getOwner());
 	}
 	
-	//Player should not have enough money to buy Property
+	/**
+	 * Tests a situation where the player won't have enough money to buy Property
+	 */
 	@Test
 	public void notEnoughMoney1(){
 		p.buy(0,0,0,0,p.getMoney()); //sets player money to zero
@@ -63,5 +68,6 @@ public class M10Testing {
 		p.buyProperty(t.getCost(), t);
 		Assert.assertFalse(p.buyProperty(t.getCost(), t));
 	}
+	
 
 }
