@@ -26,7 +26,6 @@ public class Player{
 	*/
 
 	public Player(String name, String race, Color color){
-		int i = 0;
 		
 		this.name = name;
 		this.race = race;
@@ -65,12 +64,10 @@ public class Player{
 	public int getTurnTime(int round){
 		int time = 50;
 		int foodRequire = (int)(Math.floor((round-1)/4) +3);
-		if (food == 0){
+		if (food == 0)
 			time = 5;
-		}
-		else if (food < foodRequire){
+		else if (food < foodRequire)
 			time = 30;
-		}
 		return time;
 	}
 	
@@ -225,10 +222,8 @@ public class Player{
 	 * @return whether or not player owns a mule
 	 */
 	public boolean ownsMule(){
-		if(preMule!=null){
-			System.out.println("This is owned");
+		if(preMule!=null)
 			return true;
-		}
 		else
 			return false;
 	}
@@ -243,25 +238,22 @@ public class Player{
 		if(preMule!=null){
 			preMule.emplace(tile);
 			preMule.setMuleType(type);
-			if (type == 0){
+			if (type == 0)
 				money = money -75;
-			}
-			if (type == 1){
+			if (type == 1)
 				money = money -25;
-			}
-			if (type == 2){
+			if (type == 2)
 				money = money -50;
-			}
-			if (type == 3){
+			if (type == 3)
 				money = money -100;
-			}
+			else
+				money = money;
 			mulesOwned.add(preMule);
 			preMule=null;
 			return true;
 		}
-		else{
+		else
 			return false;
-		}
 	}
 	
 	/**
@@ -273,7 +265,6 @@ public class Player{
 		if(money>=amt){
 			money-=amt;
 			preMule=new Mule();
-			System.out.println("here");
 			preMule.setOwner(this);
 		}
 			return false;
@@ -285,7 +276,7 @@ public class Player{
 	 * @param emplace - whether or not player wnats to emplace a mule
 	 */
 	public void setEmplace(boolean emplace){
-	 this.emplace=emplace;
+		this.emplace=emplace;
 	}
 	public boolean getWantEmplace(){
 		return emplace;
@@ -337,9 +328,8 @@ public class Player{
 	 */
 	public boolean ownsTile(Tile tile){
 		for(Tile t: propertyOwned){
-			if(tile.equals(t)){
+			if(tile.equals(t))
 				return true;
-			}
 		}
 		return false;
 	}
@@ -349,14 +339,13 @@ public class Player{
 	 */
 	public boolean produceFromMules(){
 		boolean hasEnergy=true;
-		boolean temp=true;
+		boolean mulesHaveEnergy=true;
 		for(Mule m: mulesOwned){
 			hasEnergy=m.produce();
 			if(!hasEnergy)
-				temp=false;
-			
+				mulesHaveEnergy=false;
 		}
 		
-		return temp;
+		return mulesHaveEnergy;
 	}
 }
