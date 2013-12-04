@@ -55,11 +55,20 @@ public class Player{
                 else
                         money = 1000;
                 
+                //Adjusting difficulty
+                money-=difficultyAdjust();
+                System.out.println(difficultyAdjust());
                 food = 8;
                 energy = 4;
                 smithore = 0;
                 crystite = 0;
+                
+                System.out.println(money);
 
+        }
+        
+        public int difficultyAdjust(){
+        	return (200*Initial.diffNum);
         }
         
         /**
