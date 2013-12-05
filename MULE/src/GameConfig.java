@@ -50,4 +50,10 @@ public class GameConfig{
 	public int getNumPlayers(){
 		return numPlayers;
 	}
+	
+	public int getDifficulty(){
+		return difficulty;
+	}
+	
+	
 }

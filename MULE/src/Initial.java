@@ -28,20 +28,21 @@ public class Initial extends JPanel{
 
     private JButton bt1;
     
-    private String selectedDifficulty;
+    private String selectedDifficulty="";
     private String selectedMap = "Standard";
     private String selectedPN = "1";
     
 	private static final int WIDTH = 1220;
 	private static final int HEIGHT = 650;
 	private ImageIcon logo = new ImageIcon("logo.png");
-	private String[] difficulty = {"Beginner","Standard","Tournament"}; 
+	private String[] difficulty = {"Beginner","Intermediate","INSANE"}; 
 	private String[] maptype = {"Standard","Random"}; 
 	private String[] playernumber = {"1","2","3","4"}; 
 	private String[] load = {"New Game","Slot 1","Slot 2","Slot 3"}; 
 	
 	private boolean cont;
 	private int loadGameID = 0;
+	public static int diffNum=0;
 
     /*
     * This is the constructor for the initial frame, has options to select difficulty, player number, and map size.
@@ -149,6 +150,25 @@ public class Initial extends JPanel{
     		return false;
     }
     
+    /**
+     * 
+     * @author Eileen
+     *
+     */
+    
+    public int getDifficulty(){
+    	int diff=0;
+    	if(selectedDifficulty.equals("Beginner"))
+    		diff= 0;
+    	if(selectedDifficulty.equals("Intermediate"))
+    		diff= 1;
+    	if(selectedDifficulty.equals("INSANE"))
+    		diff= 2;
+    	
+    	return diff;
+    	
+    	
+    }
     /*
     * This is a private class that sets the selectedDifficultly to 
     * to what is selected in the combo box with an action listener.
@@ -157,8 +177,12 @@ public class Initial extends JPanel{
     {
        public void actionPerformed (ActionEvent event)
     	{
+    	   System.out.println("AM I WORKING");
     	   JComboBox cb = (JComboBox)event.getSource();
            selectedDifficulty = (String)cb.getSelectedItem();
+           diffNum=getDifficulty();
+
+  
     	}
     }
     
