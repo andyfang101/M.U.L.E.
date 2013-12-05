@@ -76,7 +76,7 @@ public class M10Testing {
 	/**
 	 * Tests whether or not random events work
 	 */
-	@test
+	@Test
 	public void testRandom(){
 		for(int x=0; x<40; x++){
 			p.startRandomEvent(true, 1);
@@ -84,7 +84,7 @@ public class M10Testing {
 		Assert.assertTrue(p.getMoney()>1000);
 	}
 	
-	@test
+	@Test
 	public void testRandom1(){
 		for(int x=0; x<40; x++){
 			p.startRandomEvent(true, 1);
@@ -92,7 +92,7 @@ public class M10Testing {
 		Assert.assertTrue(p.getMoney()>1000);
 	}
 
-	@test
+	@Test
 	public void testRandom2(){
 		for(int x=0; x<40; x++){
 			p.startRandomEvent(false, 1);
@@ -100,7 +100,7 @@ public class M10Testing {
 		Assert.assertTrue(p.getMoney()>1000);
 	}
 
-	@test
+	@Test
 	public void testRandom3(){
 		for(int x=0; x<40; x++){
 			p.startRandomEvent(false, 1);

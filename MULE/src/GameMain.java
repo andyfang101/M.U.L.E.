@@ -34,7 +34,6 @@ public class GameMain extends JFrame{
 		do{
 			back = false;
 			initial = new Initial(game);
-			System.out.println("Difficulty" + difficulty);
 			while(!initial.getContinue()){
 				game.repaint();
 			}

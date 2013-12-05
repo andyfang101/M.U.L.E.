@@ -1,10 +1,16 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.Random;
 
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -16,16 +22,42 @@ import javax.swing.JTextField;
  * @Version 1.0 10/26/13
  */
 public class Pub extends Building{
+	private GameMain frame;
+	private JPanel oldPanel;//The panel that holds old panel
 
 	public Pub(GameMain frame, Player p, JPanel oldPanel) {
 		super(frame, p, oldPanel);
+		JLabel picLabel = new JLabel(new ImageIcon("bar2.png"));
+		add(picLabel);
+		oldPanel = (JPanel) frame.getContentPane();
+		frame.setContentPane(oldPanel);
 		JButton gamble = new JButton("Gamble");
 		gamble.addActionListener(new GambleListener(p, frame, oldPanel));
 		add(gamble);
+		JButton back = new JButton("Back");
+		back.addActionListener(new BackListener(frame,oldPanel));
+		add(back);
 		
 	}
 	
 
+}
+/*
+ * Back Listener
+ */
+
+class BackListener implements ActionListener
+{
+	GameMain frame;
+	JPanel oldPanel;
+	public BackListener(GameMain frame, JPanel oldpanel){
+		this.frame=frame;
+		this.oldPanel=oldpanel;
+	}
+   public void actionPerformed (ActionEvent event)
+	{
+	   frame.setContentPane(oldPanel);
+	}
 }
 
 /*
