@@ -1,0 +1,67 @@
+<project name="CS 2340 - M4" default="all" basedir=".">
+	<!-- Sets variables which can later be used. -->
+	<!-- The value of a property is accessed via ${} -->
+
+
+	<target name = "init">
+		<property name="src.dir" location="src" />
+		<property name="build.dir" location="bin" />
+		<property name="resources.dir" location="lib"/>
+		<property name="docs.dir" location="docs" />
+		<property name="dist.dir" location="dist"/>
+	</target>
+
+	<!-- Creates the  build, docs and dist directory-->
+	<target name="prepare" depends="init">
+		<mkdir dir="${build.dir}" />
+		<mkdir dir="${docs.dir}" />
+		<mkdir dir="${dist.dir}" />
+		<mkdir dir="${src.dir}" />
+	</target>
+
+
+	<!-- Deletes the existing build, docs and dist directory-->
+	<target name="clean" depends="init">
+		<delete dir="${build.dir}" />
+		<delete dir="${docs.dir}" />
+		<delete dir="${dist.dir}" />
+	</target>
+
+
+	<!-- Compiles the java code (including the usage of library for JUnit -->
+	<target name="compile" depends="prepare">
+		<javac includeantruntime="false"	srcdir="${src.dir}" destdir="${build.dir}"
+		 classpath="${resources.dir}/junit-4.11.jar"/>
+		
+	</target>
+
+	<!-- Creates Javadoc -->
+	<target name="javadoc" depends="compile">
+		<javadoc packagenames="src" sourcepath="${src.dir}" destdir="${docs.dir}" classpath="${resources.dir}/resources.jar" >
+			<!-- Define which files / directory should get included, we include all -->
+			<fileset dir="${src.dir}">
+				<include name="**" />
+			</fileset>	
+		</javadoc>
+	</target>
+
+	<!--Creates the deployable jar file  -->
+	<target name="jar" depends="compile">
+		<jar destfile="Mule.jar" basedir="${build.dir}">
+			<include name="**/*.class" />
+			<manifest>
+				<attribute name="Main-Class" value="GameMain" />
+				<attribute name="Class-Path" value="lib/junit-4.11.jar"/>		
+			</manifest>
+		</jar>
+	</target>
+
+	<target name="run" depends="jar">
+		<java jar= "Mule.jar" fork="true"/>
+	</target>
+	
+	<target name="all" depends="clean, init, prepare, compile, javadoc, jar, run">
+		<!-- Performs all of the above tasks -->
+		</target>
+
+</project>
