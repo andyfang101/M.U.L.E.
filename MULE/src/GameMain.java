@@ -134,7 +134,7 @@ public class GameMain extends JFrame{
 					Calendar calendar = Calendar.getInstance();
 					startSeconds = calendar.get(Calendar.SECOND);
 					//System.out.println("start time: " + startSeconds);
-					(new GameMain()).turnTimer();
+					game.turnTimer();
 					
 	
 					//Cycle through playerlist, while!done\
@@ -145,7 +145,7 @@ public class GameMain extends JFrame{
 					p.produceFromMules();
 					//}
 					while(!p.isDone()){
-						map.setRemainTime((new GameMain()).getTime());
+						map.setRemainTime(game.getTime());
 						game.repaint();
 						map.setCurrMoney(currPlayer.getMoney());
 					}
