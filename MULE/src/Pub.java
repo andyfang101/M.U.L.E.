@@ -40,6 +40,50 @@ public class Pub extends Building{
 		
 	}
 	
+	public int gambleGame(double timeleft,int round){
+		int time=(int)timeleft;
+		int rBonus=0; //round Bound
+		int tBonus=0; //time bonus
+		Random rand = new Random();http://markbittman.com/cold-noodles-with-peanut-or-sesame-sauce/
+		
+		//Round bonus
+		if(round<=3){
+			rBonus=50;
+		}
+		else if(round>3 && round<=7){
+			rBonus=100;
+			
+		}
+		else if(round>7 && round<=11){
+			rBonus=150;
+		}
+		else{
+			rBonus=200;
+		}
+		
+		//Time Bonus
+		if(time>=0 && time<=12){
+			tBonus=50;
+		}
+		else if(time>12 && time<=25){
+			tBonus=100;
+		}
+		else if(time>25 && time<=37){
+			tBonus=150;
+		}
+		else{
+			tBonus=200;
+		}
+		
+		int bonus = rBonus * (rand.nextInt(tBonus));
+		
+		if(bonus>250){
+			return 250;
+		}
+		else 
+			return bonus;
+			
+	}
 
 }
 /*
