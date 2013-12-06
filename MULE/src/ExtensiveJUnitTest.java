@@ -41,19 +41,19 @@ public class ExtensiveJUnitTest {
 	public void pubTest(){
 		int outcome = 0;
 		int sum = 0;
-		for (int i=0;i<1000;i++){
+		for (int i=0;i<22000;i++){
 			outcome = pub.gambleGame(5,1);
 			sum = sum +outcome;
 		}
-		int average = sum/1000;
+		int average = sum/22000;
 		
 		int outcome2 = 0;
 		int sum2 = 0;
-		for (int i=0;i<1000;i++){
+		for (int i=0;i<22000;i++){
 			outcome2 = pub.gambleGame(45,1);
 			sum2 = sum2 +outcome;
 		}
-		int average2 = sum2/1000;
+		int average2 = sum2/22000;
 		
 		Assert.assertTrue(average2>average);
 	}
@@ -65,19 +65,19 @@ public class ExtensiveJUnitTest {
 	public void pubTest2(){
 		int outcome = 0;
 		int sum = 0;
-		for (int i=0;i<11000;i++){
+		for (int i=0;i<22000;i++){
 			outcome = pub.gambleGame(5,1);
 			sum = sum +outcome;
 		}
-		int average = sum/11000;
+		int average = sum/22000;
 		
 		int outcome2 = 0;
 		int sum2 = 0;
-		for (int i=0;i<11000;i++){
+		for (int i=0;i<22000;i++){
 			outcome2 = pub.gambleGame(5,12);
 			sum2 = sum2 +outcome;
 		}
-		int average2 = sum2/11000;
+		int average2 = sum2/22000;
 		
 		Assert.assertTrue(average2>average);
 	}
