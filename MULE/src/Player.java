@@ -84,7 +84,7 @@ public class Player{
                 if(randomNum <=27){
                         if(isLast){
                                 //if the player in question is in last place, no bad things will happen
-                                eventNum = (int)(Math.random()*5);
+                                eventNum = (int)(Math.random()*7);
                                 switch(eventNum){
                                         case 1: returnMessage = "YOU JUST RECEIVED A PACKAGE FROM THE GT ALUMNI CONTAINING 3 FOOD AND 2 ENERGY UNITS.";
                                                 food += 3;
@@ -102,13 +102,19 @@ public class Player{
                                         case 5: returnMessage = "FLYING CAT-BUGS ATE THE ROOF OFF YOUR HOUSE. REPAIRS COST $" + 4*m + ".";
                                                 money += 4*m;
                                                 break;
+                                        case 6: returnMessage = "YOU DISCOVER YOUR OLD COLLECTION OF COLLECTIBLE CAT-RACING TRADING CARDS. YOU SELL IT FOR $" + 300 +".";
+                                                money += 300;
+                                                break;
+                                        case 7: returnMessage = "THE RANDOM ROCK YOU PICKEDO OFF THE GROUND TURNED OUT TO BE WORTH SOMETHING! YOU GAIN " + 3 + " CRYSTITE";
+                                                crystite += 3;
+                                                break;
                                         default: returnMessage = "NO EVENT";
                                                 System.out.println("randomevent error (switch broke)");
                                                 break;
                                 }
                         }else{
                                 //if the player isn't in last place, bad things can happen
-                                eventNum = (int)(Math.random()*7);
+                                eventNum = (int)(Math.random()*9);
                                 switch(eventNum){
                                         case 1: returnMessage = "YOU JUST RECEIVED A PACKAGE FROM THE GT ALUMNI CONTAINING 3 FOOD AND 2 ENERGY UNITS.";
                                                 food += 3;
@@ -133,6 +139,14 @@ public class Player{
                                                 money -= 6*m;
                                                 if(money < 0)
                                                         money = 0;
+                                                break;
+                                        case 8: returnMessage = "YOU DISCOVER YOUR OLD COLLECTION OF COLLECTIBLE CAT-RACING TRADING CARDS. YOU SELL IT FOR $" + 300 +".";
+                                                money += 300;
+                                                break;
+                                        case 9: returnMessage = "YOU TRIP AND STUB YOUR TOES! IT COST YOU $300 IN HOSPITAL FEES";
+                                                money -= 300;
+                                                if(money <0)
+                                                    money = 0;
                                                 break;
                                         default: returnMessage = "NO EVENT";
                                                 System.out.println("randomevent error (switch broke)");
