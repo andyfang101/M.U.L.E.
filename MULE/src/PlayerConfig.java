@@ -87,11 +87,16 @@ public class PlayerConfig extends JPanel {
 		panel.add(chooseRace);
 		panel.add(colorLabel);
 		panel.add(chooseColor);
+		ImageIcon logo = new ImageIcon("logo.png");
+		JLabel logol = new JLabel(logo);
+		entire.add(logol);
 		entire.add(panel);
 		        
-			JButton back = new JButton("Back");
+			JButton back = new JButton();
+			back.setIcon(new ImageIcon("Back Button.png"));
 			back.addActionListener(new backListener());
-	        JButton cont = new JButton("Continue");
+	        JButton cont = new JButton();
+			cont.setIcon(new ImageIcon("Forward Button.png"));
 	        cont.addActionListener(new continueListener(frame));
 	        entire.add(back);
 	        entire.add(cont);
