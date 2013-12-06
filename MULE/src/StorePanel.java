@@ -2,6 +2,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -13,11 +14,14 @@ public class StorePanel extends Building{
 
 	public StorePanel(GameMain frame, Player p, JPanel oldPanel) {
 		super(frame, p, oldPanel);
+		JLabel picLabel = new JLabel(new ImageIcon("store2.png"));
+		add(picLabel);
 		JButton Buy = new JButton("Buy");
 		JButton Sell = new JButton("Sell");
 		JButton Back = new JButton("Back");
 		Sell.addActionListener(new SellListener(p, frame, (JPanel)frame.getContentPane()));
 		Buy.addActionListener(new BuyListener(p, frame, (JPanel)frame.getContentPane()));
+		Back.addActionListener(new BackListener(frame, (JPanel)frame.getContentPane()));
 		add(Buy);
 		add(Sell);
 		add(Back);
@@ -53,6 +57,20 @@ public class StorePanel extends Building{
             BuyPanel p = new BuyPanel(frame, GameMain.getCurrPlayer(), oldPanel);
             frame.setContentPane(p);
         }
+    }
+    
+   private class BackListener implements ActionListener
+    {
+    	GameMain frame;
+    	JPanel oldPanel;
+    	public BackListener(GameMain frame, JPanel oldpanel){
+    		this.frame=frame;
+    		this.oldPanel=oldpanel;
+    	}
+       public void actionPerformed (ActionEvent event)
+    	{
+    	   frame.setContentPane(oldPanel);
+    	}
     }
 }
 
